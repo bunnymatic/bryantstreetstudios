@@ -1,0 +1,20 @@
+.sidebar
+  %h3 Contact
+  %ul.contacts_list
+    %li.contact
+      %a{:href => "http://maps.google.com?q=1890+Bryant+Street+San+Francisco,+CA"}
+        .name google map
+.content
+  = haml :breadcrumb, :layout => false
+  %h1 Contact
+  %h3 General Enquiries
+  %p 
+    %a{:href => "mailto:info@1890bryant.com"} info@1980bryant.com
+
+  %h3 Location  
+  %p
+    1890 Bryant Street,
+    %br
+    San Francisco, CA 94110 
+  .map
+    %img{:src => "images/map.gif", :title => 'map', :alt => "map"}

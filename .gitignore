@@ -14,3 +14,4 @@ romey.sqlite
 public/stylesheets
 public/uploads
 public/system
+.sass-cache

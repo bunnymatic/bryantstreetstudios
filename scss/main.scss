@@ -66,7 +66,8 @@ header {
     @include right_column;
     ul {
       position: absolute;
-      bottom: 0;
+      bottom: 13px;
+      left: 7px;
       padding: 0 0 0 10px;
     }
     li {
@@ -105,7 +106,7 @@ header {
     min-height: 391px;
     padding-bottom: 0;
     a {
-      color: $x_light_green;
+      color: $medium_green;
       &:hover {
         color: #636;
       }
@@ -115,5 +116,6 @@ header {
 
 @import 'home';
 @import 'artists';
+@import 'contacts';
 
 

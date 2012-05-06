@@ -5,9 +5,8 @@
       %li.artist
         %a{:href => "/artist/#{a.id}"}
           .name #{a.firstname} #{a.lastname}
-    %li.last        
 .content
-  .breadcrumb breadcrumb
+  = haml :breadcrumb, :layout => false
   %h1 Artists
   .artists
     list of artist thumbs

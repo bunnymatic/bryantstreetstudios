@@ -2,10 +2,10 @@
 @import 'colors';
 @import 'mixins';
 
-.artists {
+.contact {
   .sidebar {
     background-color: $medium_green;
-    ul.artists_list {
+    ul.contacts_list {
       margin:0;
       padding: 0 0 10px 0;
     }
@@ -13,7 +13,7 @@
       margin-left: 16px;
       color: $white;
     }
-    .artist {
+    li.contact {
       border-top: 1px dotted $x_light_green;
       @include sidebar_nav_link;
       .name {
