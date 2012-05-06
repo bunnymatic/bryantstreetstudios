@@ -1,0 +1,164 @@
+/* main 1890 stylesheet */
+/* define mixin colors
+/* colors */
+body {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  background-color: #b7b76f; }
+
+h1 {
+  font-size: 16px; }
+
+h2 {
+  font-size: 14px; }
+
+h3 {
+  font-size: 12px; }
+
+h4, h5, h6 {
+  font-size: 11px; }
+
+a {
+  text-decoration: none; }
+
+.container {
+  margin-bottom: 20px; }
+  .container .bottom_spacer {
+    clear: both;
+    height: 6px; }
+
+header, #main {
+  background-color: white;
+  margin: auto;
+  width: 758px;
+  /** add padding */
+  font-size: 11px;
+  line-height: 18px; }
+
+header {
+  display: block;
+  zoom: 1; }
+  header:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0; }
+  header .logo {
+    height: 85px;
+    overflow: hidden;
+    float: left;
+    width: 229px;
+    padding: 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px; }
+  header nav {
+    position: relative;
+    background-image: url(/images/bryant-street.gif);
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-color: #6c5861;
+    color: white;
+    height: 69px;
+    margin-top: 8px;
+    float: left;
+    width: 499px;
+    padding: 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px; }
+    header nav ul {
+      position: absolute;
+      bottom: 0;
+      padding: 0 0 0 10px; }
+    header nav li {
+      float: left;
+      width: 58px;
+      font-size: 12px;
+      text-shadow: 1px 1px 1px #333; }
+      header nav li a {
+        color: white; }
+      header nav li a:visited {
+        color: white; }
+      header nav li a:hover, header nav li a:active {
+        color: #b7b76f; }
+
+#main {
+  display: block;
+  zoom: 1; }
+  #main:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0; }
+  #main .sidebar {
+    width: 229px;
+    padding: 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    float: left;
+    padding-top: 0;
+    padding-bottom: 0; }
+  #main .content {
+    display: block;
+    zoom: 1;
+    width: 499px;
+    padding: 6px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #989933;
+    color: white;
+    float: left;
+    min-height: 391px;
+    padding-bottom: 0; }
+    #main .content:after {
+      clear: both;
+      content: ' ';
+      display: block;
+      font-size: 0;
+      line-height: 0;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    #main .content a {
+      color: #dcdc8f; }
+      #main .content a:hover {
+        color: #636; }
+
+.home .welcome {
+  margin: 17px;
+  display: block;
+  zoom: 1; }
+  .home .welcome:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0; }
+.home .openstudios {
+  border-left: 1px dotted #dcdc8f;
+  padding: 0 17px;
+  width: 190px;
+  float: left; }
+  .home .openstudios h1, .home .openstudios h2, .home .openstudios h3, .home .openstudios h4 {
+    margin-top: 0; }
+.home .about_us {
+  border-left: 1px dotted #dcdc8f;
+  padding: 0 17px;
+  width: 190px;
+  float: left; }
+  .home .about_us h1, .home .about_us h2, .home .about_us h3, .home .about_us h4 {
+    margin-top: 0; }

@@ -1,0 +1,186 @@
+/* main 1890 stylesheet */
+
+/* define mixin colors
+/* colors */
+$x_light_green: #DCDC8F;
+$light_green: #B7B76F;
+$medium_green: #989933;
+$white: #fff;
+$purple_brown: #6C5861;
+
+
+$full_width: 740px;
+$left_column_width: 229px;
+$right_column_width: $full_width - $left_column_width;
+
+@mixin left_column {
+  width: $left_column_width;
+  padding: 6px;
+  @include rounded-corners(10px);
+
+}
+
+@mixin right_column {
+  width: $right_column_width - 12px;
+  padding: 6px;
+  @include rounded-corners(10px);
+
+}
+
+@mixin rounded-corners($radius:10px) {
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  border-radius:$radius;
+}
+@mixin clearfix {
+
+  &:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
+  display: block;
+  zoom: 1;
+}
+@mixin body_copy {
+  font-size: 11px;
+  line-height: 18px;
+}
+
+body {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  background-color: $light_green;
+}
+
+  
+h1 {
+  font-size: 16px;
+}
+h2 {
+  font-size: 14px;
+}
+h3 {
+  font-size: 12px;
+}
+h4, h5, h6 {
+  font-size: 11px;
+}
+
+a {
+  text-decoration: none;
+}
+.container {
+  margin-bottom: 20px;
+  .bottom_spacer {
+    clear:both;
+    height: 6px;
+  }
+}
+header, #main {
+  background-color: $white;
+  margin: auto;
+  width: $full_width + 18px; /** add padding */
+  @include body_copy;
+}
+
+header {
+  @include clearfix;
+  .logo {
+    height: 85px;
+    overflow:hidden;
+    float: left;
+    @include left_column;
+  }
+  nav {
+    position:relative;
+    background-image: url(/images/bryant-street.gif);
+    background-repeat: no-repeat;
+    overflow:hidden;
+    background-color: $purple_brown;
+    color: $white;
+    height: 69px;
+    margin-top: 8px;
+    float:left;
+    @include right_column;
+    ul {
+      position: absolute;
+      bottom: 0;
+      padding: 0 0 0 10px;
+    }
+    li {
+      float: left;
+      width: 58px;
+      font-size:12px;
+      text-shadow: 1px 1px 1px #333;
+      a {
+        color: $white;
+      }
+      a:visited {
+        color: $white;
+      }
+      a:hover, a:active {
+        color: $light_green;
+      }
+
+    }
+  }
+}
+
+#main {
+  @include clearfix;
+  .sidebar {
+    @include left_column;
+    overflow:hidden;
+    float: left;
+    padding-top:0;
+    padding-bottom: 0;
+  }
+  .content {
+    @include clearfix;
+    @include right_column;
+    background-color: $medium_green;
+    color: $white;
+    float:left;
+    min-height: 391px;
+    padding-bottom: 0;
+    a {
+      color: $x_light_green;
+      &:hover {
+        color: #636;
+      }
+    }
+  }
+}
+
+.home {
+  .welcome {
+    margin: 17px;
+    @include clearfix;
+  }
+  .openstudios {
+    border-left: 1px dotted $x_light_green;
+    padding: 0 17px;
+    width: 190px;
+    float: left;
+    h1,h2,h3,h4 {
+      margin-top: 0;
+    }
+  }
+  .about_us {
+    border-left: 1px dotted $x_light_green;
+    padding: 0 17px;
+    width: 190px;
+    float: left;
+    h1,h2,h3,h4 {
+      margin-top: 0;
+    }
+  }
+}
+
+

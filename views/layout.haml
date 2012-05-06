@@ -1,0 +1,33 @@
+!!! 5
+%html
+  %head
+    %meta
+    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/stylesheets/normalize.css'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :media => 'all', :href => '/stylesheets/main.css'}
+    %meta{'http-equiv' => "Content-Type", :content => "text/html; charset=iso-8859-1"}
+    %meta{:name => 'description', :content => "1890 Bryant Street - Artist Studios"}
+    %meta{:name => 'keywords', :content => 'artist studios, creative, painters, jewellers, designers, floor coverings, artists, bakery, cafe, classes, open stusios, events, ceramics, San Francisco, Mission district, Bryant St' }
+    %meta{:name => "google-site-verification", :content => "AW6SSwfceF_YA2VrL41IEzR9iFadnZNVV9dv9yjXxvg"}
+
+    %title #{@title}
+
+  %body
+    .container
+      %header
+        .logo
+          %img{:src => '/images/1890.jpg'}
+        %nav
+          %ul
+            %li 
+              %a{:href => '/'} home
+            - [:artists, :events, :press, :contact].each do |page|
+              %li 
+                %a{:href => "/#{page}"} #{page}
+
+      #main{:class => @current_section}
+        =yield
+        .bottom_spacer
+      
+    %script{ :src => 'http://code.jquery.com/jquery-1.7.2.min.js' }
+
+   

@@ -1,0 +1,15 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+\#*
+.#*
+*~
+*.swp
+*.DS_Store
+.idea
+.project
+romey.db
+romey.sqlite
+public/uploads
+public/system
