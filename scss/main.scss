@@ -1,57 +1,13 @@
 /* main 1890 stylesheet */
-
-/* define mixin colors
-/* colors */
-$x_light_green: #DCDC8F;
-$light_green: #B7B76F;
-$medium_green: #989933;
-$white: #fff;
-$purple_brown: #6C5861;
-
+@import 'colors';
+@import 'normalize';
+@import 'reset';
+@import 'mixins';
 
 $full_width: 740px;
-$left_column_width: 229px;
+$left_column_width: 217px;
 $right_column_width: $full_width - $left_column_width;
 
-@mixin left_column {
-  width: $left_column_width;
-  padding: 6px;
-  @include rounded-corners(10px);
-
-}
-
-@mixin right_column {
-  width: $right_column_width - 12px;
-  padding: 6px;
-  @include rounded-corners(10px);
-
-}
-
-@mixin rounded-corners($radius:10px) {
-  -webkit-border-radius:$radius;
-  -moz-border-radius:$radius;
-  border-radius:$radius;
-}
-@mixin clearfix {
-
-  &:after {
-    clear: both;
-    content: ' ';
-    display: block;
-    font-size: 0;
-    line-height: 0;
-    visibility: hidden;
-    width: 0;
-    height: 0;
-  }
-
-  display: block;
-  zoom: 1;
-}
-@mixin body_copy {
-  font-size: 11px;
-  line-height: 18px;
-}
 
 body {
   font-family: Helvetica, Arial, Verdana, sans-serif;
@@ -104,8 +60,8 @@ header {
     overflow:hidden;
     background-color: $purple_brown;
     color: $white;
-    height: 69px;
-    margin-top: 8px;
+    height: 73px;
+    margin-top: 6px;
     float:left;
     @include right_column;
     ul {
@@ -138,8 +94,7 @@ header {
     @include left_column;
     overflow:hidden;
     float: left;
-    padding-top:0;
-    padding-bottom: 0;
+    margin-top: 0
   }
   .content {
     @include clearfix;
@@ -158,29 +113,7 @@ header {
   }
 }
 
-.home {
-  .welcome {
-    margin: 17px;
-    @include clearfix;
-  }
-  .openstudios {
-    border-left: 1px dotted $x_light_green;
-    padding: 0 17px;
-    width: 190px;
-    float: left;
-    h1,h2,h3,h4 {
-      margin-top: 0;
-    }
-  }
-  .about_us {
-    border-left: 1px dotted $x_light_green;
-    padding: 0 17px;
-    width: 190px;
-    float: left;
-    h1,h2,h3,h4 {
-      margin-top: 0;
-    }
-  }
-}
+@import 'home';
+@import 'artists';
 
 

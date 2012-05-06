@@ -11,5 +11,6 @@ tmp/**/*
 .project
 romey.db
 romey.sqlite
+public/stylesheets
 public/uploads
 public/system

@@ -1,6 +1,13 @@
 .sidebar
-  - @artists.each do |a|
-    .artist
-      .name #{a.firstname} #{a.lastname}
+  %h3 Artists
+  %ul.artists_list
+    - @artists.each do |a|
+      %li.artist
+        %a{:href => "/artist/#{a.id}"}
+          .name #{a.firstname} #{a.lastname}
+    %li.last        
 .content
-  yo
+  .breadcrumb breadcrumb
+  %h1 Artists
+  .artists
+    list of artist thumbs

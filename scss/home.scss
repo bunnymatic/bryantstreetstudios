@@ -1,0 +1,28 @@
+.home {
+  .sidebar {
+    height: 396px;
+    overflow:hidden;
+  }
+  .welcome {
+    margin: 17px;
+    @include clearfix;
+  }
+  .openstudios {
+    border-left: 1px dotted $x_light_green;
+    padding: 0 17px;
+    width: 190px;
+    float: left;
+    h1,h2,h3,h4 {
+      margin-top: 0;
+    }
+  }
+  .about_us {
+    border-left: 1px dotted $x_light_green;
+    padding: 0 17px;
+    width: 190px;
+    float: left;
+    h1,h2,h3,h4 {
+      margin-top: 0;
+    }
+  }
+}

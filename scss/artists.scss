@@ -1,0 +1,31 @@
+/** artists page*/
+@import 'colors';
+@import 'mixins';
+
+.artists {
+  .sidebar {
+    background-color: $medium_green;
+    ul.artists_list {
+      margin:0;
+      padding: 0;
+      li.last {
+        height: 8px;
+      }
+    }
+    h3 {
+      margin-left: 16px;
+      color: $white;
+    }
+    .artist {
+      border-top: 1px dotted $x_light_green;
+      @include sidebar_nav_link;
+      .name {
+        margin: 4px 8px 4px 16px;
+      }
+    }
+  }
+  &#main .content {
+    background-color: $white;
+    color: $black;
+  }
+}
