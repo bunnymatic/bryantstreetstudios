@@ -10,3 +10,12 @@
   %h1 Artists
   .artists
     list of artist thumbs
+    %ul
+      - @artists.each do |a|
+        %li.thumb
+          .img 
+            %img{:src => "http://localhost:3000/#{a.profile_image}"}
+          .name #{a.firstname} #{a.lastname}
+          - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email
+d
+        
