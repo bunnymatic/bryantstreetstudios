@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-contrib' 
 gem 'sinatra-logger'
 gem 'sinatra-static-assets'
 gem 'capistrano'

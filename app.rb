@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'sinatra'
+require 'sinatra/config_file'
 require 'sinatra/logger'
 require 'sinatra/static_assets'
 require 'haml'
@@ -8,6 +9,7 @@ require 'json'
 require 'dalli'
 require 'ostruct'
 require 'yaml'
+require './lib/safecache'
 
 class String
   def truncate(len = 40, postfix = '...')
@@ -19,33 +21,26 @@ end
 
 class BryantStreetStudios < Sinatra::Base
 
-  set :environment, :production
+  set :environments, %w{development test production staging}
+  set :environment, :development
   set :logging, true
   set :root, File.dirname(__FILE__)
 
+  register Sinatra::ConfigFile
   register Sinatra::StaticAssets
   register Sinatra::Logger 
+
+  SafeCache.init(settings)
 
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"
 
-  @@config = nil
-
-  def self.configure opts={}
-    conf = File.join(root, 'config','config.yml')
-    if File.exists? conf
-      c = YAML::load(File.read(conf))
-    end
-    @@config = OpenStruct.new(c.merge(opts))
-  end
-
-  def self.config 
-    @@config || self.configure
-  end
+  config_file File.join( [root, 'config', 'config.yml'] )
 
   def self.cache
-    @@cache ||= Dalli::Client.new('localhost:11211', :expires_in => 24 * 60 * 60)
+    @@cache ||= Dalli::Client.new('localhost:11211', :expires_in => settings)
   end
+
 
   helpers do
     

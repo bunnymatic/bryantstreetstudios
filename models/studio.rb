@@ -7,8 +7,8 @@ class Studio
   @@studio = nil
 
   def initialize
-    conf = BryantStreetStudios.config
-    studio = BryantStreetStudios.cache.get('studio')
+    conf = BryantStreetStudios.settings
+    studio = SafeCache.get('studio')
     if !studio
       url = "%s/studios" % conf.mau_api_url
       begin 
@@ -26,7 +26,7 @@ class Studio
           break
         end
       end unless studios.nil?
-      BryantStreetStudios.cache.set('studio', studio) if studio
+      SafeCache.set('studio', studio) if studio
     end
     @@studio = studio
   end

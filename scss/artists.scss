@@ -24,5 +24,17 @@
   &#main .content {
     background-color: $white;
     color: $black;
+    .thumb {
+      float: left;
+      margin: 10px;
+      width:100px;
+    }
+    .img {
+      width:100px;
+      height: 150px;
+    }
+    .name {
+      width: 100px;
+    }
   }
 }

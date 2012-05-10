@@ -10,9 +10,9 @@ class Artists
   @@artists = nil
 
   def initialize
-    conf = BryantStreetStudios.config
+    conf = BryantStreetStudios.settings
     s = Studio.new
-    artists = BryantStreetStudios.cache.get('artists')
+    artists = SafeCache.get('artists')
     if !artists || artists.empty?
       all_artists = []
       begin 
@@ -24,7 +24,18 @@ class Artists
         puts "Exception: #{ex.to_s}"
       end
       artists = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
-      BryantStreetStudios.cache.set('artists', artists) unless (!artists || artists.empty?)
+      # add/update art_piece filenames
+      artists.each do |a|
+        a['art_pieces'].each do |ap|
+          fname = ap['filename']
+          furl = "%s/%s" % [conf.mau_web_url, fname.gsub(/^public\//, '')]
+          ap['thumb'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/t_\2')
+          ap['small'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/s_\2')
+          ap['medium'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/m_\2')
+          ap['large'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/l_\2')
+        end
+      end
+      SafeCache.set('artists', artists) unless (!artists || artists.empty?)
     end
     @@artists = artists.map{|a| OpenStruct.new(a)}
   end

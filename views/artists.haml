@@ -14,8 +14,9 @@
       - @artists.each do |a|
         %li.thumb
           .img 
-            %img{:src => "http://localhost:3000/#{a.profile_image}"}
+            - if a.art_pieces && a.art_pieces.length > 0
+              %img{:src => a.art_pieces[0]['thumb'] }
+
           .name #{a.firstname} #{a.lastname}
-          - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email
-d
+          - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email, art_pieces
         
