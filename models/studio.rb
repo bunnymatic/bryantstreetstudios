@@ -6,10 +6,20 @@ class Studio
 
   @@studio = nil
 
-  def initialize
+  def method_missing(meth, *args, &block)
+    if ALLOWED_KEYS.include? meth.to_s
+      studio[meth.to_s]
+    else 
+      super
+    end
+  end
+
+  private
+  def studio
     conf = BryantStreetStudios.settings
-    studio = SafeCache.get('studio')
-    if !studio
+    studi = SafeCache.get('studio')
+    
+    if !studi
       url = "%s/studios" % conf.mau_api_url
       begin 
         resp = RestClient.get url
@@ -18,24 +28,17 @@ class Studio
         puts "ERROR: Unable to connect to #{url}"
         puts "Exception: #{ex.to_s}"
       end
-
-      studio = nil
+      
+      studi = nil
       studios.map{|s| s['studio']}.each do |st|
         if st['name'] =~ /^1890/
-          studio = st
+          studi = st
           break
         end
       end unless studios.nil?
-      SafeCache.set('studio', studio) if studio
+      SafeCache.set('studio', studi) if studi
     end
-    @@studio = studio
+    @@studio = studi
   end
 
-  def method_missing(meth, *args, &block)
-    if ALLOWED_KEYS.include? meth.to_s
-      @@studio[meth.to_s]
-    else 
-      super
-    end
-  end
 end

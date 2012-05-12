@@ -2,6 +2,7 @@
 @import 'colors';
 @import 'mixins';
 
+/* index */
 .artists {
   .sidebar {
     background-color: $medium_green;
@@ -26,15 +27,40 @@
     color: $black;
     .thumb {
       float: left;
-      margin: 10px;
+      margin: 12px;
       width:100px;
     }
+    
     .img {
       width:100px;
-      height: 150px;
+      height: 106px;
+      text-align:center;
     }
     .name {
       width: 100px;
+      text-align:center;
+    }
+  }
+}
+
+/* individual artist page */
+.artist {
+  &#main .content {
+    background-color: $white;
+    color: $black;
+  }
+  .bio {
+    clear:both;
+    margin: auto;
+    padding: 20px;
+    text-align: justify;
+  }
+  .ap { 
+    float: left;
+    width: 100px;
+    margin: 10px;
+    .piece, .title {
+      text-align:center;
     }
   }
 }

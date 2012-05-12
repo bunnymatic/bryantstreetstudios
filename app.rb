@@ -9,7 +9,6 @@ require 'json'
 require 'dalli'
 require 'ostruct'
 require 'yaml'
-require './lib/safecache'
 
 class String
   def truncate(len = 40, postfix = '...')
@@ -30,17 +29,10 @@ class BryantStreetStudios < Sinatra::Base
   register Sinatra::StaticAssets
   register Sinatra::Logger 
 
-  SafeCache.init(settings)
-
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"
 
   config_file File.join( [root, 'config', 'config.yml'] )
-
-  def self.cache
-    @@cache ||= Dalli::Client.new('localhost:11211', :expires_in => settings)
-  end
-
 
   helpers do
     
@@ -79,6 +71,13 @@ class BryantStreetStudios < Sinatra::Base
     @artists = Artists.new
     @current_section = 'artists'
     haml :artists
+  end
+
+  get '/artists/:id' do
+    @title = make_title 'Artist'
+    @artist = Artists.find(params[:id])
+    @current_section = 'artist'
+    haml :artist
   end
 
   # other pages with simple content

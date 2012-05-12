@@ -1,0 +1,12 @@
+.sidebar
+  %h3 Artist
+.content
+  = haml :breadcrumb, :layout => false
+  %h1 Artist Name
+  .thumbs
+    - @artist.art_pieces[0..3].each do |ap|
+      .ap 
+        .piece
+          %img{:src => ap['thumb']}
+        .title #{ap['title']}
+  .bio #{@artist.artist_info['bio']}

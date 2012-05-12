@@ -1,9 +1,9 @@
 .sidebar
   %h3 Artists
   %ul.artists_list
-    - @artists.each do |a|
+    - @artists.each do |aid, a|
       %li.artist
-        %a{:href => "/artist/#{a.id}"}
+        %a{:href => "/artist/#{aid}"}
           .name #{a.firstname} #{a.lastname}
 .content
   = haml :breadcrumb, :layout => false
@@ -11,12 +11,13 @@
   .artists
     list of artist thumbs
     %ul
-      - @artists.each do |a|
+      - @artists.each do |aid, a|
         %li.thumb
-          .img 
-            - if a.art_pieces && a.art_pieces.length > 0
-              %img{:src => a.art_pieces[0]['thumb'] }
+          %a{:href => "/artists/#{aid}"}
+            .img 
+              - if a.art_pieces && a.art_pieces.length > 0
+                %img{:src => a.art_pieces[0]['thumb'] }
 
-          .name #{a.firstname} #{a.lastname}
-          - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email, art_pieces
+            .name #{a.firstname} #{a.lastname}
+            - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email, art_pieces
         

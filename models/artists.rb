@@ -9,11 +9,27 @@ class Artists
 
   @@artists = nil
 
-  def initialize
-    conf = BryantStreetStudios.settings
+  def self.find(_id) 
+    if !_id
+      return nil
+    end
+    artists[_id.to_i]
+  end
+
+  def each &block
+    artists.each{|aid,a| block.call(aid,a)}
+  end
+
+  private
+  def artists
+    self.class.artists
+  end
+
+  def self.artists
     s = Studio.new
-    artists = SafeCache.get('artists')
-    if !artists || artists.empty?
+    conf = BryantStreetStudios.settings
+    artist_list = SafeCache.get('artists')
+    if !artist_list || artist_list.empty?
       all_artists = []
       begin 
         url = "%s/artists" % conf.mau_api_url
@@ -23,9 +39,9 @@ class Artists
         puts "ERROR: Unable to connect to #{url}"
         puts "Exception: #{ex.to_s}"
       end
-      artists = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
+      artist_list = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
       # add/update art_piece filenames
-      artists.each do |a|
+      artist_list.each do |a|
         a['art_pieces'].each do |ap|
           fname = ap['filename']
           furl = "%s/%s" % [conf.mau_web_url, fname.gsub(/^public\//, '')]
@@ -35,13 +51,9 @@ class Artists
           ap['large'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/l_\2')
         end
       end
-      SafeCache.set('artists', artists) unless (!artists || artists.empty?)
+      SafeCache.set('artists', artist_list) unless (!artist_list || artist_list.empty?)
     end
-    @@artists = artists.map{|a| OpenStruct.new(a)}
-  end
-
-  def each &block
-    @@artists.each{|a| block.call(a)}
+    @@artists = Hash[artist_list.map{|a| entry = OpenStruct.new(a); [entry.id, entry]}]
   end
 
 end

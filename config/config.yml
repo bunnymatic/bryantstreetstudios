@@ -1,4 +1,5 @@
-expiry:
+#note it seems this can only be 1 level deep
+cache_expiry:
   production: 86400 
   development: 20
 

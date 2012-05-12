@@ -1,8 +1,8 @@
 require 'dalli'
 class SafeCache 
 
-  def self.init(cache_settings)
-    @@cache ||= Dalli::Client.new('localhost:11211', :expires_in => cache_settings)
+  def self.init()
+    @@cache ||= Dalli::Client.new('localhost:11211', :expires_in => BryantStreetStudios.settings.cache_expiry)
   end
 
   def self.get(*args)
@@ -25,7 +25,7 @@ class SafeCache
 
   private
   def self.cache
-    @@cache ||= Dalli::Client.new('localhost:11211')
+    init
   end
 end
 
