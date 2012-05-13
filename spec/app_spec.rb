@@ -1,5 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper'
+require File.dirname(__FILE__) + '/mockmau'
 require 'mime/types'
+
 
 LETTERS_PLUS_SPACE =  (75).times.map{|num| (48+num).chr}.reject{|c| (c =~ /[[:punct:]]/)}
 def gen_random_string(len=8)
@@ -14,342 +16,68 @@ describe BryantStreetStudios do
     @app ||= BryantStreetStudios
   end
 
+  # mock connection to mau setup with fakeweb in mockmau
+  
   describe '#index' do
     before do
       # putting the get here doesn't seem to work
     end
     it 'should return success' do
       get '/'
-      last_response.should be_ok
-    end
-    it 'should include the title' do
-      get '/'
-      last_response.should match /handmade/i
-    end
-    it 'renders events' do
-      get '/'
-      last_response.should have_tag('#events.panel')
-    end
-    it 'does not render events that are older than yesterday' do
-      t = Time.now + (12000)
-      5.times.each do
-        EventResource.create( :title => gen_random_string, :starttime => t, :url => gen_random_string, :description => '')
-        t -= (3600 * 24)
-      end
-      get('/')
-      last_response.should have_tag('.event')
-    end
-    it 'includes a description' do
-      get('/')
-      last_response.should have_tag('meta[@name=description]')
-    end
-    it 'includes keywords' do
-      get('/')
-      last_response.should have_tag('meta[@name=keywords]')
+      response.should be_ok
     end
   end
 
-  describe 'authorized urls' do
-    describe 'GET' do
-      [ '/keywords', '/baby/upload','/baby/uploads', '/upload','/uploads', '/event', '/events' ].each do |endpoint|
-        it "#{endpoint} responds error with no auth" do
-          get endpoint
-          last_response.status.should == 401
-        end
-        it "#{endpoint} responds ok with proper auth" do
-          authorize 'jennymey','jonnlovesjenn'
-          get endpoint
-          last_response.should be_ok
-        end
-      end
-    end
-    describe 'POST' do
-      [ ['/event/update_attr', :id => '23_url', :value => 'url'],
-        ['/event', :event => {:starttime => 'yo'}]
-      ].each do |endpoint|
-        it "#{endpoint} responds error with no auth" do
-          post *endpoint
-          last_response.status.should == 401
-        end
-        it "#{endpoint} responds ok with proper auth" do
-          authorize 'jennymey','jonnlovesjenn'
-          post *endpoint
-          last_response.should be_ok
-        end
-      end
-    end
-  end
-
-  describe '#keywords' do
+  describe '#artists' do
     before do
-      KeywordResource.new(:keyword => 'yo1', :id => 12).save
-      KeywordResource.new(:keyword => 'yo2', :id => 14).save
-      KeywordResource.new(:keyword => 'yo yo3', :id => 15).save
+      # putting the get here doesn't seem to work
     end
-
-    it "has a 'create new' link" do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/keywords'
-      last_response.body.should have_tag('.add_keywords form[@action=/keyword]')
-      last_response.body.should have_tag('.add_keywords input[@type=submit]')
+    it 'should return success' do
+      get '/artists'
+      response.should be_ok
     end
-
-    it "shows a list of keywords" do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/keywords'
-      last_response.body.should have_tag('ul li.kw', :count => 3)
+    it 'should list the artists in the sidebar' do
+      get '/artists'
+      response_body.should have_selector('.sidebar li.artist a .name', :count => 8)
     end
-    
-    it "returns delete links for each image" do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/keywords'
-      last_response.body.should have_tag('ul li.kw div.del a[@href=/keyword/del/12]')
-      last_response.body.should have_tag('ul li.kw div.del a[@href=/keyword/del/14]')
-    end
-  end    
-
-  describe '#keyword' do
-    it "shows a list of keywords" do
-      authorize 'jennymey','jonnlovesjenn'
-      post '/keyword', :keyword => 'rock and roll'
-      (KeywordResource.all.map(&:keyword).include? 'rock and roll').should be
-      last_response.status.should == 302
-    end
-  end    
-  describe '#keyword/del' do
-    it "shows a list of keywords" do
-      authorize 'jennymey','jonnlovesjenn'
-      k = KeywordResource.new(:keyword => 'whatever')
-      k.save
-      (KeywordResource.all.map(&:keyword).include? 'whatever').should be      
-      get "/keyword/del/#{k.id}"
-      (KeywordResource.all.map(&:keyword).include? 'whatever').should be_false
-      last_response.status.should == 302
-    end
-  end    
-
-  describe "#uploads" do
-    it "has a 'create new' link" do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/uploads'
-      last_response.body.should have_tag('a[@href=/upload] button', 'Add a new image')
-    end
-
-    it "shows a list of images" do
-      ImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
-      authorize 'jennymey','jonnlovesjenn'
-      get '/uploads'
-      last_response.body.should have_tag('ul li.uploaded_image', :count => 2)
-    end
-    
-    it "returns images sorted by id descending" do
-      ImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
-      authorize 'jennymey','jonnlovesjenn'
-      get '/uploads'
-      last_response.body.should have_tag('ul li.uploaded_image img[@src=url1]')
-      last_response.body.should have_tag('ul li.uploaded_image img[@src=url2]')
-    end
-    it "returns delete links for each image" do
-      ImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
-      authorize 'jennymey','jonnlovesjenn'
-      get '/uploads'
-      last_response.body.should have_tag('ul li.uploaded_image div a[@href=/pic/del/12]')
-      last_response.body.should have_tag('ul li.uploaded_image div a[@href=/pic/del/10]')
-    end
-  end
-
-  describe "#baby/uploads" do
-    it "has a 'create new' link" do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/baby/uploads'
-      last_response.body.should have_tag('a[@href=/baby/upload] button', 'Add a new image')
-    end
-
-    it "shows a list of images" do
-      BabyImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                        mock(:file => mock(:url => 'url2'), :id => 12) ])
-      authorize 'jennymey','jonnlovesjenn'
-      get '/baby/uploads'
-      last_response.body.should have_tag('ul li.uploaded_image', :count => 2)
-    end
-    
-    it "returns images sorted by id descending" do
-      BabyImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
-      authorize 'jennymey','jonnlovesjenn'
-      get '/baby/uploads'
-      last_response.body.should have_tag('ul li.uploaded_image img[@src=url1]')
-      last_response.body.should have_tag('ul li.uploaded_image img[@src=url2]')
-    end
-    it "returns delete links for each image" do
-      BabyImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
-      authorize 'jennymey','jonnlovesjenn'
-      get '/baby/uploads'
-      last_response.body.should have_tag('ul li.uploaded_image div a[@href=/pic/del/12]')
-      last_response.body.should have_tag('ul li.uploaded_image div a[@href=/pic/del/10]')
-    end
-  end
-
-  describe '#event' do
-    it 'renders a form for event input' do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/event'
-      last_response.body.should have_tag('input#event_title')
-    end
-    [ :title, :address, :starttime, :endtime, :url].each do |fld|
-      it "form has an input for #{fld}" do
-        authorize 'jennymey','jonnlovesjenn'
-        get '/event'
-        last_response.body.should have_tag("input#event_#{fld.to_s}")
-      end
-    end
-    it "form has a textarea for description" do
-      authorize 'jennymey','jonnlovesjenn'
-      get '/event'
-      last_response.body.should have_tag("textarea#event_description")
+    it 'should list the artists in the sidebar' do
+      get '/artists'
+      response_body.should have_selector('li.thumb a .img', :count => 8)
+      response_body.should have_selector('li.thumb a .name', :count => 8)
     end
   end
 
   describe '#events' do
-    it "renders all events" do
-      authorize 'jennymey','jonnlovesjenn'
-      post '/event', { :event => {:title => 'yo1', 'description' => 'stuff' , :starttime => Time.now + 20000 }  }
-      post '/event', { :event => {:title => 'yo2', 'description' => 'stuff' , :starttime => Time.now + 30000 }  }
+    before do
+      # putting the get here doesn't seem to work
+    end
+    it 'should return success' do
       get '/events'
-      last_response.body.should have_tag('ul li.event', :count => 2)
-      last_response.body.should have_tag('ul li.event .title', /yo2/)
-      last_response.body.should have_tag('ul li.event .title', /yo1/)
+      response.should be_ok
     end
   end
 
-  describe 'POST#event' do
-    it "creates a new event" do
-      authorize 'jennymey','jonnlovesjenn'
-      precount = EventResource.count
-      post '/event', { :event => {:title => 'yo', 'description' => 'stuff', :starttime => Time.now + 10000 }  }
-      (EventResource.count - precount).should == 1
+  describe '#press' do
+    before do
+      # putting the get here doesn't seem to work
     end
-    it "redirects to events list page" do
-      authorize 'jennymey','jonnlovesjenn'
-      post '/event', { :event => {:title => 'yo', 'description' => 'stuff' , :starttime => Time.now + 20000 }  }
-      last_response.status.should == 302
+    it 'should return success' do
+      get '/press'
+      response.should be_ok
     end
   end
 
-  describe '#events/update_attr' do
-    it "updates event attribute" do
-      authorize 'jennymey','jonnlovesjenn'
-
-      ev = EventResource.create(:title => 'yo', :starttime => Time.now)
-      _id = "%d_title" % ev.id
-      params = { :id => _id, :value => 'the new title' }
-      post '/event/update_attr', params
-      last_response.body.should == 'the new title'
-      fetched = EventResource.get(ev.id)
-      fetched.title.should == 'the new title'
+  describe '#contact' do
+    before do
+      # putting the get here doesn't seem to work
     end
-    it "updates event endtime using chronic parsing" do
-      authorize 'jennymey','jonnlovesjenn'
-
-      ev = EventResource.create(:title => 'yo', :starttime => Time.now)
-      _id = "%d_endtime" % ev.id
-      params = { :id => _id, :value => 'Tomorrow at 11pm' }
-      post '/event/update_attr', params
-      fetched = EventResource.get(ev.id)
-      fetched.endtime.should_not be_nil
-    end
-  end
-
-  describe '#pic/del' do
-    it "removes the event" do
-      mock_event = mock(EventResource)
-      mock_event.expects(:destroy)
-      EventResource.expects(:find).with('10').returns( mock_event )
-      authorize 'jennymey','jonnlovesjenn'
-      get "/event/del/19" 
-    end
-
-    it "redirects to events" do
-      authorize 'jennymey','jonnlovesjenn'
-      get "/event/del/4"
-      last_response.status.should == 302
-    end
-  end
-
-  describe "#pic/del" do
-    it "removes the desired image" do
-      mock_image = mock(ImageResource)
-      mock_image.expects(:destroy)
-      ImageResource.expects(:find).with('10').returns( mock_image )
-      authorize 'jennymey','jonnlovesjenn'
-      get "/pic/del/19" 
-    end
-
-    it "redirects to uploads" do
-      authorize 'jennymey','jonnlovesjenn'
-      get "/pic/del/1"
-      last_response.status.should == 302
-    end
-  end
-
-  describe 'xhr get#pics' do
-    it "returns json" do
-      get "/pics"
-      last_response.content_type.should ==  MIME::Types.type_for('json').first
-    end
-    it "returns a list of all image resources as json" do
-      get "/pics"
-      ImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
-
-      j = JSON.parse(last_response.body)
-      j.count.should == ImageResource.all.count
-    end
-  end
-
-  describe 'xhr get#baby/pics' do
-    it "returns json" do
-      get "/baby/pics"
-      last_response.content_type.should ==  MIME::Types.type_for('json').first
-    end
-    it "returns a list of all image resources as json" do
-      get "/baby/pics"
-      BabyImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                        mock(:file => mock(:url => 'url2'), :id => 12) ])
-
-      j = JSON.parse(last_response.body)
-      j.count.should == BabyImageResource.all.count
+    it 'should return success' do
+      get '/contact'
+      response.should be_ok
     end
   end
 
   describe 'helpers' do
-    describe '#truncate' do
-      it 'leaves short strings alone' do
-        str = gen_random_string(10)
-        str.truncate.should == str
-      end
-      it 'truncates strings longer than 40 to 40 chars with ...' do
-        str = gen_random_string(60)
-        trunc = str.truncate
-        (trunc =~ /\.{3}$/).should be
-      end
-      it 'truncates string to 10 given length 10' do
-        str = gen_random_string(60)
-        trunc = str.truncate(10)
-        trunc.length.should == 10
-        (trunc =~ /\.{3}$/).should be
-      end
-      it 'adds a custom prefix and truncates to 40' do
-        str = gen_random_string(60)
-        trunc = str.truncate(40, 'postfix')
-        trunc.length.should == 40
-        (trunc =~ /postfix$/).should be
-      end
-    end
   end
   
 end

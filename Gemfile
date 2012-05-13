@@ -12,10 +12,10 @@ gem "rake"
 gem 'dalli'
 gem 'rest-client'
 group :test do
+  gem 'fakeweb'
   gem "rspec"
   gem "mocha"
-  gem 'hpricot'
-  gem 'rspec_hpricot_matchers'
+  gem 'webrat'
   gem "rack-test"
   gem "mime-types"
   gem "jasmine"

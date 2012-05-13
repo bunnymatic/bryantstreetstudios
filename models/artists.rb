@@ -28,6 +28,10 @@ class Artists
     artists[_id.to_i]
   end
 
+  def length
+    artists.length
+  end
+
   def each &block
     artists.each{|aid,a| block.call(aid,a)}
   end
@@ -55,6 +59,10 @@ class Artists
       # add/update art_piece filenames
       artist_list.each do |a|
         a['art_pieces'].each do |ap|
+          if (ap['medium_id'] && ap['medium_id'].to_i != 0) 
+            m = Mediums.find(ap['medium_id'].to_i) 
+            ap['media'] = m.name if m
+          end
           fname = ap['filename']
           furl = "%s/%s" % [conf.mau_web_url, fname.gsub(/^public\//, '')]
           ap['thumb'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/t_\2')

@@ -26,7 +26,8 @@
       %h1 #{@artist.fullname}
       .artpiece 
         .title #{ap['title']}
-        .year #{ap['year']}
+        .medium_year 
+          = [ap['media'], ap['year']].compact.join(", ")
         .piece 
           %img{:src => ap['medium']}
         
