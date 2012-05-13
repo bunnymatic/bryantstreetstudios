@@ -2,7 +2,7 @@
 @import 'colors';
 @import 'mixins';
 
-.contact {
+#contact {
   .sidebar {
     background-color: $medium_green;
     ul.contacts_list {
@@ -21,7 +21,7 @@
       }
     }
   }
-  &#main .content {
+  .content {
     background-color: $white;
     color: $black;
   }

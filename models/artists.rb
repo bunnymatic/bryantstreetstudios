@@ -2,6 +2,18 @@ require 'dalli'
 require 'rest_client'
 require 'ostruct'
 
+class Artist < OpenStruct; 
+
+  def fullname 
+    firstname + ' ' + lastname
+  end
+
+  def website
+    url
+  end
+end
+
+
 class Artists
   ALLOWED_KEYS = ["firstname", "lastname"]
 
@@ -53,7 +65,7 @@ class Artists
       end
       SafeCache.set('artists', artist_list) unless (!artist_list || artist_list.empty?)
     end
-    @@artists = Hash[artist_list.map{|a| entry = OpenStruct.new(a); [entry.id, entry]}]
+    @@artists = Hash[artist_list.map{|a| entry = Artist.new(a); [entry.id, entry]}]
   end
 
 end

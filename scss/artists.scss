@@ -2,11 +2,11 @@
 @import 'colors';
 @import 'mixins';
 
-/* index */
-.artists {
+/* common */
+#artist, #artists {
   .sidebar {
     background-color: $medium_green;
-    ul.artists_list {
+    ul {
       margin:0;
       padding: 0 0 10px 0;
     }
@@ -14,21 +14,30 @@
       margin-left: 16px;
       color: $white;
     }
-    .artist {
+    li {
       border-top: 1px dotted $x_light_green;
       @include sidebar_nav_link;
-      .name {
+      a > div {
+        font-weight: bold;
         margin: 4px 8px 4px 16px;
       }
     }
   }
-  &#main .content {
+}
+/* index */
+#artists {
+  .content {
     background-color: $white;
     color: $black;
     .thumb {
       float: left;
       margin: 12px;
       width:100px;
+      .name {
+        font-weight: bold;
+        width: 100px;
+        text-align:center;
+      }
     }
     
     .img {
@@ -36,16 +45,12 @@
       height: 106px;
       text-align:center;
     }
-    .name {
-      width: 100px;
-      text-align:center;
-    }
   }
 }
 
 /* individual artist page */
-.artist {
-  &#main .content {
+#artist {
+  .content {
     background-color: $white;
     color: $black;
   }
@@ -55,12 +60,23 @@
     padding: 20px;
     text-align: justify;
   }
-  .ap { 
-    float: left;
-    width: 100px;
-    margin: 10px;
-    .piece, .title {
+  .thumbs {
+    .piece { 
+      float: left;
+      width: 100px;
+      margin: 10px;
       text-align:center;
+    }
+  }
+  section {
+    margin-bottom: 40px;
+    &.art_piece, &.contact {
+      display:none;
+    }
+    &.art_piece {
+      .piece {
+        text-align: center; 
+      }
     }
   }
 }

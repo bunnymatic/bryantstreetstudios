@@ -4,7 +4,7 @@
     - @artists.each do |aid, a|
       %li.artist
         %a{:href => "/artist/#{aid}"}
-          .name #{a.firstname} #{a.lastname}
+          .name #{a.fullname}
 .content
   = haml :breadcrumb, :layout => false
   %h1 Artists
@@ -18,6 +18,6 @@
               - if a.art_pieces && a.art_pieces.length > 0
                 %img{:src => a.art_pieces[0]['thumb'] }
 
-            .name #{a.firstname} #{a.lastname}
+            .name #{a.fullname}
             - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email, art_pieces
         

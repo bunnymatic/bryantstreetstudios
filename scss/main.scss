@@ -38,7 +38,7 @@ a {
     height: 6px;
   }
 }
-header, #main {
+header, .main {
   background-color: $white;
   margin: auto;
   width: $full_width + 18px; /** add padding */
@@ -89,7 +89,7 @@ header {
   }
 }
 
-#main {
+.main {
   @include clearfix;
   .sidebar {
     @include left_column;

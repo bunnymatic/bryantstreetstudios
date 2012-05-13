@@ -1,12 +1,39 @@
 .sidebar
-  %h3 Artist
+  %h3 Artists
+  %ul
+    %li 
+      %a{:href => "#", 'data-section' => "info"} 
+        %div #{@artist.fullname}
+    - @artist.art_pieces[0..3].each_with_index do |ap,idx|
+      %li 
+        %a{:href => "#", 'data-section' => "piece#{ap['id']}", :title => ap['title']} 
+          %div Image #{idx+1}
+    %li 
+      %a{:href => "#", 'data-section' => 'contact'}
+        %div Contact
+      
 .content
   = haml :breadcrumb, :layout => false
-  %h1 Artist Name
-  .thumbs
-    - @artist.art_pieces[0..3].each do |ap|
-      .ap 
+  %section.info
+    %h1 #{@artist.fullname}
+    .thumbs
+      - @artist.art_pieces[0..3].each do |ap|
         .piece
           %img{:src => ap['thumb']}
+    .bio #{@artist.artist_info['bio']}
+  - @artist.art_pieces[0..3].each do |ap|
+    %section.art_piece{:class => "piece#{ap['id']}"}
+      %h1 #{@artist.fullname}
+      .artpiece 
         .title #{ap['title']}
-  .bio #{@artist.artist_info['bio']}
+        .year #{ap['year']}
+        .piece 
+          %img{:src => ap['medium']}
+        
+  %section.contact
+    %h1 #{@artist.fullname} : Contact
+    - [:email, :website, :facebook, :twitter, :myspace, :blog].each do |k|
+      - if k && @artist.send(k) && !@artist.send(k).empty?
+        %div{:class => k.to_s}
+          %span #{k.capitalize} : #{@artist.send(k)}
+
