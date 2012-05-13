@@ -4,25 +4,6 @@
 
 /* common */
 #artist, #artists {
-  .sidebar {
-    background-color: $medium_green;
-    ul {
-      margin:0;
-      padding: 0 0 10px 0;
-    }
-    h3 {
-      margin-left: 16px;
-      color: $white;
-    }
-    li {
-      border-top: 1px dotted $x_light_green;
-      @include sidebar_nav_link;
-      a > div {
-        font-weight: bold;
-        margin: 4px 8px 4px 16px;
-      }
-    }
-  }
 }
 /* index */
 #artists {

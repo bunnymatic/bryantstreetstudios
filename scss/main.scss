@@ -93,15 +93,34 @@ header {
   @include clearfix;
   .sidebar {
     @include left_column;
+    color: $white;
     overflow:hidden;
     float: left;
-    margin-top: 0
+    margin-top: 0;
+    background-color: $medium_green;
+    ul {
+      margin:0;
+      padding: 0 0 10px 0;
+    }
+    h3 {
+      margin-left: 16px;
+      color: $white;
+    }
+    li {
+      border-top: 1px dotted $x_light_green;
+      @include sidebar_nav_link;
+      a > div {
+        font-weight: bold;
+        margin: 4px 8px 4px 16px;
+      }
+    }
   }
+
   .content {
+    background-color: $white;
+    color: $black;
     @include clearfix;
     @include right_column;
-    background-color: $medium_green;
-    color: $white;
     float:left;
     min-height: 391px;
     padding-bottom: 0;
