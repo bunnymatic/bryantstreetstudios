@@ -1,0 +1,9 @@
+.breadcrumbs {
+  .crumb {
+    float: left;
+    margin-right: 5px;
+  }
+}
+.breadcrumb_container {
+  @include clearfix;
+}

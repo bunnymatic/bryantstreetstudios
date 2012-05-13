@@ -63,6 +63,7 @@ class BryantStreetStudios < Sinatra::Base
     @studio = Studio.new
     @artists = Artists.new
     @current_section = 'home'
+    @breadcrumb = BreadCrumbs.new([])
     haml :index
   end
 
@@ -70,6 +71,7 @@ class BryantStreetStudios < Sinatra::Base
     @title = make_title 'Artists'
     @artists = Artists.new
     @current_section = 'artists'
+    @breadcrumb = BreadCrumbs.new([:home, :artists])
     haml :artists
   end
 
@@ -77,6 +79,7 @@ class BryantStreetStudios < Sinatra::Base
     @title = make_title 'Artist'
     @artist = Artists.find(params[:id])
     @current_section = 'artist'
+    @breadcrumb = BreadCrumbs.new([:home, :artists, @artist.fullname])
     haml :artist
   end
 
@@ -84,6 +87,7 @@ class BryantStreetStudios < Sinatra::Base
   [:contact, :press, :events].each do |page|
     get "/#{page}" do
       @current_section = page.to_s
+      @breadcrumb = BreadCrumbs.new([:home, page])
       haml page
     end
   end
