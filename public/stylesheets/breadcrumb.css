@@ -1,0 +1,59 @@
+/*
+Syntax error: Undefined mixin 'clearfix'.
+        on line 8 of scss/breadcrumb.scss, in `clearfix'
+        from line 8 of scss/breadcrumb.scss
+
+3:     float: left;
+4:     margin-right: 5px;
+5:   }
+6: }
+7: .breadcrumb_container {
+8:   @include clearfix;
+9: }
+
+Backtrace:
+scss/breadcrumb.scss:8:in `clearfix'
+scss/breadcrumb.scss:8
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:170:in `visit_mixin'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:238:in `visit_rule'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:18:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/tree/root_node.rb:20:in `render'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/engine.rb:299:in `_render'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/engine.rb:246:in `render'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/lib/sass/plugin/compiler.rb:298:in `block in watch'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/vendor/listen/lib/listen/multi_listener.rb:86:in `call'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/vendor/listen/lib/listen/multi_listener.rb:86:in `on_change'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/vendor/listen/lib/listen/multi_listener.rb:95:in `block in initialize_adapter'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/vendor/listen/lib/listen/adapters/polling.rb:55:in `call'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/vendor/listen/lib/listen/adapters/polling.rb:55:in `poll'
+/Users/jon/.rvm/gems/ruby-1.9.2-p290@1890sinatra/gems/sass-3.1.17/vendor/listen/lib/listen/adapters/polling.rb:31:in `block in start'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'clearfix'.\A         on line 8 of scss/breadcrumb.scss, in `clearfix'\A         from line 8 of scss/breadcrumb.scss\A \A 3:     float: left;\A 4:     margin-right: 5px;\A 5:   }\A 6: }\A 7: .breadcrumb_container {\A 8:   @include clearfix;\A 9: }"; }

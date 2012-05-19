@@ -1,0 +1,17 @@
+/** artists page*/
+/* define mixin colors
+/* colors */
+/* common */
+/* index */
+#artists .content { background-color: white; color: #222222; }
+#artists .content .thumb { float: left; margin: 12px; width: 100px; }
+#artists .content .thumb .name { font-weight: bold; width: 100px; text-align: center; }
+#artists .content .img { width: 100px; height: 106px; text-align: center; }
+
+/* individual artist page */
+#artist .content { background-color: white; color: #222222; }
+#artist .bio { clear: both; margin: auto; padding: 20px; text-align: justify; }
+#artist .thumbs .piece { float: left; width: 100px; margin: 10px; text-align: center; }
+#artist section { margin-bottom: 40px; }
+#artist section.art_piece, #artist section.contact { display: none; }
+#artist section.art_piece .piece { text-align: center; }

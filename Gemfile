@@ -11,6 +11,7 @@ gem 'sass'
 gem "rake"
 gem 'dalli'
 gem 'rest-client'
+gem 'heroku'
 group :test do
   gem 'fakeweb'
   gem "rspec"
