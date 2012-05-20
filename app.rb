@@ -100,7 +100,7 @@ class BryantStreetStudios < Sinatra::Base
   end
 
   # other pages with simple content
-  [:contact, :press, :events].each do |page|
+  [:contact, :events].each do |page|
     get "/#{page}" do
       @current_section = page.to_s
       @breadcrumb = BreadCrumbs.new([:home, page])

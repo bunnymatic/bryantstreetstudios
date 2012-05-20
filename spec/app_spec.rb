@@ -57,16 +57,6 @@ describe BryantStreetStudios do
     end
   end
 
-  describe '#press' do
-    before do
-      # putting the get here doesn't seem to work
-    end
-    it 'should return success' do
-      get '/press'
-      response.should be_ok
-    end
-  end
-
   describe '#contact' do
     before do
       # putting the get here doesn't seem to work
