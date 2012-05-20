@@ -17,4 +17,5 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Webrat::Methods
   config.include Webrat::Matchers
+  config.mock_with :mocha
 end

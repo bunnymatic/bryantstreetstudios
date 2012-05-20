@@ -2,7 +2,7 @@ require 'dalli'
 class SafeCache 
 
   def self.init
-    @@cache ||= Dalli::Client.new('localhost:11211', :expires_in => BryantStreetStudios.settings.cache_expiry)
+    @@cache ||= Dalli::Client.new('localhost:11211', {:expires_in => BryantStreetStudios.settings.cache_expiry})
   end
 
   def self.get(*args)
@@ -23,6 +23,14 @@ class SafeCache
       #ignore
       nil
     end
+  end
+
+  def self.flush
+    begin 
+      cache.flush
+    rescue Dalli::RingError => ex
+      puts "*** Failed to flush cache #{ex}"
+    end      
   end
 
   private

@@ -77,6 +77,18 @@ describe BryantStreetStudios do
     end
   end
 
+  describe '#cacheflush' do
+    it 'calls cache flush' do
+      dc = mock('Dalli::ClientMock')
+      dc.expects(:flush)
+      Dalli::Client.expects(:new).returns(dc)
+      get '/cacheflush'
+    end
+    it 'redirects to root' do
+      get '/cacheflush'
+      last_response.status.should == 302
+    end
+  end
   describe 'helpers' do
   end
   

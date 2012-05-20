@@ -9,6 +9,17 @@ require 'json'
 require 'dalli'
 require 'ostruct'
 require 'yaml'
+require 'data_mapper'
+require 'dm-paperclip'
+
+LETTERS_PLUS_SPACE =  []
+('a'..'z').each {|ltr| LETTERS_PLUS_SPACE << ltr}
+('A'..'Z').each {|ltr| LETTERS_PLUS_SPACE << ltr}
+
+def gen_random_string(len=8)
+  numchars = LETTERS_PLUS_SPACE.length
+  (0..len).map{ LETTERS_PLUS_SPACE[rand(numchars)] }.join
+end
 
 class String
   def truncate(len = 40, postfix = '...')
@@ -28,6 +39,8 @@ class BryantStreetStudios < Sinatra::Base
   register Sinatra::ConfigFile
   register Sinatra::StaticAssets
   register Sinatra::Logger 
+
+  DataMapper::setup(:default, ENV['DATABASE_URL'] || "postgres://bryant:bryant@localhost/bryant")
 
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"
@@ -51,7 +64,10 @@ class BryantStreetStudios < Sinatra::Base
     
     def authorized?
       @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['jennymey', 'jonnlovesjenn']
+      user = ENV['1890_ADMIN_USER'] || gen_random_string
+      pass = ENV['1890_ADMIN_PASS'] || gen_random_string
+      #puts "User/Pass: #{user} #{pass}"
+      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [user,pass]
     end
 
   end
@@ -92,6 +108,16 @@ class BryantStreetStudios < Sinatra::Base
     end
   end
 
+  get '/cacheflush' do
+    begin
+      SafeCache.flush
+    rescue Exception => ex
+      puts '*** fail'
+      raise
+    end
+    redirect '/'
+  end
+    
 end
 
 

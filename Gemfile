@@ -12,6 +12,15 @@ gem "rake"
 gem 'dalli'
 gem 'rest-client'
 gem 'heroku'
+
+gem "data_mapper", '1.2.0'
+# krobertson's needs a few patches for heroku/s3 tiein
+gem "dm-paperclip", :git => 'https://github.com/krobertson/dm-paperclip.git'
+gem 'aws-s3'
+
+gem 'pg'
+gem 'dm-postgres-adapter'
+
 group :test do
   gem 'fakeweb'
   gem "rspec"
