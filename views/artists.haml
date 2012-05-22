@@ -1,7 +1,7 @@
 .sidebar
   %h3 Artists
   %ul.artists_list
-    - @artists.each do |aid, a|
+    - @artists.sort_by{|a| a[1].lastname.downcase}.each do |aid, a|
       %li.artist
         %a{:href => "/artists/#{aid}"}
           .name #{a.fullname}
@@ -11,7 +11,7 @@
   .artists
     list of artist thumbs
     %ul
-      - @artists.each do |aid, a|
+      - @artists.sort_by{|a| a[1].lastname.downcase}.each do |aid, a|
         %li.thumb
           %a{:href => "/artists/#{aid}"}
             .img 

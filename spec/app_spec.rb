@@ -40,11 +40,24 @@ describe BryantStreetStudios do
       get '/artists'
       response_body.should have_selector('.sidebar li.artist a .name', :count => 8)
     end
-    it 'should list the artists in the sidebar' do
+    it 'should list the artists in the content' do
       get '/artists'
-      response_body.should have_selector('li.thumb a .img', :count => 8)
-      response_body.should have_selector('li.thumb a .name', :count => 8)
+      response_body.should have_selector('.content li.thumb a .img', :count => 8)
+      response_body.should have_selector('.content li.thumb a .name', :count => 8)
     end
+    it 'artists are listed alphabetically' do
+      get '/artists'
+      response_body.should have_selector('.content li.thumb .name') do |names|
+        names[0].should contain 'aabbcc'
+        names.last.should contain 'Martha'
+      end
+      response_body.should have_selector('.sidebar li.artist .name') do |names|
+        names[0].should contain 'aabbcc'
+        names.last.should contain 'Martha'
+      end
+
+    end
+      
   end
 
   describe '#events' do
