@@ -12,3 +12,4 @@ tmp/**/*
 romey.db
 romey.sqlite
 .sass-cache
+.jhw-cache
