@@ -21,9 +21,9 @@
           %ul
             %li 
               %a{:href => '/'} main site
-            - [:env, :admin_events, :admin_contact].each do |page|
+            - [:env, :events].each do |page|
               %li 
-                %a{:href => "/#{page}"} #{page.to_s.humanize}
+                %a{:href => "/admin/#{page}"} #{page}
 
       .main{:id => @current_section}
         =yield

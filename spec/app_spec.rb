@@ -1,12 +1,10 @@
-require File.dirname(__FILE__) + '/spec_helper'
-require File.dirname(__FILE__) + '/mockmau'
+require File.join(File.dirname(__FILE__),'spec_helper')
+require File.join(File.dirname(__FILE__),'mockmau')
+require File.join(File.dirname(__FILE__), '..','lib','string_generators')
 require 'mime/types'
 
-
-LETTERS_PLUS_SPACE =  (75).times.map{|num| (48+num).chr}.reject{|c| (c =~ /[[:punct:]]/)}
-def gen_random_string(len=8)
-  numchars = LETTERS_PLUS_SPACE.length
-  (0..len).map{ LETTERS_PLUS_SPACE[rand(numchars)] }.join
+def login_as_admin
+  authorize 'whatever', 'whatever'
 end
 
 describe BryantStreetStudios do
@@ -18,32 +16,46 @@ describe BryantStreetStudios do
 
   # mock connection to mau setup with fakeweb in mockmau
 
-  describe 'authorized urls' do
-    describe 'GET' do
-      [ :env ].each do |endpoint|
-        it "#{endpoint} responds error with no auth" do
-          get *endpoint
+  context 'Protected endpoints:' do
+    [ :env, :events ].each do |endpoint|
+      describe 'unauthorized GET' do
+        it "#{endpoint} responds error" do
+          get "/admin/"+endpoint.to_s
           last_response.status.should == 401
         end
-        it "#{endpoint} responds ok with proper auth" do
-          authorize 'whatever','whatever'
-          get *endpoint
+      end
+      describe 'authorized GET' do
+        before do
+          # authorize and get
+          login_as_admin
+          get "/admin/"+endpoint.to_s
+        end
+        it "#{endpoint} responds ok" do
           last_response.should be_ok
+        end
+        it "#{endpoint} uses the admin layout" do
+          response_body.should have_selector('nav.admin') do |admin_section|
+            admin_section.should have_selector('li') do |tag|
+              tag.should have_selector('a', :count => 3) do |lnks|
+                lnks[0]['href'].should == '/'
+                lnks[0].should contain 'main site'
+                lnks[1]['href'].should == '/admin/env'
+                lnks[1].should contain 'env'
+                lnks[2]['href'].should == '/admin/events'
+                lnks[2].should contain 'events'
+              end
+            end
+          end
         end
       end
     end
-    describe 'POST' do
-      [ ['/event/update_attr', :id => '23_url', :value => 'url'],
-        ['/event', :event => {:starttime => 'yo'}]
-      ].each do |endpoint|
-        it "#{endpoint} responds error with no auth" do
+    [ ['/admin/events/update_attr', :id => '23_url', :value => 'url'],
+      ['/admin/events', :event => {:starttime => 'yo'}]
+    ].each do |endpoint|
+      describe 'unauthorized POST' do
+        it "#{endpoint} responds error" do
           post *endpoint
           last_response.status.should == 401
-        end
-        it "#{endpoint} responds ok with proper auth" do
-          authorize 'whatever','whatever'
-          post *endpoint
-          last_response.should be_ok
         end
       end
     end
@@ -112,13 +124,19 @@ describe BryantStreetStudios do
     end
   end
 
-  describe '#cacheflush' do
+  describe '#admin/cacheflush' do
+    it 'responds with error if not authorized' do
+      get '/admin/cacheflush'
+      last_response.status.should == 401
+    end
     it 'calls cache flush' do
+      login_as_admin
       SafeCache.expects(:flush)
-      get '/cacheflush'
+      get '/admin/cacheflush'
     end
     it 'redirects to root' do
-      get '/cacheflush'
+      login_as_admin
+      get '/admin/cacheflush'
       last_response.status.should == 302
     end
   end

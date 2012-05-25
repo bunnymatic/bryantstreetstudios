@@ -12,23 +12,6 @@ require 'yaml'
 require 'data_mapper'
 require 'dm-paperclip'
 
-LETTERS_PLUS_SPACE =  []
-('a'..'z').each {|ltr| LETTERS_PLUS_SPACE << ltr}
-('A'..'Z').each {|ltr| LETTERS_PLUS_SPACE << ltr}
-
-def gen_random_string(len=8)
-  numchars = LETTERS_PLUS_SPACE.length
-  (0..len).map{ LETTERS_PLUS_SPACE[rand(numchars)] }.join
-end
-
-class String
-  def truncate(len = 40, postfix = '...')
-    return self if length <= len - postfix.length
-    new_len = len - postfix.length - 1
-    self[0..new_len] + postfix
-  end
-end
-
 class BryantStreetStudios < Sinatra::Base
 
   set :environments, %w{development test production staging}
@@ -45,8 +28,9 @@ class BryantStreetStudios < Sinatra::Base
 
   config_file File.join( [root, 'config', 'config.yml'] )
 
-  DataMapper::setup(:default, ENV['DATABASE_URL'] || "postgres://bryant:bryant@localhost/bryant")
+  DataMapper::setup(:default, ENV['DATABASE_URL'] || settings.database_url)
 
+  # get user/pass from ENV (for heroku) or our config file, or generate something random as a fallback
   set :auth_user, ENV['1890_ADMIN_USER'] || settings.auth_user || gen_random_string
   set :auth_pass, ENV['1890_ADMIN_PASS'] || settings.auth_pass || gen_random_string
 
@@ -70,8 +54,11 @@ class BryantStreetStudios < Sinatra::Base
       #puts "User/Pass: #{user} #{pass}"
       user = BryantStreetStudios.auth_user
       pass = BryantStreetStudios.auth_pass
-      p "USER PASS ", user, pass
       @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [user,pass]
+    end
+
+    def admin_haml(template, options={}) 
+      haml(template, options.merge(:layout => :'admin/layout')) 
     end
 
   end
@@ -112,23 +99,46 @@ class BryantStreetStudios < Sinatra::Base
     end
   end
 
-  get '/cacheflush' do
+  ###### admin endpoints
+  
+  ## events
+  get '/admin/events' do
+    protected!
+    @current_section = 'admin_events'
+    @events = (EventResource.all || [])
+    admin_haml 'admin/events'
+  end
+
+  post '/admin/events' do
+    protected!
+    redirect '/admin/events'
+  end
+
+  post '/admin/events/update_attr' do
+    protected!
+  end
+
+  ## other
+  get '/admin/cacheflush' do
+    protected!
     begin
       SafeCache.flush
     rescue Exception => ex
-      puts '*** fail'
+      puts '*** fail' + ex.to_s
       raise
     end
     redirect '/'
   end
 
-  get '/env' do
+  
+  get '/admin/env' do
+    @current_section = 'environment'
     protected!
     @env = ENV
     @user = BryantStreetStudios.auth_user
     @pass = BryantStreetStudios.auth_pass
     @sinatra_mode = BryantStreetStudios.environment
-    haml :env, :layout => :admin
+    admin_haml 'admin/env'
   end
 
 end
