@@ -7,7 +7,10 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.8.0)
     addressable (2.2.8)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     aws-s3 (0.6.2)
       builder
       mime-types
@@ -175,6 +178,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest
   aws-s3
   capistrano
   dalli

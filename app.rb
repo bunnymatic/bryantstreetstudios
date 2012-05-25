@@ -11,8 +11,11 @@ require 'ostruct'
 require 'yaml'
 require 'data_mapper'
 require 'dm-paperclip'
+require 'rdiscount'
 
 class BryantStreetStudios < Sinatra::Base
+
+  use Rack::Session::Pool
 
   set :environments, %w{development test production staging}
   set :environment, ENV['RACK_ENV'] || :development
@@ -38,27 +41,33 @@ class BryantStreetStudios < Sinatra::Base
     
     BASE_TITLE = '1890 Bryant Street Studios'
     
+    def markdown_content(md) 
+      RDiscount.new(md || '').to_html
+    end
+
     def make_title *args
       [BASE_TITLE, *args].flatten.compact.join(" : ")
     end
 
     def protected!
-      unless authorized?
-        response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
-        throw(:halt, [401, "Not authorized\n"])
+      begin
+        unless authorized?
+          response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+          throw(:halt, [401, "Not authorized\n"])
+        end
+      rescue Exception => ex
+        puts "EX", ex
       end
     end
-    
+
     def authorized?
-      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      #puts "User/Pass: #{user} #{pass}"
-      user = BryantStreetStudios.auth_user
-      pass = BryantStreetStudios.auth_pass
-      @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [user,pass]
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      credentials = [BryantStreetStudios.auth_user, BryantStreetStudios.auth_pass]
+      return (@auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == credentials)
     end
 
     def admin_haml(template, options={}) 
-      haml(template, options.merge(:layout => :'admin/layout')) 
+      haml(template.to_sym, options.merge(:layout => 'admin/layout'.to_sym)) 
     end
 
   end
@@ -95,23 +104,59 @@ class BryantStreetStudios < Sinatra::Base
     get "/#{page}" do
       @current_section = page.to_s
       @breadcrumb = BreadCrumbs.new([:home, page])
+      content = ContentResource.first(:page => page)
+      @content_body = (content ? content.body : 'Nothing to see here.')
       haml page
     end
   end
 
   ###### admin endpoints
-  
-  ## events
-  get '/admin/events' do
+  get '/admin' do
     protected!
-    @current_section = 'admin_events'
-    @events = (EventResource.all || [])
-    admin_haml 'admin/events'
+    @current_section = 'admin'
+    admin_haml 'admin/dashboard'
   end
 
-  post '/admin/events' do
+  ## pictures
+  get '/admin/pictures' do
     protected!
-    redirect '/admin/events'
+    @title = "Pictures"
+    @images = ImageResource.all.sort{|a,b| b.id <=> a.id}
+    admin_haml 'admin/pictures'
+  end
+
+  get '/admin/pictures/del/:id' do
+    protected!
+    img = ImageResource.get(params[:id])
+    if img
+      img.destroy
+    end
+    redirect '/admin/pictures'
+  end
+
+  get '/admin/pictures/upload' do
+    protected!
+    admin_haml 'admin/pictures_upload'
+  end
+
+  post '/admin/pictures/upload' do
+    protected!
+    img = ImageResource.new(:file => params[:file])
+    halt "There were issues with your upload..." unless img.save
+    redirect '/admin/pictures'
+  end
+
+  ## events
+  get '/admin/content_blocks' do
+    protected!
+    @current_section = 'admin_content_blocks'
+    @content_blocks = (ContentResource.all || [])
+    admin_haml 'admin/content_blocks'
+  end
+
+  post '/admin/content_block' do
+    protected!
+    redirect '/admin/content_block'
   end
 
   post '/admin/events/update_attr' do
@@ -147,4 +192,4 @@ end
 Dir[File.join(File.dirname(__FILE__),"{lib,models}/**/*.rb")].each do |file|
   require file
 end
-
+DataMapper.finalize

@@ -17,18 +17,19 @@
         .logo
           %img{:src => '/images/1890.jpg'}
         %nav.admin
-          %h2 Admin
+          %h1 Administration
           %ul
             %li 
               %a{:href => '/'} main site
-            - [:env, :events].each do |page|
+            - [:pictures, :content_blocks, :env].each do |page|
               %li 
-                %a{:href => "/admin/#{page}"} #{page}
+                %a{:href => "/admin/#{page}"} #{page.to_s.humanize}
 
-      .main{:id => @current_section}
+      .admin.main{:id => @current_section}
         =yield
         .bottom_spacer
       
     %script{ :src => 'http://code.jquery.com/jquery-1.7.2.min.js' }
+    %script{ :src => '/javascripts/admin.js' }
 
    

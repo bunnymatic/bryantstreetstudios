@@ -73,7 +73,7 @@ To make sure it's done, you can check your list of remotes with
 
     % git remote -v
 
-Once the remote is there (and you've added your SSH keys to the heroku - see Jon if this is not yet done), then you can push your code changes directly with
+Once the remote is there (and you've added your SSH keys to the heroku - [Follow these instructions to add your credentials to heroku](https://devcenter.heroku.com/articles/keys)
 
     % git push heroku
 

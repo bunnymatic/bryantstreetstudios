@@ -1,0 +1,17 @@
+.content
+  %h1 ContentBlocks
+
+  %table.content_blocks
+    %thead
+      %tr.head
+        %th Page
+        %th Section
+        %th Body (truncated)
+        %th
+    %tbody
+      - @content_blocks.each do |cb| 
+        %tr
+          %td #{cb.page}
+          %td #{cb.section}
+          %td #{cb.body.truncate}
+          %td edit | delete

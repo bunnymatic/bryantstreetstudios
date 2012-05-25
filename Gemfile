@@ -30,6 +30,7 @@ group :development, :test do
   gem "rack-test"
   gem "mime-types"
   gem "jasmine"
+  gem 'autotest'
   #gem 'jasmine-headless-webkit', :git => 'git://github.com/johnbintz/jasmine-headless-webkit.git', :branch => 'master'
 end
 

@@ -1,0 +1,6 @@
+require 'autotest/bundler'
+require 'autotest/rspec2'
+Autotest.add_hook :initialize do |autotest|
+  %w{.css .scss .git .svn .hg .DS_Store ._* vendor}.each {|exception| autotest.add_exception(exception) }
+  false
+end
