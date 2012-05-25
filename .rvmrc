@@ -1,1 +1,1 @@
-rvm use --create ruby-1.9.2-p290@1890sinatra
+rvm use --create ruby-1.9.3-p194@1890sinatra

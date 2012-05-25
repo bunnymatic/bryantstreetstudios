@@ -32,7 +32,7 @@ end
 class BryantStreetStudios < Sinatra::Base
 
   set :environments, %w{development test production staging}
-  set :environment, :development
+  set :environment, ENV['RACK_ENV'] || :development
   set :logging, true
   set :root, File.dirname(__FILE__)
 
@@ -40,12 +40,15 @@ class BryantStreetStudios < Sinatra::Base
   register Sinatra::StaticAssets
   register Sinatra::Logger 
 
-  DataMapper::setup(:default, ENV['DATABASE_URL'] || "postgres://bryant:bryant@localhost/bryant")
-
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"
 
   config_file File.join( [root, 'config', 'config.yml'] )
+
+  DataMapper::setup(:default, ENV['DATABASE_URL'] || "postgres://bryant:bryant@localhost/bryant")
+
+  set :auth_user, ENV['1890_ADMIN_USER'] || settings.auth_user || gen_random_string
+  set :auth_pass, ENV['1890_ADMIN_PASS'] || settings.auth_pass || gen_random_string
 
   helpers do
     
@@ -64,9 +67,10 @@ class BryantStreetStudios < Sinatra::Base
     
     def authorized?
       @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      user = ENV['1890_ADMIN_USER'] || gen_random_string
-      pass = ENV['1890_ADMIN_PASS'] || gen_random_string
       #puts "User/Pass: #{user} #{pass}"
+      user = BryantStreetStudios.auth_user
+      pass = BryantStreetStudios.auth_pass
+      p "USER PASS ", user, pass
       @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == [user,pass]
     end
 
@@ -117,7 +121,16 @@ class BryantStreetStudios < Sinatra::Base
     end
     redirect '/'
   end
-    
+
+  get '/env' do
+    protected!
+    @env = ENV
+    @user = BryantStreetStudios.auth_user
+    @pass = BryantStreetStudios.auth_pass
+    @sinatra_mode = BryantStreetStudios.environment
+    haml :env, :layout => :admin
+  end
+
 end
 
 

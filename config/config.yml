@@ -5,3 +5,12 @@ cache_expiry:
 cache_prefix: bss
 mau_api_url: http://missionartistsunited.org/api
 mau_web_url: http://missionartistsunited.org
+
+auth_user:
+  test: whatever
+  development: whatever
+auth_pass:
+  test: whatever
+  development: whatever
+
+  

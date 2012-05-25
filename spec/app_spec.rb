@@ -17,6 +17,37 @@ describe BryantStreetStudios do
   end
 
   # mock connection to mau setup with fakeweb in mockmau
+
+  describe 'authorized urls' do
+    describe 'GET' do
+      [ :env ].each do |endpoint|
+        it "#{endpoint} responds error with no auth" do
+          get *endpoint
+          last_response.status.should == 401
+        end
+        it "#{endpoint} responds ok with proper auth" do
+          authorize 'whatever','whatever'
+          get *endpoint
+          last_response.should be_ok
+        end
+      end
+    end
+    describe 'POST' do
+      [ ['/event/update_attr', :id => '23_url', :value => 'url'],
+        ['/event', :event => {:starttime => 'yo'}]
+      ].each do |endpoint|
+        it "#{endpoint} responds error with no auth" do
+          post *endpoint
+          last_response.status.should == 401
+        end
+        it "#{endpoint} responds ok with proper auth" do
+          authorize 'whatever','whatever'
+          post *endpoint
+          last_response.should be_ok
+        end
+      end
+    end
+  end
   
   describe '#index' do
     before do
@@ -68,6 +99,7 @@ describe BryantStreetStudios do
       get '/events'
       response.should be_ok
     end
+
   end
 
   describe '#contact' do

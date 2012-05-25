@@ -1,0 +1,24 @@
+header nav.admin {
+  background-image: none;
+  h1 {
+    text-transform: uppercase;
+    margin-left: 20px;
+  }
+  li {
+    width: auto;
+    padding: 0 10px;
+  }
+  li.first {
+    padding-left: 0;
+  }
+}
+.sinatra_env {
+  padding: 20px;
+  ul {
+    margin-left: 20px;
+  }
+  li.odd {
+    background-color: #eee;
+  }
+    
+}
