@@ -67,7 +67,7 @@ And now you have 2 new PostgreSQL databases in place and you've connected to the
 
 We deploy on heroku.  Once you've got your codebase setup and all the gems installed, you'll need to add the heroku remote to your git repo.  This only needs to be done once, as follows:
 
-    % git remote:add heroku git@heroku.com:severe-snow-6710.git 
+    % git remote add heroku git@heroku.com:bryantstreetstudios.git
 
 To make sure it's done, you can check your list of remotes with
 
