@@ -2,7 +2,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'dm-paperclip'
 
-class ImageResource
+class PictureResource
 
   include DataMapper::Resource
   include Paperclip::Resource

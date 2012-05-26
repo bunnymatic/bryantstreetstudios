@@ -162,10 +162,15 @@ header nav.admin li.first { padding-left: 0; }
 .sinatra_env li.odd { background-color: #eee; }
 
 .admin.main .errors { width: 465px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; border: 1px solid #ff8800; font-weight: bold; padding: 4px; color: #cc5500; }
-.admin.main .ctrls { padding: 8px 0; margin-bottom: 8px; display: block; zoom: 1; }
+.admin.main .ctrls { padding: 8px 0; display: block; zoom: 1; }
 .admin.main .ctrls .cancel, .admin.main .ctrls .submit { float: left; margin-right: 10px; }
 .admin.main .ctrls:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; }
 .admin.main .content { width: auto; }
+.admin.main .content_blocks tbody td { padding: 5px 10px; }
+.admin.main .content_blocks tbody tr { height: 22px; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; }
+.admin.main .content_blocks tbody tr:hover td.ctrls { visibility: visible; }
+.admin.main .content_blocks tbody td.ctrls { padding: 0 4px; visibility: hidden; border: none; }
+.admin.main .content_blocks tbody td.ctrls a img { margin-top: 5px; }
 .admin.main .content_block_input { padding: 4px 0; }
 .admin.main .content_block_input textarea, .admin.main .content_block_input input { padding: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; border: 1px solid #6c5861; background-color: #f0f0f0; }
 .admin.main .content_block_input .help { font-style: italic; color: #777777; padding-left: 10px; }

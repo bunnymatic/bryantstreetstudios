@@ -1,2 +1,11 @@
 .content
   %h1 Pictures
+
+  %ul
+    - @images.each do |r|
+      %li.uploaded_image
+        %img{:src => r.file.url(:thumb)}
+        .del
+          %a{:href => "/admin/pictures/#{r.id}/delete", :title => 'trash'}
+            %img{:src => '/images/trash.png', :alt => 'trash', :title => 'trash'}
+  

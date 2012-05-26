@@ -53,6 +53,31 @@ header nav.admin {
     width: auto;
   }
   
+  .content_blocks {
+    tbody {
+      td {
+        padding: 5px 10px;
+      }
+      tr {
+        height: 22px;
+        border-top: 1px solid $x_light_gray;
+        border-bottom: 1px solid $x_light_gray;
+        &:hover td.ctrls {
+          visibility: visible;
+        }
+      }
+      td.ctrls {
+        padding: 0 4px;
+        visibility: hidden;
+        border: none;
+        a {
+          img {
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+  }
   .content_block_input {
     padding: 4px 0;
     textarea, input {

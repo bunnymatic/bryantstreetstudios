@@ -16,7 +16,9 @@
           %td #{cb.page}
           %td #{cb.section}
           %td #{cb.body.truncate}
-          %td 
-            %a{:href => "/admin/content_block/#{cb.id}"} edit
-            = " | " 
-            %a{:class => 'delete_link', :href => "/admin/content_block/#{cb.id}/delete"} delete
+          %td.ctrls 
+            %a{:href => "/admin/content_block/#{cb.id}"}
+              %img{:src => '/images/edit.png', :alt => 'edit', :title => 'edit'}
+            %a{:title => 'trash', :class => 'delete_link', :href => "/admin/content_block/#{cb.id}/delete"} 
+              %img{:src => '/images/trash.png', :alt => 'trash', :title => 'trash'}
+

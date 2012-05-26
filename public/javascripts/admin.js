@@ -7,4 +7,9 @@ $(function() {
       return false;
     }
   });
+
+  /** show/hide controls on hover */
+  $('table.content_blocks tbody tr').hover(function() {
+    $(this).toggleClass('hover');
+  });
 });
