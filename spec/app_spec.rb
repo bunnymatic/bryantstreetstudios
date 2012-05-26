@@ -178,6 +178,25 @@ describe BryantStreetStudios do
           end
         end
       end
+      it 'shows the expected fields: page, section, body' do
+        cr = ContentResource.all.last
+        get "/admin/content_block/#{cr.id}"
+        fields = [:page, :section, :body]
+        response.body.should have_selector('.lbl label') do |lbl|
+          fields.each_with_index do |fld, idx|
+            lbl[idx]['for'].should == 'content_block_' + fld.to_s
+          end
+        end
+        response.body.should have_selector "#content_block_id" do |inp|
+          inp[0]['value'].should == cr.id.to_s
+          inp[0]['type'].should == 'hidden'
+        end
+        response.body.should have_selector "#content_block_page[value=#{cr.page}]"
+        response.body.should have_selector "#content_block_section[value=#{cr.section}]"
+        response.body.should have_selector "textarea#content_block_body" do |tarea|
+          tarea.to_s.gsub(/\s+/, ' ').strip.should contain cr.body.gsub(/\s+/, ' ').strip
+        end
+      end
     end
     context 'POST' do
       it 'creates a new resource block with content but without an id' do
@@ -189,14 +208,42 @@ describe BryantStreetStudios do
         ContentResource.all.last.body.should == body
         ContentResource.all.last.page.should == page
       end
-    end
-  end
-  describe '#admin/content_block/:id/delete' do
-    before do
-      login_as_admin
+      it 'edit a new resource block with content but without an id' do
+        cr = ContentResource.all.last
+        body = [gen_random_string(10), gen_random_string(20)].join(" ")
+        old_count = ContentResource.all.count
+        post '/admin/content_block', :content_block => {:id => cr.id, :body => body }
+        ContentResource.all.count.should == (old_count)
+        ContentResource.all.last.body.should == body
+        ContentResource.all.last.page.should == cr.page
+      end
+      it 'edit redirects to content_blocks index' do
+        cr = ContentResource.all.last
+        body = [gen_random_string(10), gen_random_string(20)].join(" ")
+        post '/admin/content_block', :content_block => {:id => cr.id, :body => body }
+        last_response.status.should == 302
+      end
     end
   end
 
+  describe '#admin/content_block/:id/delete' do
+    before do
+      login_as_admin
+      setup_fixtures
+    end
+    it 'deletes the resource' do
+      cr = ContentResource.all.last
+      cr.should be
+      get "/admin/content_block/#{cr.id}/delete"
+      ContentResource.get(cr.id).should be_nil
+    end
+    it 'redirects to content blocks index' do
+      cr = ContentResource.all.last
+      cr.should be
+      get "/admin/content_block/#{cr.id}/delete"
+      last_response.status.should == 302
+    end
+  end
 
   describe '#admin/cacheflush' do
     it 'responds with error if not authorized' do

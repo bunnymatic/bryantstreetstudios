@@ -21,7 +21,6 @@ class BryantStreetStudios < Sinatra::Base
   set :environment, ENV['RACK_ENV'] || :development
   set :logging, true
   set :root, File.dirname(__FILE__)
-
   register Sinatra::ConfigFile
   register Sinatra::StaticAssets
   register Sinatra::Logger 
@@ -31,11 +30,12 @@ class BryantStreetStudios < Sinatra::Base
 
   config_file File.join( [root, 'config', 'config.yml'] )
 
-  DataMapper::setup(:default, ENV['DATABASE_URL'] || settings.database_url)
-
-  # get user/pass from ENV (for heroku) or our config file, or generate something random as a fallback
+  # fetch from env or config
+  set :dburl, ENV['DATABASE_URL'] || settings.database_url
   set :auth_user, ENV['1890_ADMIN_USER'] || settings.auth_user || gen_random_string
   set :auth_pass, ENV['1890_ADMIN_PASS'] || settings.auth_pass || gen_random_string
+  
+  DataMapper::setup(:default, dburl)
 
   helpers do
     

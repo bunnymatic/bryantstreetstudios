@@ -39,7 +39,16 @@ header nav.admin {
     padding: 4px;
     color: $error_text;
   }
-  
+
+  .ctrls {
+    padding: 8px 0;
+    .cancel, .submit {
+      float: left;
+      margin-right: 10px;
+    }
+    @include clearfix;
+  }
+      
   .content {
     width: auto;
   }
