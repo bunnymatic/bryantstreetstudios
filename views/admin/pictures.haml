@@ -15,7 +15,7 @@
       %li.picture
         %img{:src => r.picture.url(:thumb)}
         .url 
-          %input{:type => :text, :enabled => false, :value => r.picture.url(:display)}
+          %input{:type => :text, :enabled => false, :value => r.picture.url(:display).to_s}
         .del
           %a{:href => "/admin/picture/#{r.id}/delete", :title => 'trash'}
             %img{:src => "/images/trash.png", :alt => 'trash', :title => 'trash'}

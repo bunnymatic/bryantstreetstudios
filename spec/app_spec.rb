@@ -59,7 +59,7 @@ describe BryantStreetStudios do
         end
       end
     end
-    [ '/admin/pictures/upload'].each do |endpoint|
+    [ '/admin/picture'].each do |endpoint|
       describe 'unauthorized POST' do
         it "#{endpoint} responds error" do
           post *endpoint
@@ -248,19 +248,30 @@ describe BryantStreetStudios do
   
   ## pictures
   ### index
-  describe '#admim/pictures' do
+  describe '#admin/pictures' do
     before do
       login_as_admin
-      PictureResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                      mock(:file => mock(:url => 'url2'), :id => 12) ])
+    end
+    it 'returns success' do
+      PictureResource.stubs(:all => [ stub(:picture => stub(:url => 'url1'), :id => 10),
+                                      stub(:picture => stub(:url => 'url2'), :id => 12) ])
+      get '/admin/pictures'
+      last_response.status.should == 200
     end
     it 'shows a list of content blocks with edit and delete links' do
+      PictureResource.stubs(:all => [ stub(:picture => stub(:url => 'url1'), :id => 10),
+                                      stub(:picture => stub(:url => 'url2'), :id => 12) ])
       get '/admin/pictures'
-      _ids = PictureResource.all.map(&:id)
-      response_body.should have_selector('tbody tr') do |blk|
-        blk.should have_selector('a') do |lnk|
-          lnk.should have_selector('img[title=trash]')
-          lnk[0]['href'].should == "/admin/pictures/#{_ids.first}/delete"
+      pics = PictureResource.all.reverse
+      response_body.should have_selector('ul li.picture') do |blk|
+        blk.each_with_index do |b,idx|
+          b.should have_selector('.del a') do |lnk|
+            lnk.should have_selector('img[title=trash]')
+            lnk[0]['href'].should == "/admin/picture/#{pics[idx].id}/delete"
+          end
+          b.should have_selector('.url input') do |inp|
+            inp[0]['value'].should eql pics[idx].picture.url
+          end
         end
       end
     end    
