@@ -195,3 +195,4 @@ Dir[File.join(File.dirname(__FILE__),"{lib,models}/**/*.rb")].each do |file|
   require file
 end
 DataMapper.finalize
+DataMapper.auto_upgrade!
