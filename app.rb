@@ -113,7 +113,6 @@ class BryantStreetStudios < Sinatra::Base
   ###### admin endpoints
   get '/admin' do
     protected!
-    logger.warn 'hit admin content blocks'
     @current_section = 'admin'
     admin_haml 'admin/dashboard'
   end
@@ -150,7 +149,6 @@ class BryantStreetStudios < Sinatra::Base
   ## events
   get '/admin/content_blocks' do
     protected!
-    logger.warn 'hit admin content blocks'
     @current_section = 'admin_content_blocks'
     @content_blocks = (ContentResource.all || [])
     admin_haml 'admin/content_blocks'

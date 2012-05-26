@@ -13,7 +13,7 @@ gem 'dalli'
 gem 'rest-client'
 gem 'heroku'
 gem 'rdiscount'
-gem 'remote_syslog_logger'
+
 gem "data_mapper", '~>1.2.0'
 # krobertson's needs a few patches for heroku/s3 tiein
 gem "dm-paperclip", :git => 'https://github.com/krobertson/dm-paperclip.git'
