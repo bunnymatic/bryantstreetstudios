@@ -3,9 +3,14 @@ cache_expiry:
   production: 86400 
   development: 20
 cache_prefix: bss
-mau_api_url: http://missionartistsunited.org/api
-mau_web_url: http://missionartistsunited.org
-
+mau_api_url: 
+  production: http://missionartistsunited.org/api
+  development: http://missionartistsunited.org/api
+  test: http://test.mau.org/api
+mau_web_url: 
+  production: http://missionartistsunited.org/
+  development: http://missionartistsunited.org/
+  test: http://test.mau.org/
 database_url:
   test: "postgres://localhost/bryant_test"
   development: "postgres://localhost/bryant_dev"

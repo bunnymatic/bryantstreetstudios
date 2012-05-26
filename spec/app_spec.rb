@@ -91,10 +91,10 @@ describe BryantStreetStudios do
       get '/artists'
       response_body.should have_selector('.sidebar li.artist a .name', :count => 8)
     end
-    it 'should list the artists in the content' do
+    it 'should list the artists with art pieces in the content' do
       get '/artists'
-      response_body.should have_selector('.content li.thumb a .img', :count => 8)
-      response_body.should have_selector('.content li.thumb a .name', :count => 8)
+      response_body.should have_selector('.content li.thumb a .img', :count => 7)
+      response_body.should have_selector('.content li.thumb a .name', :count => 7)
     end
     it 'artists are listed alphabetically' do
       get '/artists'
@@ -106,7 +106,6 @@ describe BryantStreetStudios do
         names[0].should contain 'aabbcc'
         names.last.should contain 'Martha'
       end
-
     end
       
   end
