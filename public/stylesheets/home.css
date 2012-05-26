@@ -1,13 +1,42 @@
 /* define mixin colors
 /* colors */
-#home .sidebar { height: 396px; overflow: hidden; }
-#home .welcome { margin: 17px; display: block; zoom: 1; }
-#home .welcome:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; }
-#home .welcome a { color: #dcdc8f; }
-#home .welcome a:visited { color: #dcdc8f; }
-#home .welcome a:hover, #home .welcome a:active { color: white; }
-#home .content { background-color: #989933; color: white; }
-#home .openstudios { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
-#home .openstudios h1, #home .openstudios h2, #home .openstudios h3, #home .openstudios h4 { margin-top: 0; color: white; }
-#home .about_us { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
-#home .about_us h1, #home .about_us h2, #home .about_us h3, #home .about_us h4 { margin-top: 0; }
+#home .sidebar {
+  height: 396px;
+  overflow: hidden; }
+#home .welcome {
+  margin: 17px;
+  display: block;
+  zoom: 1; }
+  #home .welcome:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0; }
+  #home .welcome a {
+    color: #dcdc8f; }
+    #home .welcome a:visited {
+      color: #dcdc8f; }
+    #home .welcome a:hover, #home .welcome a:active {
+      color: white; }
+#home .content {
+  background-color: #989933;
+  color: white; }
+#home .openstudios {
+  border-left: 1px dotted #dcdc8f;
+  padding: 0 17px;
+  width: 190px;
+  float: left; }
+  #home .openstudios h1, #home .openstudios h2, #home .openstudios h3, #home .openstudios h4 {
+    margin-top: 0;
+    color: white; }
+#home .about_us {
+  border-left: 1px dotted #dcdc8f;
+  padding: 0 17px;
+  width: 190px;
+  float: left; }
+  #home .about_us h1, #home .about_us h2, #home .about_us h3, #home .about_us h4 {
+    margin-top: 0; }

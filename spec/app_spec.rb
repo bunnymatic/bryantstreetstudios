@@ -26,7 +26,7 @@ describe BryantStreetStudios do
 
   # mock connection to mau setup with fakeweb in mockmau
   context 'Protected endpoints:' do
-    [ :pictures, :content_blocks, :env ].each do |endpoint|
+    [ :pictures, :content_block, :content_blocks, :env ].each do |endpoint|
       describe 'unauthorized GET' do
         it "/admin/#{endpoint} responds error" do
           get "/admin/"+endpoint.to_s
@@ -39,7 +39,7 @@ describe BryantStreetStudios do
           get "/admin/"+endpoint.to_s
           last_response.should be_ok
         end
-        it "#{endpoint} uses the admin layout" do
+        it "/admin/#{endpoint} uses the admin layout" do
           login_as_admin
           get "/admin/"+endpoint.to_s
           response_body.should have_selector('nav.admin') do |admin_section|
@@ -59,7 +59,7 @@ describe BryantStreetStudios do
         end
       end
     end
-    [ ['/admin/content_block', '/admin/pictures/upload']].each do |endpoint|
+    [ '/admin/pictures/upload'].each do |endpoint|
       describe 'unauthorized POST' do
         it "#{endpoint} responds error" do
           post *endpoint
@@ -139,30 +139,64 @@ describe BryantStreetStudios do
   end
 
   ########## Admin endpoints
+
+  ## Content Blocks
   describe '#admin/content_blocks' do
     before do
       login_as_admin
     end
-    it 'shows a list of content blocks' do
+    it 'shows a list of content blocks with edit and delete links' do
       setup_fixtures
       get '/admin/content_blocks'
-      response_body.should have_selector 'tbody tr', :count => ContentResource.count
-    end
-    
-    it 'shows the expected fields: page, section, body' do
-      pending "move this to the edit page when we have one"
-      get '/admin/content_blocks'
-      fields = [:page, :section, :body]
-      response.body.should have_selector('.lbl label') do |lbl|
-        fields.each_with_index do |fld, idx|
-          lbl[idx]['for'].should == 'content_block_' + fld.to_s
-        end
-        fields.each do |fld|
-          response.body.should have_selector '#content_block_' + fld.to_s
+      _ids = ContentResource.all.map(&:id)
+      response_body.should have_selector('tbody tr') do |blk|
+        blk.should have_selector('a') do |lnk|
+          lnk.should contain 'edit'
+          lnk.should contain 'delete'
+          lnk[0]['href'].should == "/admin/content_block/#{_ids.first}"
+          lnk[1]['href'].should == "/admin/content_block/#{_ids.first}/delete"
         end
       end
     end
   end
+
+
+  describe '#admin/content_block' do
+    before do
+      login_as_admin
+    end
+    context "GET" do
+      it 'shows the expected fields: page, section, body' do
+        get '/admin/content_block'
+        fields = [:page, :section, :body]
+        response.body.should have_selector('.lbl label') do |lbl|
+          fields.each_with_index do |fld, idx|
+            lbl[idx]['for'].should == 'content_block_' + fld.to_s
+          end
+          fields.each do |fld|
+            response.body.should have_selector '#content_block_' + fld.to_s
+          end
+        end
+      end
+    end
+    context 'POST' do
+      it 'creates a new resource block with content but without an id' do
+        body = [gen_random_string(10), gen_random_string(20)].join(" ")
+        page = gen_random_string
+        old_count = ContentResource.all.count
+        post '/admin/content_block', :content_block => {:page => page, :body => body }
+        ContentResource.all.count.should == (old_count + 1)
+        ContentResource.all.last.body.should == body
+        ContentResource.all.last.page.should == page
+      end
+    end
+  end
+  describe '#admin/content_block/:id/delete' do
+    before do
+      login_as_admin
+    end
+  end
+
 
   describe '#admin/cacheflush' do
     it 'responds with error if not authorized' do

@@ -1,6 +1,8 @@
 .content
   %h1 ContentBlocks
 
+  .controls
+    %a{:href => '/admin/content_block'} add new
   %table.content_blocks
     %thead
       %tr.head
@@ -14,4 +16,7 @@
           %td #{cb.page}
           %td #{cb.section}
           %td #{cb.body.truncate}
-          %td edit | delete
+          %td 
+            %a{:href => "/admin/content_block/#{cb.id}"} edit
+            = " | " 
+            %a{:class => 'delete_link', :href => "/admin/content_block/#{cb.id}/delete"} delete

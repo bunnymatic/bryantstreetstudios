@@ -1,3 +1,9 @@
+/* main 1890 stylesheet */
+@import 'colors';
+@import 'normalize';
+@import 'reset';
+@import 'mixins';
+
 header nav.admin {
   background-image: none;
   h1 {
@@ -25,7 +31,32 @@ header nav.admin {
 }
 
 .admin.main {
+  .errors {
+    width : 465px;
+    @include rounded-corners(4px);
+    border: 1px solid $error;
+    font-weight: bold;
+    padding: 4px;
+    color: $error_text;
+  }
+  
   .content {
     width: auto;
   }
+  
+  .content_block_input {
+    padding: 4px 0;
+    textarea, input {
+      padding: 4px;
+      @include rounded-corners(4px);
+      border: 1px solid $purple_brown;
+      background-color: $x_light_gray;
+    }
+    .help {
+      font-style: italic;
+      color: $gray;
+      padding-left: 10px;
+    }
+  }
 }
+

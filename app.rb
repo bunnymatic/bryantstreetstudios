@@ -127,7 +127,7 @@ class BryantStreetStudios < Sinatra::Base
 
   get '/admin/pictures/del/:id' do
     protected!
-    img = ImageResource.get(params[:id])
+    img = ImageResource.get(params['id'])
     if img
       img.destroy
     end
@@ -141,12 +141,13 @@ class BryantStreetStudios < Sinatra::Base
 
   post '/admin/pictures/upload' do
     protected!
-    img = ImageResource.new(:file => params[:file])
+    img = ImageResource.new(:file => params['file'])
     halt "There were issues with your upload..." unless img.save
     redirect '/admin/pictures'
   end
 
-  ## events
+  ## content blocks
+  ### show all
   get '/admin/content_blocks' do
     protected!
     @current_section = 'admin_content_blocks'
@@ -154,13 +155,39 @@ class BryantStreetStudios < Sinatra::Base
     admin_haml 'admin/content_blocks'
   end
 
-  post '/admin/content_block' do
+  # new
+  get '/admin/content_block' do
     protected!
-    redirect '/admin/content_block'
+    @content_block = ContentResource.new
+    admin_haml 'admin/content_block'
   end
 
-  post '/admin/events/update_attr' do
+  ### show/edit
+  get '/admin/content_block/:id' do
     protected!
+    @content_block = ContentResource.get(params['id'])
+    admin_haml 'admin/content_block'
+  end
+
+  ### update
+  post '/admin/content_block' do
+    protected!
+    _id = params['content_block']['id']
+    @content_block = (_id.present? ? ContentResource.get(_id) : ContentResource.new)
+    @content_block.attributes = params['content_block']
+    unless @content_block.save
+      admin_haml 'admin/content_block'
+    else
+      redirect '/admin/content_blocks'
+    end
+  end
+
+  ### delete
+  get '/admin/content_block/:id/delete' do
+    protected!
+    r = ContentResource.get(params['id'])
+    r.destroy if r
+    redirect '/admin/content_blocks'
   end
 
   ## other

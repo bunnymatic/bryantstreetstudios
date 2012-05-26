@@ -1,0 +1,28 @@
+.content
+  %h1 Content Block
+
+  - if @content_block && @content_block.errors.present?
+    .errors
+      ERRORS! 
+      - @content_block.errors.each do |err|
+        .err #{err.join}
+  :ruby
+    help_msg = { :page => 'e.g. "events", "home"',
+      :section => 'currently unused', 
+      :body => 'We use markdown.  <a href="http://daringfireball.net/projects/markdown/basics">Read the guide.</a>'}
+  %form{:action => '/admin/content_block', :method => 'post'}
+    - [ :page, :section, :body].each do |k|
+      - ky = k.to_s
+      - clz = (@content_block && @content_block.errors && @content_block.errors.keys.include?(k)) ? 'fieldWithErrors' :''
+      .content_block_input{:class => clz}
+        .lbl
+          %label{:for => "content_block_#{ky}"} #{ky.capitalize}
+        - if k == :body
+          %textarea{:class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :value => @content_block.send(ky) || '', :rows => 40, :cols => 75}
+        - else        
+          %input{:type => 'text', :class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :value => @content_block.send(ky) || '' }
+        %span.help #{help_msg[k]}
+    .clear
+    .submit  
+      %input{:type => 'submit'}
+
