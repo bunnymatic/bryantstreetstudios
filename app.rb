@@ -120,31 +120,29 @@ class BryantStreetStudios < Sinatra::Base
   ## pictures
   get '/admin/pictures' do
     protected!
-    @title = "Pictures"
-    @images = ImageResource.all.sort{|a,b| b.id <=> a.id}
+    @current_section = 'admin_pictures'
+    @images = PictureResource.all.sort{|a,b| b.id <=> a.id}
     admin_haml 'admin/pictures'
   end
 
-  get '/admin/pictures/del/:id' do
+  ### new
+  post '/admin/picture' do
     protected!
-    img = ImageResource.get(params['id'])
+    img = PictureResource.new(:picture => params['file'])
+    halt "There were issues with your upload..." unless img.save
+    redirect '/admin/pictures'
+  end
+
+  ### delete
+  get '/admin/picture/:id/delete' do
+    protected!
+    img = PictureResource.get(params['id'])
     if img
       img.destroy
     end
     redirect '/admin/pictures'
   end
 
-  get '/admin/pictures/upload' do
-    protected!
-    admin_haml 'admin/pictures_upload'
-  end
-
-  post '/admin/pictures/upload' do
-    protected!
-    img = ImageResource.new(:file => params['file'])
-    halt "There were issues with your upload..." unless img.save
-    redirect '/admin/pictures'
-  end
 
   ## content blocks
   ### show all

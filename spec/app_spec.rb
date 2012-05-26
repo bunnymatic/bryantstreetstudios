@@ -151,8 +151,8 @@ describe BryantStreetStudios do
       _ids = ContentResource.all.map(&:id)
       response_body.should have_selector('tbody tr') do |blk|
         blk.should have_selector('a') do |lnk|
-          lnk.should contain 'edit'
-          lnk.should contain 'delete'
+          lnk.should have_selector('img[title=edit]')
+          lnk.should have_selector('img[title=trash]')
           lnk[0]['href'].should == "/admin/content_block/#{_ids.first}"
           lnk[1]['href'].should == "/admin/content_block/#{_ids.first}/delete"
         end
@@ -251,18 +251,16 @@ describe BryantStreetStudios do
   describe '#admim/pictures' do
     before do
       login_as_admin
-      ImageResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
-                                    mock(:file => mock(:url => 'url2'), :id => 12) ])
+      PictureResource.stubs(:all => [ mock(:file => mock(:url => 'url1'), :id => 10),
+                                      mock(:file => mock(:url => 'url2'), :id => 12) ])
     end
     it 'shows a list of content blocks with edit and delete links' do
       get '/admin/pictures'
       _ids = PictureResource.all.map(&:id)
       response_body.should have_selector('tbody tr') do |blk|
         blk.should have_selector('a') do |lnk|
-          lnk.should have_selector('img.edit')
-          lnk.should have_selector('img.trash')
-          lnk[0]['href'].should == "/admin/content_block/#{_ids.first}"
-          lnk[1]['href'].should == "/admin/content_block/#{_ids.first}/delete"
+          lnk.should have_selector('img[title=trash]')
+          lnk[0]['href'].should == "/admin/pictures/#{_ids.first}/delete"
         end
       end
     end    

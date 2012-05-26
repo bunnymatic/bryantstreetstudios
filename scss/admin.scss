@@ -30,7 +30,56 @@ header nav.admin {
     
 }
 
+#admin_content_blocks {
+  .controls {
+    text-align: right;
+  }
+}  
+
+#admin_pictures {
+  .controls {
+    a.add_new {
+      float: left;
+    }
+    .add_new_form {
+      float: left;
+      display: none;
+      margin-left: 10px;
+    }
+  }
+  .pictures {
+    clear:both;
+    .picture {
+      padding: 10px;
+      position:relative;
+      width: 200px;
+      text-align: center;
+      .url {
+        input {
+          width: 200px;
+        }
+      }
+      .del {
+        display:none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index:10;
+      }
+      &:hover .del {
+        display: block;
+      }
+    }
+  }
+}
+    
 .admin.main {
+  textarea, input {
+    padding: 4px;
+    @include rounded-corners(4px);
+    border: 1px solid $purple_brown;
+    background-color: $x_light_gray;
+  }
   .errors {
     width : 465px;
     @include rounded-corners(4px);
@@ -80,12 +129,6 @@ header nav.admin {
   }
   .content_block_input {
     padding: 4px 0;
-    textarea, input {
-      padding: 4px;
-      @include rounded-corners(4px);
-      border: 1px solid $purple_brown;
-      background-color: $x_light_gray;
-    }
     .help {
       font-style: italic;
       color: $gray;

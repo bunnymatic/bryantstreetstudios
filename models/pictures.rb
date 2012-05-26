@@ -18,7 +18,8 @@ class PictureResource
     :bucket => ENV['S3_BUCKET'] || '1890bryant'
   },
   :styles => { 
-    :display => { :geometry => '350x600>' }
+    :display => { :geometry => '350x600>' },
+    :thumb => { :geometry => '150x150>' }
   }
 
   def as_json(options = {})

@@ -1,11 +1,21 @@
 .content
   %h1 Pictures
 
-  %ul
+  .controls
+    %a{:href => '#', :class => 'add_new', :title => 'add new picture'} 
+      %img{:src => '/images/new_photo.png', :alt => 'add new', :title => 'add new'}
+    .add_new_form      
+      %form{:action => '/admin/picture', :enctype => 'multipart/form-data', :method => 'POST'}
+        %input{:type => 'file', :name => 'file'}
+        %input{:type => 'submit', :value => 'add new picture'}
+
+
+  %ul.pictures
     - @images.each do |r|
-      %li.uploaded_image
-        %img{:src => r.file.url(:thumb)}
+      %li.picture
+        %img{:src => r.picture.url(:thumb)}
+        .url 
+          %input{:type => :text, :enabled => false, :value => r.picture.url(:display)}
         .del
-          %a{:href => "/admin/pictures/#{r.id}/delete", :title => 'trash'}
-            %img{:src => '/images/trash.png', :alt => 'trash', :title => 'trash'}
-  
+          %a{:href => "/admin/picture/#{r.id}/delete", :title => 'trash'}
+            %img{:src => "/images/trash.png", :alt => 'trash', :title => 'trash'}

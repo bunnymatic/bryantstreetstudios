@@ -1,8 +1,9 @@
 .content
-  %h1 ContentBlocks
+  %h1 Content Blocks
 
   .controls
-    %a{:href => '/admin/content_block'} add new
+    %a{:href => '/admin/content_block', :class => 'add_new', :title => 'add new content block'} 
+      %img{:src => '/images/new_document.png', :alt => 'add new', :title => 'add new'}
   %table.content_blocks
     %thead
       %tr.head
