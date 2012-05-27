@@ -74,12 +74,15 @@ class BryantStreetStudios < Sinatra::Base
 
   set :haml, :format => :html5
 
+  # front page
   get '/' do
     @title = make_title
     @studio = Studio.new
     @artists = Artists.new
     @current_section = 'home'
     @breadcrumb = BreadCrumbs.new([])
+    announcement = ContentResource.first(:page => 'home', :section => 'announcement')
+    @announcement = announcement.body if announcement 
     haml :index
   end
 

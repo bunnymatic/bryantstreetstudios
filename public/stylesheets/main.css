@@ -208,8 +208,8 @@ header nav li a:hover, header nav li a:active { color: #b7b76f; }
 #home .welcome a:visited { color: #dcdc8f; }
 #home .welcome a:hover, #home .welcome a:active { color: white; }
 #home .content { background-color: #989933; color: white; }
-#home .openstudios { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
-#home .openstudios h1, #home .openstudios h2, #home .openstudios h3, #home .openstudios h4 { margin-top: 0; color: white; }
+#home .announcement { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
+#home .announcement h1, #home .announcement h2, #home .announcement h3, #home .announcement h4 { margin-top: 0; color: white; }
 #home .about_us { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
 #home .about_us h1, #home .about_us h2, #home .about_us h3, #home .about_us h4 { margin-top: 0; }
 
