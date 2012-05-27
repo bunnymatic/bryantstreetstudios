@@ -6,7 +6,7 @@
 #home .welcome a { color: #dcdc8f; }
 #home .welcome a:visited { color: #dcdc8f; }
 #home .welcome a:hover, #home .welcome a:active { color: white; }
-#home .content { background-color: #989933; color: white; }
+#home .content { background-color: #989933; color: white; margin-bottom: 6px; }
 #home .announcement { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
 #home .announcement h1, #home .announcement h2, #home .announcement h3, #home .announcement h4 { margin-top: 0; color: white; }
 #home .about_us { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }

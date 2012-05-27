@@ -116,7 +116,8 @@ class BryantStreetStudios < Sinatra::Base
   ###### admin endpoints
   get '/admin' do
     protected!
-    @current_section = 'admin'
+    @current_section = 'dashboard'
+    @artists = Artists.new
     admin_haml 'admin/dashboard'
   end
 

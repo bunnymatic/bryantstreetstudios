@@ -19,6 +19,16 @@ header nav.admin {
     padding-left: 0;
   }
 }
+
+#dashboard {
+  .content {
+    width: 742px;
+  }
+  section {
+    width: 48%;
+    float: left;
+  }
+}
 .sinatra_env {
   padding: 20px;
   ul {
@@ -137,3 +147,4 @@ header nav.admin {
   }
 }
 
+  

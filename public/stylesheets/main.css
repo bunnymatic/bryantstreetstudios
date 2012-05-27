@@ -165,7 +165,7 @@ h4, h5, h6 { font-size: 11px; }
 a { text-decoration: none; }
 
 .container { margin-bottom: 20px; }
-.container .bottom_spacer { clear: both; height: 6px; }
+.container .bottom_spacer { clear: both; }
 
 header, .main { background-color: white; margin: auto; width: 758px; /** add padding */ font-size: 11px; line-height: 18px; }
 
@@ -207,7 +207,7 @@ header nav li a:hover, header nav li a:active { color: #b7b76f; }
 #home .welcome a { color: #dcdc8f; }
 #home .welcome a:visited { color: #dcdc8f; }
 #home .welcome a:hover, #home .welcome a:active { color: white; }
-#home .content { background-color: #989933; color: white; }
+#home .content { background-color: #989933; color: white; margin-bottom: 6px; }
 #home .announcement { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
 #home .announcement h1, #home .announcement h2, #home .announcement h3, #home .announcement h4 { margin-top: 0; color: white; }
 #home .about_us { border-left: 1px dotted #dcdc8f; padding: 0 17px; width: 190px; float: left; }
@@ -220,7 +220,7 @@ header nav li a:hover, header nav li a:active { color: #b7b76f; }
 /* index */
 #artists .content { background-color: white; color: #222222; }
 #artists .content .thumb { float: left; margin: 12px; width: 100px; }
-#artists .content .thumb .name { font-weight: bold; width: 100px; text-align: center; }
+#artists .content .thumb .name { font-weight: bold; width: 100px; text-align: center; line-height: 14px; height: 20px; }
 #artists .content .img { width: 100px; height: 106px; text-align: center; }
 
 /* individual artist page */
@@ -234,3 +234,4 @@ header nav li a:hover, header nav li a:active { color: #b7b76f; }
 /** artists page*/
 /* define mixin colors
 /* colors */
+#contact .map { margin-bottom: 20px; }

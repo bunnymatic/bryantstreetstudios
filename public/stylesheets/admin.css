@@ -157,6 +157,9 @@ header nav.admin h1 { text-transform: uppercase; margin-left: 20px; margin-top: 
 header nav.admin li { width: auto; padding: 0 10px; }
 header nav.admin li.first { padding-left: 0; }
 
+#dashboard .content { width: 742px; }
+#dashboard section { width: 48%; float: left; }
+
 .sinatra_env { padding: 20px; }
 .sinatra_env ul { margin-left: 20px; }
 .sinatra_env li.odd { background-color: #eee; }

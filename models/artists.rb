@@ -31,6 +31,8 @@ class Artists
   def length
     artists.length
   end
+  alias :count :length
+  alias :size :length
 
   def each &block
     artists.each{|aid,a| block.call(aid,a)}

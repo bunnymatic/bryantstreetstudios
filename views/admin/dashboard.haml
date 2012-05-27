@@ -1,2 +1,19 @@
 .content
   %h1 Dashboard
+
+  %section.utilities
+    %h3 Utilities
+    %ul
+      %li
+        %a{:href => '/admin/cacheflush'} Reset the artists cache
+ 
+  %section.statistics
+    %h3 Statistics
+    %ul.artitsts_count
+      %li
+        %label.key Number of Artists:
+        %span.value #{@artists.count}
+      %li
+        %label.key Number of Artists without Pictures:
+        %span.value #{@artists.reject{|aid, a| (a.art_pieces && a.art_pieces.count > 0)}.count}
+        
