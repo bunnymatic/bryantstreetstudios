@@ -20,8 +20,7 @@
         .lbl
           %label{:for => "content_block_#{ky}"} #{ky.capitalize}
         - if k == :body
-          %textarea{:class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :rows => 40, :cols => 75}
-            = @content_block.send(ky) || ''
+          %textarea{:class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :rows => 40, :cols => 75} #{@content_block.send(ky) || ''}
         - else        
           %input{:type => 'text', :class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :value => @content_block.send(ky) || '' }
         %span.help #{help_msg[k]}

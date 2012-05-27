@@ -25,4 +25,7 @@ $(function() {
 
   /** auto select all in url input on click */
   $('#admin_pictures .url input').bind('click', function() { $(this).select(); });
+
+  /** use markdown js editor */
+  $('#admin_content_block textarea.content_block').markItUp(mySettings);
 });

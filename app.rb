@@ -156,6 +156,7 @@ class BryantStreetStudios < Sinatra::Base
   # new
   get '/admin/content_block' do
     protected!
+    @current_section = 'admin_content_block'
     @content_block = ContentResource.new
     admin_haml 'admin/content_block'
   end
@@ -163,6 +164,7 @@ class BryantStreetStudios < Sinatra::Base
   ### show/edit
   get '/admin/content_block/:id' do
     protected!
+    @current_section = 'admin_content_block'
     @content_block = ContentResource.get(params['id'])
     admin_haml 'admin/content_block'
   end
@@ -189,6 +191,13 @@ class BryantStreetStudios < Sinatra::Base
   end
 
   ## other
+
+  ### preview markdown do
+  post '/admin/markdown' do
+    protected!
+    markdown_content(params[:data])
+  end
+
   get '/admin/cacheflush' do
     protected!
     begin
