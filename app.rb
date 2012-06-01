@@ -194,6 +194,21 @@ class BryantStreetStudios < Sinatra::Base
     redirect '/admin/content_blocks'
   end
 
+  ### artist_exclusions
+  get '/admin/exclusions' do
+    protected!
+    @exclusions = ArtistExclusions.all
+  end
+
+  ### artist_exclusions
+  get '/admin/exclusions/:id/delete' do
+    protected!
+    r = ArtistExclusion.get(params['id'])
+    r.destroy if r
+    redirect '/admin/exclusions'
+  end
+
+
   ## other
 
   ### preview markdown do

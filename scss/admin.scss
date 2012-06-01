@@ -75,6 +75,9 @@ header nav.admin {
         top: 0;
         right: 0;
         z-index:10;
+        &:hover {
+          display: block;
+        }
       }
       &:hover .del {
         display: block;
@@ -121,14 +124,23 @@ header nav.admin {
         height: 22px;
         border-top: 1px solid $x_light_gray;
         border-bottom: 1px solid $x_light_gray;
-        &:hover td.ctrls {
-          visibility: visible;
-        }
       }
-      td.ctrls {
-        padding: 0 4px;
-        visibility: hidden;
-        border: none;
+      td {
+        position:relative;
+      }
+      .ctrls.hover {
+        display: block;
+      }
+      td:last-child {
+        padding-right: 50px;
+      }
+      .ctrls {
+        position: absolute;
+        display:none;
+        right: 0px;
+        top: -7px;
+        height: 20px;
+        width: 40px;
         a {
           img {
             margin-top: 5px;

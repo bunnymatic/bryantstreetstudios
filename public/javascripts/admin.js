@@ -9,8 +9,8 @@ $(function() {
   });
 
   /** show/hide content blocks controls on hover */
-  $('table.content_blocks tbody tr').hover(function() {
-    $(this).toggleClass('hover');
+  $('table.content_blocks tbody tr td').hover(function() {
+    $(this).closest('tr').find('.ctrls').toggleClass('hover');
   });
   
   /** add new picture form show */
