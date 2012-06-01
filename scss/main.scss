@@ -43,7 +43,13 @@ header, .main {
   width: $full_width + 18px; /** add padding */
   @include body_copy;
 }
-
+footer {
+  color: #646;
+  width: $full_width + 18px; /** add padding */
+  text-align:right;
+  font-size: 9px;
+  margin: auto;
+}
 header {
   @include clearfix;
   .logo {

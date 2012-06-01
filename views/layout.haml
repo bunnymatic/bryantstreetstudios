@@ -26,7 +26,17 @@
       .main{:id => @current_section}
         =yield
         .bottom_spacer
-
+    %footer
+      %span 
+        [ site by 
+        %a{:href => 'http://rcode5.com'} rcode5
+        ]
+      %span 
+        [
+        hosted by
+        %a{:href => 'http://heroku.com'} heroku
+        ]
+      
     %script{ :src => 'http://code.jquery.com/jquery-1.7.2.min.js' }
     %script{ :src => '/javascripts/artists.js'}
 
