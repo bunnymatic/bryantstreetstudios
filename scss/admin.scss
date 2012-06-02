@@ -85,7 +85,20 @@ header nav.admin {
     }
   }
 }
-    
+
+.exclusions {
+  li {
+    clear: both;
+    height: 16px;
+    line-height: 16px;
+    > div {
+      float: left;
+    }
+    .ctrls {
+      padding: 0;
+    }
+  }
+}
 .admin.main {
   textarea, input {
     padding: 4px;

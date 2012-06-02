@@ -23,7 +23,7 @@
           %ul
             %li 
               %a{:href => '/'} main site
-            - [:pictures, :content_blocks, :env].each do |page|
+            - [:pictures, :content_blocks, :exclusions, :env].each do |page|
               %li 
                 %a{:href => "/admin/#{page}"} #{page.to_s.humanize}
 

@@ -23,3 +23,4 @@ class ContentResource
   end
 end
 
+DataMapper.finalize

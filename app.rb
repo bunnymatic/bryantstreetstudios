@@ -197,14 +197,26 @@ class BryantStreetStudios < Sinatra::Base
   ### artist_exclusions
   get '/admin/exclusions' do
     protected!
-    @exclusions = ArtistExclusions.all
+    @exclusions = ArtistExclusion.all
+    admin_haml 'admin/exclusions'
+  end
+  
+  ### new
+  post '/admin/exclusion' do
+    protected!
+    @current_section = 'exclusions'
+    if params['exclusion'] && params['exclusion'].has_key?('case_insensitive')
+      params['exclusion']['case_insensitive'] = params['exclusion']['case_insensitive'].to_bool
+    end
+    a = ArtistExclusion.create(params['exclusion'])
+    redirect 'admin/exclusions'
   end
 
   ### artist_exclusions
-  get '/admin/exclusions/:id/delete' do
+  get '/admin/exclusion/:id/delete' do
     protected!
-    r = ArtistExclusion.get(params['id'])
-    r.destroy if r
+    ae = ArtistExclusion.get(params['id'])
+    ae.destroy if ae
     redirect '/admin/exclusions'
   end
 

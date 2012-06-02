@@ -31,3 +31,5 @@ class PictureResource
                })
   end
 end
+
+DataMapper.finalize
