@@ -46,8 +46,8 @@ describe BryantStreetStudios do
         response_body.should have_selector('nav.admin') do |admin_section|
           admin_section.should have_selector('li') do |tag|
             tag.should have_selector('a', :count => 5) do |lnks|
-              lnks[0]['href'].should == '/'
-              lnks[0].should contain 'main site'
+              lnks[0]['href'].should == '/admin'
+              lnks[0].should contain 'dashboard'
               lnks[1]['href'].should == '/admin/pictures'
               lnks[1].should contain 'pictures'
               lnks[2]['href'].should == '/admin/content_blocks'
@@ -59,6 +59,7 @@ describe BryantStreetStudios do
             end
           end
         end
+        response_body.should have_selector('a .logo')
       end
     end
   end
@@ -210,11 +211,11 @@ describe BryantStreetStudios do
     end
     it 'shows all current exclusions' do
       get '/admin/exclusions'
-      response_body.should have_selector('ul.exclusions li', :count => ArtistExclusion.count) do |tags|
+      response_body.should have_selector('ul.exclusions li.row', :count => ArtistExclusion.count) do |tags|
         tags.each do |tag|
           tag.should have_selector '.name'
           tag.should have_selector '.case_insensitive'
-          tag.should have_selector '.delete_link'
+          tag.should have_selector 'a.delete_link'
           tag.attributes['data-aeid'].value.should be_true
         end
       end

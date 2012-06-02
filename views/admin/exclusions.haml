@@ -18,7 +18,7 @@
       .ctrls 
       .matches Matches
     - @exclusions.each do |ex|
-      %li{"data-aeid" => ex.id}
+      %li.row{"data-aeid" => ex.id}
         .name #{ex.name}
         .case_insensitive #{ex.case_insensitive ? 'Y':'&nbsp;'}
         .ctrls 
