@@ -184,7 +184,7 @@ header nav.admin li.first { padding-left: 0; }
 #exclusions li:first { border: 0; }
 #exclusions li > div { float: left; padding: 0 8px; }
 #exclusions li div.ctrls { padding: 1px; }
-#exclusions li .name { width: 100px; }
+#exclusions li .name { width: 180px; }
 #exclusions li .ctrls { width: 25px; visibility: hidden; }
 #exclusions li.hover .ctrls { visibility: visible; }
 #exclusions li .case_insensitive { width: 100px; }

@@ -169,7 +169,7 @@ a { text-decoration: none; }
 
 header, .main { background-color: white; margin: auto; width: 758px; /** add padding */ font-size: 11px; line-height: 18px; }
 
-footer { color: #646; width: 758px; /** add padding */ text-align: right; font-size: 9px; margin: auto; }
+footer { color: #646; width: 758px; /** add padding */ text-align: right; font-size: 9px; margin: auto auto 20px; }
 
 header { display: block; zoom: 1; }
 header:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; }
