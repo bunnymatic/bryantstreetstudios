@@ -88,17 +88,22 @@ class BryantStreetStudios < Sinatra::Base
 
   get '/artists' do
     @title = make_title 'Artists'
-    @artists = Artists.new
+    artists = Artists.new
+    exclusions = ArtistExclusion.all
+    @artists = []
+    artists.each do |aid, a|
+      @artists << [aid,a] unless exclusions.any?{|ex| ex.match a.fullname}
+    end
     @current_section = 'artists'
     @breadcrumb = BreadCrumbs.new([:home, :artists])
     haml :artists
   end
 
   get '/artists/:id' do
-    @title = make_title 'Artist'
     @artist = Artists.find(params[:id])
     @current_section = 'artist'
     @breadcrumb = BreadCrumbs.new([:home, :artists, @artist.fullname])
+    @title = make_title 'Artist', @artist.fullname
     haml :artist
   end
 
@@ -197,14 +202,16 @@ class BryantStreetStudios < Sinatra::Base
   ### artist_exclusions
   get '/admin/exclusions' do
     protected!
+    @current_section = 'exclusions'
     @exclusions = ArtistExclusion.all
+    @artists = Artists.new.map{|aid,a| a}
+
     admin_haml 'admin/exclusions'
   end
   
   ### new
   post '/admin/exclusion' do
     protected!
-    @current_section = 'exclusions'
     if params['exclusion'] && params['exclusion'].has_key?('case_insensitive')
       params['exclusion']['case_insensitive'] = params['exclusion']['case_insensitive'].to_bool
     end

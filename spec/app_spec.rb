@@ -85,6 +85,22 @@ describe BryantStreetStudios do
       
   end
 
+  describe '#artists/:id' do
+    before do
+      # putting the get here doesn't seem to work
+    end
+    it 'should return success' do
+      get '/artists/10'
+      response.should be_ok
+    end
+    it 'shows the artist\'s name in the title' do
+      get '/artists/10'
+      response_body.should have_selector 'title' do |t|
+        t.should contain 'Rhiannon Alpers'
+      end
+    end
+  end
+
   describe '#events' do
     before do
       # putting the get here doesn't seem to work

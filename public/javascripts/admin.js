@@ -28,4 +28,17 @@ $(function() {
 
   /** use markdown js editor */
   $('#admin_content_block textarea.content_block').markItUp(mySettings);
+
+  /** exclusions form show */
+  $('#exclusions .controls .add_new').bind('click', function() {
+    $(this).closest('.controls').find('form').toggle();
+    return false;
+  });
+
+  /** show/hide image controls on hover */
+  $('#exclusions ul li').hover(function() {
+    $(this).toggleClass('hover');
+  });
+
+
 });

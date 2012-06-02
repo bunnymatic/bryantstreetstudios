@@ -16,13 +16,14 @@
   %body
     .container
       %header
-        .logo
-          %img{:src => '/images/1890.jpg'}
+        %a{:href => '/', :title => 'Main Site'}
+          .logo
+            %img{:src => '/images/1890.jpg'}
         %nav.admin
           %h1 Administration
           %ul
             %li 
-              %a{:href => '/'} main site
+              %a{:href => '/admin'} dashboard
             - [:pictures, :content_blocks, :exclusions, :env].each do |page|
               %li 
                 %a{:href => "/admin/#{page}"} #{page.to_s.humanize}

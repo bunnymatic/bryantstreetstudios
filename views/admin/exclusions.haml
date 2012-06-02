@@ -2,22 +2,30 @@
   %h1 Excluded Artists
 
   .controls
-    %form{:action => '/admin/exclusion', :method => 'post'}
-      %label name to match
-      %input{:type => 'text', :name => 'exclusion[name]'}
-      %label case insensitive match?      
-      %input{:type => 'checkbox', :name => 'exclusion[case_insensitive]', :checked => 'checked'}
-      %input{:type => 'submit', :name => 'add'}
-    %a{:href => '/admin/exclusion', :class => 'add_new', :title => 'add new exclusion'} 
+    %a{:href => '#', :class => 'add_new', :title => 'add new exclusion'} 
       %img{:src => '/images/new_document.png', :alt => 'add new', :title => 'add new'}
+    %form{:action => '/admin/exclusion', :method => 'post'}
+      %label Name to match:
+      %input{:type => 'text', :name => 'exclusion[name]'}
+      %label Case insensitive?      
+      %input{:type => 'checkbox', :name => 'exclusion[case_insensitive]', :checked => 'checked'}
+      %input{:type => 'submit', :name => 'add', :value => 'add'}
 
   %ul.exclusions
+    %li.head
+      .name Name
+      .case_insensitive Case Insensitive?
+      .ctrls 
+      .matches Matches
     - @exclusions.each do |ex|
       %li{"data-aeid" => ex.id}
         .name #{ex.name}
-        .case_insensitive #{ex.case_insensitive}
+        .case_insensitive #{ex.case_insensitive ? 'Y':'&nbsp;'}
         .ctrls 
           %a{:title => 'trash', :class => 'delete_link', :href => "/admin/exclusion/#{ex.id}/delete"} 
             %img{:src => '/images/trash.png', :alt => 'trash', :title => 'trash'}
+        .matches
+          - @artists.select{|a| ex.match a.fullname}.each do |amatch|
+            %a{:href => '/artists/' + amatch.id.to_s} #{amatch.fullname}
 
       

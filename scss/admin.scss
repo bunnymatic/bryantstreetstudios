@@ -22,6 +22,7 @@ header nav.admin {
 
 #dashboard {
   .content {
+    margin: 20px 0;
     width: 742px;
   }
   section {
@@ -86,19 +87,67 @@ header nav.admin {
   }
 }
 
-.exclusions {
-  li {
-    clear: both;
-    height: 16px;
-    line-height: 16px;
-    > div {
+#exclusions {
+  .controls {
+    a.add_new {
       float: left;
     }
+    form {
+      height: 30px;
+      float: left;
+      display: none;
+      margin-left: 10px;
+      input { 
+        margin-left: 5px;
+      }
+      input[type=submit] {
+        margin-left: 10px;
+      }
+      label {
+        margin-left: 10px;
+      }
+    }
+  }
+  ul {
+  }
+  li {
+    &:first {
+      border: 0;
+    }
+    border-bottom: 1px solid $x_light_gray;
+    clear: both;
+    height: 21px;
+    line-height: 21px;
+    > div {
+      float: left;
+      padding:0 8px;
+    }
+    div.ctrls {
+      padding: 1px;
+    }
+    .name { 
+      width: 100px;
+    }
     .ctrls {
-      padding: 0;
+      width: 25px;
+      visibility:hidden;
+    }
+    &.hover .ctrls{
+      visibility: visible;
+    }
+    .case_insensitive {
+      width: 100px;
+    }
+    .matches {
+    }
+    &.head {
+      > div {
+        font-weight:bold;
+      }
     }
   }
 }
+
 .admin.main {
   textarea, input {
     padding: 4px;
@@ -172,4 +221,3 @@ header nav.admin {
   }
 }
 
-  

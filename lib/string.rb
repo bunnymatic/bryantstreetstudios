@@ -10,8 +10,8 @@ class String
   end
 
   def to_bool
-    return true   if self == true   || self =~ (/(true|yes|1)$/i)
-    return false  if self == false  || self.empty? || self =~ (/(false|no|0)$/i)
+    return true   if self == true   || self =~ (/(true|yes|on|1)$/i)
+    return false  if self == false  || self.empty? || self =~ (/(false|no|off|0)$/i)
     raise ArgumentError.new("invalid value for Boolean: \"#{self}\"")
   end
 end
