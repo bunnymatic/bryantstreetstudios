@@ -9,9 +9,13 @@ require 'json'
 require 'dalli'
 require 'ostruct'
 require 'yaml'
-require 'data_mapper'
+require 'dm-core'
+require 'dm-postgres-adapter'
 require 'dm-paperclip'
 require 'rdiscount'
+require 'thin'
+require 'faye'
+require 'eventmachine'
 
 class BryantStreetStudios < Sinatra::Base
 
@@ -260,9 +264,38 @@ class BryantStreetStudios < Sinatra::Base
 
 end
 
-
 Dir[File.join(File.dirname(__FILE__),"{lib,models}/**/*.rb")].each do |file|
   require file
 end
 DataMapper.finalize
 DataMapper.auto_upgrade!
+
+EM.next_tick {
+
+  
+  FAYE_SERVER_URL = ENV['FAYE_SERVER_URL'] || 'http://localhost:3030/maumessages'; #mau-messages.herokuapp.com:80/maumessages';
+  SUBSCRIBER_TOKEN = ENV['FAYE_SUBSCRIBER_TOKEN'] || 'whatevs_yo'
+  
+  FAYE_SERVER_URL = 'http://mau-messages.herokuapp.com:80/maumessages'
+  SUBSCRIBER_TOKEN = 'gomakesomeart'.reverse
+
+  class ClientAuth
+    def outgoing(msg,cb)
+      if msg['channel'] == '/meta/subscribe'
+        msg['ext'] ||= {}
+        msg['ext']['subscriberToken'] = SUBSCRIBER_TOKEN
+      end
+      cb.call msg
+    end
+  end
+  
+  begin
+    client = Faye::Client.new(FAYE_SERVER_URL)
+    client.add_extension(ClientAuth.new)
+    client.subscribe('/artists/**') do |msg|
+      puts msg.inspect
+    end
+  rescue Exception => ex
+    p  "Faye server failed: ", ex
+  end
+}
