@@ -6,7 +6,6 @@ require 'mocha'
 require "webrat"
 require File.join(File.dirname(__FILE__), '..','app')
 
-
 set :environment, :test
 
 Webrat.configure do |config|
@@ -19,3 +18,5 @@ RSpec.configure do |config|
   config.include Webrat::Matchers
   config.mock_with :mocha
 end
+
+SafeCache.flush

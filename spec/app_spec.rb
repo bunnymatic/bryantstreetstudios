@@ -99,6 +99,20 @@ describe BryantStreetStudios do
         t.should contain 'Rhiannon Alpers'
       end
     end
+    it 'draws the artist\'s links as links' do
+      get '/artists/10'
+      response_body.should have_selector '.contact div.website span a' do |t|
+        t = t[0]
+        t.attributes['href'].value.should == 'http://www.rhiannonalpers.com'
+        t.text.should == 'www.rhiannonalpers.com'
+      end
+      response_body.should have_selector '.contact div.facebook span a' do |t|
+        t = t[0]
+        t.attributes['href'].value.should == 'http://facebook.com/rhiannon'
+        t.text.should == 'facebook.com/rhiannon'
+      end
+    end
+
   end
 
   describe '#events' do

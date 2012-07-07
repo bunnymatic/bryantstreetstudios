@@ -12,6 +12,7 @@ gem "rake"
 gem 'dalli'
 gem 'rest-client'
 gem 'heroku'
+gem 'foreman'
 gem 'rdiscount'
 gem 'faye'
 gem 'eventmachine'
