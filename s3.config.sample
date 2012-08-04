@@ -1,0 +1,3 @@
+export S3_ACCESS_KEY=MY_ACCESS_KEY
+export S3_SECRET=MY_SECRET
+export S3_BUCKET='the_s3_bucket_name'
