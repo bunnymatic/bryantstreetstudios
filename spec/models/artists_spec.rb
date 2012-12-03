@@ -2,6 +2,45 @@ require File.dirname(__FILE__) + '/../spec_helper'
 require File.dirname(__FILE__) + '/../mockmau'
 require 'mime/types'
 
+describe Artist do
+  describe 'make_link' do
+    [ ["http://a.b.com/", "http://a.b.com/", "a.b.com/"],
+      ["a.b.com/", "http://a.b.com/", "a.b.com/"],
+      ["https://a.b.com/", "https://a.b.com/", "a.b.com/"] ].each do |vals|
+      it "properly returns a link given an input url #{vals[0]} url" do
+        url = Artist.make_link(vals[0])
+        url.should have_selector('a') do |tag|
+          t = tag[0]
+          t.attributes['href'].value.should == vals[1]
+          t.text.should == vals[2]
+        end
+      end
+    end
+    it "uses the input text as specified" do
+      url = Artist.make_link('http://mylink.com') do
+        'check out my link'
+      end
+      url.should have_selector('a') do |tag|
+        t = tag[0]
+        t.attributes['href'].value.should == 'http://mylink.com'
+        t.text.should == 'check out my link'
+      end
+    end
+    it "puts the options in the link as attributes" do
+      url = Artist.make_link('http://mylink.com', {:class => 'theclass', :myattr => 'myval'}) do
+        'eat it'
+      end
+      url.should have_selector('a') do |tag|
+        t = tag[0]
+        t.attributes['href'].value.should == 'http://mylink.com'
+        t.attributes['class'].value.should == 'theclass'
+        t.attributes['myattr'].value.should == 'myval'
+        t.text.should == 'eat it'
+      end
+    end
+  end
+end
+
 describe Artists do
   context 'new' do
     it 'returns all artists' do

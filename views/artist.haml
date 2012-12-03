@@ -34,7 +34,9 @@
   %section.contact
     %h1 #{@artist.fullname} : Contact
     - [:email, :website, :facebook, :twitter, :myspace, :blog].each do |k|
-      - if k && @artist.send(k) && !@artist.send(k).empty?
+      - if @artist.send(k) && !@artist.send(k).empty?
         %div{:class => k.to_s}
-          %span #{k.capitalize} : #{@artist.send(k)}
+          :ruby
+            val = (k == :email ? @artist.send(k) : Artist.make_link(@artist.send(k)))
+          %span #{k.capitalize} : #{val}
 

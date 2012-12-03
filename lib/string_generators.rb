@@ -1,8 +1,7 @@
-LETTERS_PLUS_SPACE ||= []
-('a'..'z').each {|ltr| LETTERS_PLUS_SPACE << ltr}
-('A'..'Z').each {|ltr| LETTERS_PLUS_SPACE << ltr}
-
 def gen_random_string(len=8)
-  numchars = LETTERS_PLUS_SPACE.length
-  (0..len).map{ LETTERS_PLUS_SPACE[rand(numchars)] }.join
+  letters_plus_space = []
+  ('a'..'z').each {|ltr| letters_plus_space << ltr}
+  ('A'..'Z').each {|ltr| letters_plus_space << ltr}
+  numchars = letters_plus_space.length
+  (0..len).map{ letters_plus_space[rand(numchars)] }.join
 end

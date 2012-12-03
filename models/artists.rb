@@ -1,6 +1,7 @@
 require 'dalli'
 require 'rest_client'
 require 'ostruct'
+require 'uri'
 
 class Artist < OpenStruct; 
 
@@ -11,7 +12,19 @@ class Artist < OpenStruct;
   def website
     url
   end
+
+  def self.make_link(uri, opts = {}, &block)
+    if ! (/https?\:\/\// =~ uri)
+      uri = 'http://' + uri
+    end
+    buf = "<a href='#{uri}' "
+    buf << opts.map{ |k,v| "#{k}=\'#{v}'"}.join(" ")
+    buf << ">"
+    buf << (block ? block.call : uri.gsub(/https?:\/\//, ''))
+    buf << "</a>"
+  end
 end
+
 
 
 class Artists
