@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'sinatra/logger'
 require 'dm-paperclip'
 
 disable :run

@@ -9,6 +9,7 @@ gem 'thin'
 gem 'haml'
 gem 'sass'
 gem "rake"
+gem 'memcachier'
 gem 'dalli'
 gem 'rest-client'
 gem 'heroku'

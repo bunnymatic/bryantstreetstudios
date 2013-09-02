@@ -1,13 +1,13 @@
 #note it seems this can only be 1 level deep
 cache_expiry:
-  production: 86400 
+  production: 86400
   development: 2000
 cache_prefix: bss
-mau_api_url: 
+mau_api_url:
   production: http://missionartistsunited.org/api
   development: http://mau.rcode5.com/api
   test: http://test.mau.org/api
-mau_web_url: 
+mau_web_url:
   production: http://missionartistsunited.org
   development: http://mau.rcode5.com
   test: http://test.mau.org
@@ -20,5 +20,3 @@ auth_user:
 auth_pass:
   test: whatever
   development: whatever
-
-  
