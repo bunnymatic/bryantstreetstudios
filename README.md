@@ -79,6 +79,12 @@ Once the remote is there (and you've added your SSH keys to the heroku - [Follow
 
 We will most likely set this up on a Continuous Integration machine (CI) which means that you may not have to think about this step because we'll periodically check the code stream and if there have been updates, we'll automagically pull those, build the new code, run the tests and push to heroku if all the tests pass.  More on that when it's in place.
 
+### Amazon S3
+
+We're using Amazon S3 for storage of local assets (pictures).  This needs to be setup with some config variables.  The file s3.config.sh should be run before you run the app.  This will make the shell ready for amazon, but don't check that file into the repository because we'd like to keep those keys private.  To set things up, before you run the app, run (in the shell)
+
+    % s3.config.sh
+
 ## Testing info
 
 ### Running tests
@@ -87,7 +93,7 @@ To run the spec tests,
 
     % bundle exec rake spec
 
-To run the javascript tests (hopefully working)
+To run the javascript tests (NOTE: these are not yet setup as of 8/4/2012 so you can skip this step)
    
     % bundle exec jasmine-headless-webkit
 

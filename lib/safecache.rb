@@ -34,7 +34,8 @@ class SafeCache
   def self.flush
     begin
       cache.flush
-    rescue Dalli::RingError => ex
+
+    rescue Dalli::RingError, Dalli::NetworkError => ex
       puts "*** Failed to flush cache #{ex}"
     end
   end

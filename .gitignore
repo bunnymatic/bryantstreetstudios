@@ -13,3 +13,4 @@ romey.db
 romey.sqlite
 .sass-cache
 .jhw-cache
+s3.config.sh
