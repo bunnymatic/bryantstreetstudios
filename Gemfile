@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '2.0.0'
 
 gem 'sinatra'
 gem 'sinatra-contrib' 
@@ -21,6 +22,7 @@ gem 'kgio'
 gem "datamapper", '~> 1.2.0'
 gem "dm-aggregates", "~> 1.2.0"
 gem "dm-postgres-adapter", "~> 1.2.0"
+gem 'oj'
 
 # krobertson's needs a few patches for heroku/s3 tiein
 gem "dm-paperclip", :git => 'https://github.com/krobertson/dm-paperclip.git'
@@ -37,7 +39,6 @@ group :development, :test do
   gem "rack-test"
   gem "mime-types"
   gem "jasmine"
-  gem 'autotest'
   #gem 'jasmine-headless-webkit', :git => 'git://github.com/johnbintz/jasmine-headless-webkit.git', :branch => 'master'
 end
 

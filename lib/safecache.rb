@@ -1,5 +1,5 @@
 require 'dalli'
-class SafeCache
+class SafeCache 
 
   def self.init
     if ['MEMCACHIER_SERVERS', 'MEMCACHIER_USERNAME', 'MEMCACHIER_PASSWORD'].all?{|k| ENV.has_key? k}
@@ -8,11 +8,11 @@ class SafeCache
                                       :password => ENV["MEMCACHIER_PASSWORD"]})
     else
       @@cache ||= Dalli::Client.new('localhost:11211', {:expires_in => BryantStreetStudios.settings.cache_expiry})
-    end
+  end
   end
 
   def self.get(*args)
-    begin
+    begin 
       args[0] = BryantStreetStudios.settings.cache_prefix + args[0]
       cache.get *args
     rescue Dalli::RingError
@@ -20,9 +20,9 @@ class SafeCache
       nil
     end
   end
-
+  
   def self.set(*args)
-    begin
+    begin 
       args[0] = BryantStreetStudios.settings.cache_prefix + args[0]
       cache.set *args
     rescue Dalli::RingError
@@ -32,12 +32,12 @@ class SafeCache
   end
 
   def self.flush
-    begin
+    begin 
       cache.flush
 
     rescue Dalli::RingError, Dalli::NetworkError => ex
       puts "*** Failed to flush cache #{ex}"
-    end
+    end      
   end
 
   private
