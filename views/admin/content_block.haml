@@ -3,15 +3,15 @@
 
   - if @content_block && @content_block.errors.present?
     .errors
-      ERRORS! 
+      ERRORS!
       - @content_block.errors.each do |err|
         .err #{err.join}
   :ruby
     help_msg = { :page => 'e.g. "events", "home"',
-      :section => 'currently unused', 
+      :section => 'currently unused',
       :body => 'We use markdown.  <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">Read the guide.</a>'}
   %form{:action => '/admin/content_block', :method => 'post'}
-    - if @content_block.id 
+    - if @content_block.id
       %input{:id => 'content_block_id', :type => 'hidden', :name => 'content_block[id]', :value => @content_block.id}
     - [ :page, :section, :body].each do |k|
       - ky = k.to_s
@@ -21,14 +21,13 @@
           %label{:for => "content_block_#{ky}"} #{ky.capitalize}
         - if k == :body
           %textarea{:class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :rows => 40, :cols => 75} #{@content_block.send(ky) || ''}
-        - else        
+        - else
           %input{:type => 'text', :class => "content_block", :id => "content_block_#{ky}", :name => "content_block[#{ky}]", :value => @content_block.send(ky) || '' }
         %span.help #{help_msg[k]}
     .clear
-    .ctrls    
+    .ctrls
       .cancel
         %a{:href => '/admin/content_blocks'}
           %button Cancel
-      .submit  
+      .submit
         %input{:type => 'submit'}
-

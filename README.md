@@ -99,10 +99,9 @@ To run the javascript tests (NOTE: these are not yet setup as of 8/4/2012 so you
 
 ### Writing tests
 
-Tests live under the /spec directory.  This stands for "specification".  We're using RSpec for the test framework in combo with Mocha(for mocking) and and WebRat::Matchers(for html selector testing).  You can look for these on google or check the cheats:
+Tests live under the /spec directory.  This stands for "specification".  We're using RSpec for the test framework in combo with WebRat::Matchers(for html selector testing).  You can look for these on google or check the cheats:
 
 * [cheat rspec](http://cheat.errtheblog.com/s/rspec/)
-* [cheat mocha](http://cheat.errtheblog.com/s/mocha)
 * [cheat webrat](http://cheat.errtheblog.com/s/webrat/)
 
 

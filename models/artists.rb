@@ -65,7 +65,7 @@ class Artists
       begin 
         url = "%s/artists" % conf.mau_api_url
         resp = RestClient.get url
-        all_artists = JSON.parse(resp.body)
+        all_artists = Oj.load(resp.body)
       rescue Exception => ex
         puts "ERROR: Unable to connect to #{url}"
         puts "Exception: #{ex.to_s}"

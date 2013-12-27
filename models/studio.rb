@@ -23,7 +23,7 @@ class Studio
       url = "%s/studios" % conf.mau_api_url
       begin 
         resp = RestClient.get url
-        studios = JSON.parse(resp.body)
+        studios = Oj.load(resp.body)
       rescue Exception => ex
         puts "ERROR: Unable to connect to #{url}"
         puts "Exception: #{ex.to_s}"
