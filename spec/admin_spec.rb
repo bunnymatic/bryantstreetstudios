@@ -63,7 +63,7 @@ describe BryantStreetStudios do
       end
     end
   end
-  
+
   ########## Admin endpoints
 
   ## Content Blocks
@@ -134,14 +134,14 @@ describe BryantStreetStudios do
         ContentResource.all.last.body.should == body
         ContentResource.all.last.page.should == page
       end
-      it 'edit a new resource block with content but without an id' do
+      it 'edit a resource block with new content' do
         cr = ContentResource.all.last
         body = [gen_random_string(10), gen_random_string(20)].join(" ")
         old_count = ContentResource.all.count
         post '/admin/content_block', :content_block => {:id => cr.id, :body => body }
         ContentResource.all.count.should == (old_count)
-        ContentResource.all.last.body.should == body
-        ContentResource.all.last.page.should == cr.page
+        ContentResource.get(cr.id.to_i).body.should == body
+        ContentResource.get(cr.id.to_i).page.should == cr.page
       end
       it 'edit redirects to content_blocks index' do
         cr = ContentResource.all.last
@@ -161,7 +161,7 @@ describe BryantStreetStudios do
       cr = ContentResource.all.last
       cr.should be
       get "/admin/content_block/#{cr.id}/delete"
-      ContentResource.get(cr.id).should be_nil
+      ContentResource.get(cr.id.to_i).should be_nil
     end
     it 'redirects to content blocks index' do
       cr = ContentResource.all.last
@@ -171,7 +171,7 @@ describe BryantStreetStudios do
     end
   end
 
-  
+
   ## pictures
   ### index
   describe '#admin/pictures' do
@@ -179,14 +179,14 @@ describe BryantStreetStudios do
       login_as_admin
     end
     it 'returns success' do
-      PictureResource.stubs(:all => [ stub(:picture => stub(:url => 'url1'), :id => 10),
-                                      stub(:picture => stub(:url => 'url2'), :id => 12) ])
+      PictureResource.stub(:all => [ double(:picture => double(:url => 'url1'), :id => 10),
+                                      double(:picture => double(:url => 'url2'), :id => 12) ])
       get '/admin/pictures'
       last_response.status.should == 200
     end
     it 'shows a list of content blocks with edit and delete links' do
-      PictureResource.stubs(:all => [ stub(:picture => stub(:url => 'url1'), :id => 10),
-                                      stub(:picture => stub(:url => 'url2'), :id => 12) ])
+      PictureResource.stub(:all => [ double(:picture => double(:url => 'url1'), :id => 10),
+                                      double(:picture => double(:url => 'url2'), :id => 12) ])
       get '/admin/pictures'
       pics = PictureResource.all.reverse
       response_body.should have_selector('ul li.picture') do |blk|
@@ -200,7 +200,7 @@ describe BryantStreetStudios do
           end
         end
       end
-    end    
+    end
   end
 
   ## artist exclusions
@@ -226,7 +226,7 @@ describe BryantStreetStudios do
   describe 'POST#admin/exclusion' do
     before do
       login_as_admin
-      setup_fixtures      
+      setup_fixtures
     end
     it 'creates a new exclusion given good data' do
       lambda {
@@ -255,7 +255,7 @@ describe BryantStreetStudios do
     end
     it 'calls cache flush' do
       login_as_admin
-      SafeCache.expects(:flush)
+      SafeCache.should_receive(:flush)
       get '/admin/cacheflush'
     end
     it 'redirects to root' do
@@ -266,5 +266,5 @@ describe BryantStreetStudios do
   end
   describe 'helpers' do
   end
-  
+
 end

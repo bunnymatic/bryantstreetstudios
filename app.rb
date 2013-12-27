@@ -16,6 +16,7 @@ require 'rdiscount'
 require 'thin'
 require 'faye'
 require 'eventmachine'
+require 'oj'
 
 class BryantStreetStudios < Sinatra::Base
 
@@ -27,7 +28,7 @@ class BryantStreetStudios < Sinatra::Base
   set :root, File.dirname(__FILE__)
   register Sinatra::ConfigFile
   register Sinatra::StaticAssets
-  register Sinatra::Logger 
+  register Sinatra::Logger
 
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"
@@ -38,14 +39,14 @@ class BryantStreetStudios < Sinatra::Base
   set :dburl, ENV['DATABASE_URL'] || settings.database_url
   set :auth_user, ENV['1890_ADMIN_USER'] || settings.auth_user || gen_random_string
   set :auth_pass, ENV['1890_ADMIN_PASS'] || settings.auth_pass || gen_random_string
-  
+
   DataMapper::setup(:default, dburl)
 
   helpers do
-    
+
     BASE_TITLE = '1890 Bryant Street Studios'
-    
-    def markdown_content(md) 
+
+    def markdown_content(md)
       RDiscount.new(md || '').to_html
     end
 
@@ -70,8 +71,8 @@ class BryantStreetStudios < Sinatra::Base
       return (@auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == credentials)
     end
 
-    def admin_haml(template, options={}) 
-      haml(template.to_sym, options.merge(:layout => 'admin/layout'.to_sym)) 
+    def admin_haml(template, options={})
+      haml(template.to_sym, options.merge(:layout => 'admin/layout'.to_sym))
     end
 
   end
@@ -86,7 +87,7 @@ class BryantStreetStudios < Sinatra::Base
     @current_section = 'home'
     @breadcrumb = BreadCrumbs.new([])
     announcement = ContentResource.first(:page => 'home', :section => 'announcement')
-    @announcement = announcement.body if announcement 
+    @announcement = announcement.body if announcement
     haml :index
   end
 
@@ -104,7 +105,7 @@ class BryantStreetStudios < Sinatra::Base
   end
 
   get '/artists/:id' do
-    @artist = Artists.find(params[:id])
+    @artist = Artists.find(params[:id].to_i)
     @current_section = 'artist'
     @breadcrumb = BreadCrumbs.new([:home, :artists, @artist.fullname])
     @title = make_title 'Artist', @artist.fullname
@@ -149,7 +150,7 @@ class BryantStreetStudios < Sinatra::Base
   ### delete
   get '/admin/picture/:id/delete' do
     protected!
-    img = PictureResource.get(params['id'])
+    img = PictureResource.get(params['id'].to_i)
     if img
       img.destroy
     end
@@ -178,7 +179,7 @@ class BryantStreetStudios < Sinatra::Base
   get '/admin/content_block/:id' do
     protected!
     @current_section = 'admin_content_block'
-    @content_block = ContentResource.get(params['id'])
+    @content_block = ContentResource.get(params['id'].to_i)
     admin_haml 'admin/content_block'
   end
 
@@ -186,7 +187,7 @@ class BryantStreetStudios < Sinatra::Base
   post '/admin/content_block' do
     protected!
     _id = params['content_block']['id']
-    @content_block = (_id.present? ? ContentResource.get(_id) : ContentResource.new)
+    @content_block = (_id.present? ? ContentResource.get(_id.to_i) : ContentResource.new)
     @content_block.attributes = params['content_block']
     unless @content_block.save
       admin_haml 'admin/content_block'
@@ -198,7 +199,7 @@ class BryantStreetStudios < Sinatra::Base
   ### delete
   get '/admin/content_block/:id/delete' do
     protected!
-    r = ContentResource.get(params['id'])
+    r = ContentResource.get(params['id'].to_i)
     r.destroy if r
     redirect '/admin/content_blocks'
   end
@@ -212,7 +213,7 @@ class BryantStreetStudios < Sinatra::Base
 
     admin_haml 'admin/exclusions'
   end
-  
+
   ### new
   post '/admin/exclusion' do
     protected!
@@ -226,7 +227,7 @@ class BryantStreetStudios < Sinatra::Base
   ### artist_exclusions
   get '/admin/exclusion/:id/delete' do
     protected!
-    ae = ArtistExclusion.get(params['id'])
+    ae = ArtistExclusion.get(params['id'].to_i)
     ae.destroy if ae
     redirect '/admin/exclusions'
   end
@@ -251,7 +252,7 @@ class BryantStreetStudios < Sinatra::Base
     redirect '/'
   end
 
-  
+
   get '/admin/env' do
     @current_section = 'environment'
     protected!
@@ -272,10 +273,10 @@ DataMapper.auto_upgrade!
 
 EM.next_tick {
 
-  
+
   FAYE_SERVER_URL = ENV['FAYE_SERVER_URL'] || 'http://localhost:3030/maumessages'; #mau-messages.herokuapp.com:80/maumessages';
   SUBSCRIBER_TOKEN = ENV['FAYE_SUBSCRIBER_TOKEN'] || 'whatevs_yo'
-  
+
   FAYE_SERVER_URL = 'http://mau-messages.herokuapp.com:80/maumessages'
   SUBSCRIBER_TOKEN = 'gomakesomeart'.reverse
 
@@ -288,7 +289,7 @@ EM.next_tick {
       cb.call msg
     end
   end
-  
+
   begin
     client = Faye::Client.new(FAYE_SERVER_URL)
     client.add_extension(ClientAuth.new)

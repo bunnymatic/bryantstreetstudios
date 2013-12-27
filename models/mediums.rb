@@ -32,7 +32,7 @@ class Mediums
       begin 
         url = "%s/media" % conf.mau_api_url
         resp = RestClient.get url
-        media_list = JSON.parse(resp.body)
+        media_list = Oj.load(resp.body)
       rescue Exception => ex
         puts "ERROR: Unable to connect to #{url}"
         puts "Exception: #{ex.to_s}"
