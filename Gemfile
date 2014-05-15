@@ -12,7 +12,6 @@ gem "rake"
 gem 'memcachier'
 gem 'dalli'
 gem 'rest-client'
-gem 'heroku'
 gem 'rdiscount'
 gem 'faye'
 gem 'eventmachine'
