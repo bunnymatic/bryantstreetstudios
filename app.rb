@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/config_file'
 require 'sinatra/logger'
