@@ -5,11 +5,11 @@ cache_expiry:
 cache_prefix: bss
 mau_api_url:
   production: http://missionartistsunited.org/api
-  development: http://mau.rcode5.com/api
+  development: http://localhost:3000/api
   test: http://test.mau.org/api
 mau_web_url:
   production: http://missionartistsunited.org
-  development: http://mau.rcode5.com
+  development: http://localhost:3000
   test: http://test.mau.org
 database_url:
   test: "postgres://localhost/bryant_test"

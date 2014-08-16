@@ -79,7 +79,7 @@ class Artists
             ap['media'] = m.name if m
           end
           fname = ap['filename']
-          furl = ("%s/%s" % [conf.mau_web_url, fname.gsub(/^public\//, '')])
+          furl = ("%s/%s" % [conf.mau_web_url, fname.gsub(/^.*public\//, '')])
           ap['thumb'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/t_\2')
           ap['small'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/s_\2')
           ap['medium'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/m_\2')
