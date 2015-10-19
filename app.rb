@@ -38,9 +38,10 @@ class BryantStreetStudios < Sinatra::Base
   config_file File.join( [root, 'config', 'config.yml'] )
 
   # fetch from env or config
-  set :dburl, ENV['DATABASE_URL'] || settings.database_url
-  set :auth_user, ENV['1890_ADMIN_USER'] || settings.auth_user || gen_random_string
-  set :auth_pass, ENV['1890_ADMIN_PASS'] || settings.auth_pass || gen_random_string
+  set :dburl, ENV.fetch('DATABASE_URL', settings.database_url)
+  set :auth_user, ENV.fetch('1890_ADMIN_USER', settings.auth_user || gen_random_string)
+  set :auth_pass, ENV.fetch('1890_ADMIN_PASS', settings.auth_pass || gen_random_string)
+  set :mau_connector_pass, ENV.fetch('MAU_API_PASS', 'whatever')
 
   DataMapper::setup(:default, dburl)
 
@@ -270,6 +271,8 @@ end
 Dir[File.join(File.dirname(__FILE__),"{lib,models}/**/*.rb")].each do |file|
   require file
 end
+require File.join(File.dirname(__FILE__),"models/models.rb")
+
 DataMapper.finalize
 DataMapper.auto_upgrade!
 

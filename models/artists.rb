@@ -1,5 +1,4 @@
 require 'dalli'
-require 'rest_client'
 require 'ostruct'
 require 'uri'
 
@@ -25,6 +24,18 @@ class Artist
 
   def lastname
     @model['lastname']
+  end
+
+  def self.fetch(id)
+    conf = BryantStreetStudios.settings
+    key = "artist_#{id}"
+    artist = SafeCache.get(key)
+    unless artist
+      artist = MAU::RestClient.get_json("%s/artists/%d.json" % [conf.mau_api_url, id]).fetch "artist"
+      SafeCache.set(key, artist) if artist
+    end
+    puts artist
+    Artist.new(artist)
   end
 
   def fullname
@@ -76,6 +87,12 @@ class Artist
     buf << ">"
     buf << (block ? block.call : uri.gsub(/https?:\/\//, ''))
     buf << "</a>"
+  end
+
+  def art_pieces
+    self['art_pieces'].map do |item|
+      ArtPiece.fetch(item['id'])
+    end
   end
 end
 

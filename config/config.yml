@@ -5,7 +5,7 @@ cache_expiry:
 cache_prefix: bss
 mau_api_url:
   production: http://missionartistsunited.org/api
-  development: http://localhost:3000/api
+  development: http://localhost:3000/api/v2
   test: http://test.mau.org/api
 mau_web_url:
   production: http://missionartistsunited.org
