@@ -5,7 +5,7 @@ module MAU
   class RestClient
 
     DEFAULT_HEADERS = {
-      "Authorization" => "Secret Word Goes Here"
+      "Authorization" => ENV.fetch("MAU_SECRET_WORD", "Secret Word Goes Here")
     }.freeze
 
     def self.get(url, headers: {})
