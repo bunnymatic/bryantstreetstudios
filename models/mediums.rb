@@ -1,6 +1,5 @@
 require 'dalli'
 require 'ostruct'
-require 'byebug'
 
 class Medium
 

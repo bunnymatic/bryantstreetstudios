@@ -90,7 +90,7 @@ class Artist
   end
 
   def art_pieces
-    self['art_pieces'].map do |item|
+    self['art_pieces'][0..3].map do |item|
       ArtPiece.fetch(item['id'])
     end
   end

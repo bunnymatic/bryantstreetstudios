@@ -1,5 +1,4 @@
 require 'dalli'
-require 'byebug'
 
 class Studio
   ALLOWED_KEYS = %w|id name city street state zip cross_street lat lng profile_image phone slug artists|
