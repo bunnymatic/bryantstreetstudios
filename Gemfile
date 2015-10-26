@@ -35,4 +35,5 @@ group :test, :development do
   gem "rack-test"
   gem "mime-types"
   gem "jasmine"
+  gem 'tux'
 end
