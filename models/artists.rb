@@ -3,14 +3,34 @@ require 'rest_client'
 require 'ostruct'
 require 'uri'
 
-class Artist < OpenStruct; 
+class Artist
 
-  def fullname 
-    firstname + ' ' + lastname
+  def initialize(model_data)
+    @model = model_data
+  end
+
+  def id
+    @model['id']
+  end
+
+  def firstname
+    @model['firstname']
+  end
+
+  def lastname
+    @model['lastname']
+  end
+
+  def fullname
+    [firstname, lastname].join " "
   end
 
   def website
     url
+  end
+
+  def art_pieces
+
   end
 
   def self.make_link(uri, opts = {}, &block)
@@ -25,8 +45,6 @@ class Artist < OpenStruct;
   end
 end
 
-
-
 class Artists
   ALLOWED_KEYS = ["firstname", "lastname"]
 
@@ -34,7 +52,7 @@ class Artists
 
   @@artists = nil
 
-  def self.find(_id) 
+  def self.find(_id)
     if !_id
       return nil
     end
@@ -62,7 +80,7 @@ class Artists
     artist_list = SafeCache.get('artists')
     if !artist_list || artist_list.empty?
       all_artists = []
-      begin 
+      begin
         url = "%s/artists" % conf.mau_api_url
         resp = RestClient.get url
         all_artists = Oj.load(resp.body)
@@ -71,21 +89,6 @@ class Artists
         puts "Exception: #{ex.to_s}"
       end
       artist_list = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
-      # add/update art_piece filenames
-      artist_list.each do |a|
-        a['art_pieces'].each do |ap|
-          if (ap['medium_id'] && ap['medium_id'].to_i != 0) 
-            m = Mediums.find(ap['medium_id'].to_i) 
-            ap['media'] = m.name if m
-          end
-          fname = ap['filename']
-          furl = ("%s/%s" % [conf.mau_web_url, fname.gsub(/^.*public\//, '')])
-          ap['thumb'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/t_\2')
-          ap['small'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/s_\2')
-          ap['medium'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/m_\2')
-          ap['large'] = furl.gsub(/(.*)\/([^\/]*$)/, '\1/l_\2')
-        end
-      end
       SafeCache.set('artists', artist_list) unless (!artist_list || artist_list.empty?)
     end
     @@artists = Hash[artist_list.map{|a| entry = Artist.new(a); [entry.id, entry]}]

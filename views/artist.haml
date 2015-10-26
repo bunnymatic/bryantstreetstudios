@@ -1,17 +1,17 @@
 .sidebar
   %h3 Artists
   %ul
-    %li 
-      %a{:href => "#", 'data-section' => "info"} 
+    %li
+      %a{:href => "#", 'data-section' => "info"}
         %div #{@artist.fullname}
-    - @artist.art_pieces[0..3].each_with_index do |ap,idx|
-      %li 
-        %a{:href => "#", 'data-section' => "piece#{ap['id']}", :title => ap['title']} 
+    - @artist.art_pieces[0..3].each_with_index do |ap, idx|
+      %li
+        %a{:href => "#", 'data-section' => "piece#{ap.id}", :title => ap.title}
           %div Image #{idx+1}
-    %li 
+    %li
       %a{:href => "#", 'data-section' => 'contact'}
         %div Contact
-      
+
 .content
   = haml :breadcrumb, :layout => false
   %section.info
@@ -19,18 +19,18 @@
     .thumbs
       - @artist.art_pieces[0..3].each do |ap|
         .piece
-          %img{:src => ap['thumb']}
-    .bio #{markdown_content(@artist.artist_info['bio'])}
+          %img{:src => ap.thumbnail}
+    .bio #{markdown_content(@artist.bio)
   - @artist.art_pieces[0..3].each do |ap|
-    %section.art_piece{:class => "piece#{ap['id']}"}
+    %section.art_piece{:class => "piece#{ap.id}"}
       %h1 #{@artist.fullname}
-      .artpiece 
-        .title #{ap['title']}
-        .medium_year 
-          = [ap['media'], ap['year']].compact.join(", ")
-        .piece 
-          %img{:src => ap['medium']}
-        
+      .artpiece
+        .title #{ap.title}
+        .medium_year
+          = [ap.medium, ap.year].compact.join(", ")
+        .piece
+          %img{:src => ap.images['medium']
+
   %section.contact
     %h1 #{@artist.fullname} : Contact
     - [:email, :website, :facebook, :twitter, :myspace, :blog].each do |k|
@@ -39,4 +39,3 @@
           :ruby
             val = (k == :email ? @artist.send(k) : Artist.make_link(@artist.send(k)))
           %span #{k.capitalize} : #{val}
-
