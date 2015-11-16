@@ -16,7 +16,8 @@ class ArtPiece
   end
 
   def medium
-    Mediums.find(@model['medium_id']).name if @model['medium_id']
+    medium = Mediums.find(@model['medium_id']) if @model['medium_id']
+    medium.name if medium
   end
 
   def dimensions
