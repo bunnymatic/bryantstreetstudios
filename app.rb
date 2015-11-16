@@ -18,6 +18,7 @@ require 'thin'
 require 'faye'
 require 'eventmachine'
 require 'oj'
+require './lib/string_generators'
 
 class BryantStreetStudios < Sinatra::Base
 
