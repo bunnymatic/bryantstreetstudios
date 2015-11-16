@@ -74,7 +74,7 @@ describe Artists do
       a.id.should == 11
     end
     it 'returns the artists\' art_pieces' do
-      a = Artists.find(11).art_pieces.count.should == 10
+      a = Artists.find(11).art_pieces.count.should == 4
     end
     it 'returns all thumbnail sizes for an art_piece' do
       ap = Artists.find(11).art_pieces.first
