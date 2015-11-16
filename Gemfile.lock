@@ -223,6 +223,3 @@ DEPENDENCIES
   thin
   tux
   webrat
-
-BUNDLED WITH
-   1.10.4
