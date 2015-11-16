@@ -35,8 +35,8 @@ class ArtPiece
   def images
     return @images if @images
     images = ['thumb', 'small', 'medium', 'large'].map { |k|
-      [k, image_file(k)]
-    }
+      [k, image_file(k)] if image_file(k)
+    }.reject{|k,v| v.nil?}
     Hash[images]
   end
 
@@ -48,6 +48,7 @@ class ArtPiece
 
   def image_file(sz = nil)
     f = @model['filename']
+    return unless f
     case sz
     when 'thumb'
       image_path(f, 't_')
@@ -73,8 +74,8 @@ class ArtPiece
     File.join( conf.mau_web_url, filename.gsub(file_match, dest_file) )
   end
 
-  def clean_filename(f)
-    f.gsub(%r|/home/deploy/deployed/mau/shared/|, '').gsub(%r|public/artistdata/|, 'artistdata/')
+  def clean_filename(file)
+    file.gsub(%r|^.*/artistdata/|, 'artistdata/')
   end
 
   def conf
