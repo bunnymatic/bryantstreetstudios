@@ -67,7 +67,7 @@ class ArtPiece
     base_file = File.basename(filename)
     dest_file = prefix + base_file
     file_match = Regexp.new(base_file + "$")
-    File.join( conf.mau_web_url, filename.gsub(file_match, dest_file) )
+    File.join( conf.mau_web_url, filename.gsub(file_match, dest_file).gsub(%r|public/artistdata/|, 'artistdata/') )
   end
 
   def conf
