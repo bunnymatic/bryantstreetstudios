@@ -44,11 +44,19 @@ class ArtPiece
     images['thumb']
   end
 
+  def photo
+    @model['photo'] if @model['photo'].present?
+  end
+
+  def filename
+    @model['filename'] if @model['filename'].present?
+  end
+
   private
 
   def image_file(sz = nil)
-    f = @model['filename']
-    return unless f
+    f = photo || filename
+    return f if f.nil? || /^http/ =~ f
     case sz
     when 'thumb'
       image_path(f, 't_')
@@ -64,8 +72,6 @@ class ArtPiece
   end
 
   def image_path(filename, prefix)
-    return filename if /^http/ =~ filename
-
     filename = clean_filename(filename)
     base_file = File.basename(filename)
     dest_file = prefix + base_file

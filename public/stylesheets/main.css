@@ -162,7 +162,9 @@ h3 { font-size: 12px; }
 
 h4, h5, h6 { font-size: 11px; }
 
-a { text-decoration: none; }
+a { text-decoration: none; color: #1b1612; }
+a:hover, a:active { color: #6c5861; }
+a:visited { color: #1b1612; }
 
 .container { margin-bottom: 20px; }
 .container .bottom_spacer { clear: both; }
@@ -191,7 +193,7 @@ header nav li a:hover, header nav li a:active { color: #b7b76f; }
 .main .sidebar li a:visited { color: #dcdc8f; }
 .main .sidebar li a:hover, .main .sidebar li a:active { color: white; }
 .main .sidebar li a > div { font-weight: bold; margin: 4px 8px 4px 16px; }
-.main .content { background-color: white; color: #222222; display: block; zoom: 1; width: 511px; padding: 6px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; float: left; min-height: 391px; padding-bottom: 0; }
+.main .content { background-color: white; color: #1b1612; display: block; zoom: 1; width: 511px; padding: 6px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; float: left; min-height: 391px; padding-bottom: 0; }
 .main .content:after { clear: both; content: ' '; display: block; font-size: 0; line-height: 0; visibility: hidden; width: 0; height: 0; }
 .main .content a { color: #989933; }
 .main .content a:hover { color: #636; }
@@ -220,18 +222,20 @@ header nav li a:hover, header nav li a:active { color: #b7b76f; }
 /* colors */
 /* common */
 /* index */
-#artists .content { background-color: white; color: #222222; }
+#artists .content { background-color: white; color: #1b1612; }
 #artists .content .thumb { float: left; margin: 12px; width: 100px; }
 #artists .content .thumb .name { font-weight: bold; width: 100px; text-align: center; line-height: 14px; height: 20px; }
 #artists .content .img { width: 100px; height: 106px; text-align: center; }
 
 /* individual artist page */
-#artist .content { background-color: white; color: #222222; }
+#artist .content { background-color: white; color: #1b1612; }
 #artist .bio { clear: both; margin: auto; padding: 20px; text-align: justify; }
-#artist .thumbs .piece { float: left; width: 100px; margin: 10px; text-align: center; }
+#artist .thumbs .piece { float: left; width: 100px; margin: 10px; text-align: center; cursor: pointer; }
+#artist .thumbs .piece img { max-width: 100%; }
 #artist section { margin-bottom: 40px; }
 #artist section.art_piece, #artist section.contact { display: none; }
 #artist section.art_piece .piece { text-align: center; }
+#artist section.art_piece .piece img { max-width: 100%; }
 
 /** artists page*/
 /* define mixin colors

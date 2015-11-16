@@ -18,7 +18,7 @@
     %h1 #{@artist.fullname}
     .thumbs
       - @artist.art_pieces.each do |ap|
-        .piece
+        .piece{ 'data-section' => "piece#{ap.id}" }
           %img{:src => ap.thumbnail}
     .bio #{markdown_content(@artist.bio)}
   - @artist.art_pieces.each do |ap|

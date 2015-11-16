@@ -8,13 +8,12 @@ $full_width: 740px;
 $left_column_width: 217px;
 $right_column_width: $full_width - $left_column_width;
 
-
 body {
   font-family: Helvetica, Arial, Verdana, sans-serif;
   background-color: $light_green;
 }
 
-  
+
 h1 {
   font-size: 16px;
 }
@@ -30,6 +29,13 @@ h4, h5, h6 {
 
 a {
   text-decoration: none;
+  color: $black;
+  &:hover, &:active {
+    color: $purple_brown;
+  }
+  &:visited {
+    color: $black;
+  }
 }
 .container {
   margin-bottom: 20px;
@@ -142,5 +148,3 @@ header {
 @import 'home';
 @import 'artists';
 @import 'contacts';
-
-
