@@ -5,12 +5,18 @@ require 'uri'
 
 class Artist
 
+  attr_reader :model
+
   def initialize(model_data)
     @model = model_data
   end
 
   def id
     @model['id']
+  end
+
+  def name
+    @model['name']
   end
 
   def firstname
@@ -26,11 +32,39 @@ class Artist
   end
 
   def website
-    url
+    @model['url']
+  end
+
+  def bio
+    @model['bio']
+  end
+
+  def email
+    @model['email']
+  end
+
+  def facebook
+    @model['facebook']
+  end
+
+  def twitter
+    @model['twitter']
+  end
+
+  def myspace
+    @model['myspace']
+  end
+
+  def pinterest
+    @model['pinterest']
+  end
+
+  def blog
+    @model['blog']
   end
 
   def art_pieces
-
+    @model['art_pieces'].map { |art| ArtPiece.new(art) }
   end
 
   def self.make_link(uri, opts = {}, &block)

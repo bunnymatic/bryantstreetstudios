@@ -3,6 +3,8 @@ require 'sinatra'
 require 'rack/test'
 require 'rspec'
 require "webrat"
+require "byebug"
+require "pry"
 require File.join(File.dirname(__FILE__), '..','app')
 
 set :environment, :test

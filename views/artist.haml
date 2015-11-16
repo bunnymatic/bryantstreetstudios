@@ -20,7 +20,7 @@
       - @artist.art_pieces[0..3].each do |ap|
         .piece
           %img{:src => ap.thumbnail}
-    .bio #{markdown_content(@artist.bio)
+    .bio #{markdown_content(@artist.bio)}
   - @artist.art_pieces[0..3].each do |ap|
     %section.art_piece{:class => "piece#{ap.id}"}
       %h1 #{@artist.fullname}
@@ -29,7 +29,7 @@
         .medium_year
           = [ap.medium, ap.year].compact.join(", ")
         .piece
-          %img{:src => ap.images['medium']
+          %img{:src => ap.images['medium']}
 
   %section.contact
     %h1 #{@artist.fullname} : Contact
