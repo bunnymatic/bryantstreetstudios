@@ -64,7 +64,7 @@ class Artist
   end
 
   def art_pieces
-    @model['art_pieces'].map { |art| ArtPiece.new(art) }
+    @art_pieces ||= @model['art_pieces'].map { |art| ArtPiece.new(art) }.select{|ap| ap.thumbnail}[0..3]
   end
 
   def self.make_link(uri, opts = {}, &block)
