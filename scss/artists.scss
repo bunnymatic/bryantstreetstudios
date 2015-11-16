@@ -22,7 +22,7 @@
         height: 20px;
       }
     }
-    
+
     .img {
       width:100px;
       height: 106px;
@@ -44,11 +44,15 @@
     text-align: justify;
   }
   .thumbs {
-    .piece { 
+    .piece {
       float: left;
       width: 100px;
       margin: 10px;
       text-align:center;
+      cursor: pointer;
+      img {
+        max-width: 100%;
+      }
     }
   }
   section {
@@ -58,7 +62,10 @@
     }
     &.art_piece {
       .piece {
-        text-align: center; 
+        text-align: center;
+        img {
+          max-width: 100%;
+        }
       }
     }
   }

@@ -4,7 +4,7 @@
     %li
       %a{:href => "#", 'data-section' => "info"}
         %div #{@artist.fullname}
-    - @artist.art_pieces[0..3].each_with_index do |ap, idx|
+    - @artist.art_pieces.each_with_index do |ap, idx|
       %li
         %a{:href => "#", 'data-section' => "piece#{ap.id}", :title => ap.title}
           %div Image #{idx+1}
@@ -17,11 +17,11 @@
   %section.info
     %h1 #{@artist.fullname}
     .thumbs
-      - @artist.art_pieces[0..3].each do |ap|
-        .piece
+      - @artist.art_pieces.each do |ap|
+        .piece{ 'data-section' => "piece#{ap.id}" }
           %img{:src => ap.thumbnail}
     .bio #{markdown_content(@artist.bio)}
-  - @artist.art_pieces[0..3].each do |ap|
+  - @artist.art_pieces.each do |ap|
     %section.art_piece{:class => "piece#{ap.id}"}
       %h1 #{@artist.fullname}
       .artpiece

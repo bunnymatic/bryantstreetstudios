@@ -35,8 +35,8 @@ class ArtPiece
   def images
     return @images if @images
     images = ['thumb', 'small', 'medium', 'large'].map { |k|
-      [k, image_file(k)]
-    }
+      [k, image_file(k)] if image_file(k)
+    }.reject{|k,v| v.nil?}
     Hash[images]
   end
 
@@ -44,10 +44,19 @@ class ArtPiece
     images['thumb']
   end
 
+  def photo
+    @model['photo'] if @model['photo'].present?
+  end
+
+  def filename
+    @model['filename'] if @model['filename'].present?
+  end
+
   private
 
   def image_file(sz = nil)
-    f = @model['filename']
+    f = photo || filename
+    return f if f.nil? || /^http/ =~ f
     case sz
     when 'thumb'
       image_path(f, 't_')
@@ -63,8 +72,6 @@ class ArtPiece
   end
 
   def image_path(filename, prefix)
-    return filename if /^http/ =~ filename
-
     filename = clean_filename(filename)
     base_file = File.basename(filename)
     dest_file = prefix + base_file
@@ -73,8 +80,8 @@ class ArtPiece
     File.join( conf.mau_web_url, filename.gsub(file_match, dest_file) )
   end
 
-  def clean_filename(f)
-    f.gsub(%r|/home/deploy/deployed/mau/shared/|, '').gsub(%r|public/artistdata/|, 'artistdata/')
+  def clean_filename(file)
+    file.gsub(%r|^.*/artistdata/|, 'artistdata/')
   end
 
   def conf
