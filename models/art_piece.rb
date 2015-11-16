@@ -64,17 +64,20 @@ class ArtPiece
   def image_path(filename, prefix)
     return filename if /^http/ =~ filename
 
+    filename = clean_filename(filename)
     base_file = File.basename(filename)
     dest_file = prefix + base_file
     file_match = Regexp.new(base_file + "$")
-    File.join( conf.mau_web_url, filename.gsub(file_match, dest_file).gsub(%r|public/artistdata/|, 'artistdata/') )
+
+    File.join( conf.mau_web_url, filename.gsub(file_match, dest_file) )
+  end
+
+  def clean_filename(f)
+    f.gsub(%r|/home/deploy/deployed/mau/shared/|, '').gsub(%r|public/artistdata/|, 'artistdata/')
   end
 
   def conf
     @conf ||= BryantStreetStudios.settings
   end
-
-
-
 
 end
