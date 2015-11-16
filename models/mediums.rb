@@ -2,14 +2,28 @@ require 'dalli'
 require 'rest_client'
 require 'ostruct'
 
-class Medium < OpenStruct; end
+class Medium
+
+  def initialize(model)
+    @model = model
+  end
+
+  def id
+    @model['id']
+  end
+
+  def name
+    @model['name']
+  end
+
+end
 
 class Mediums
   include Enumerable
 
   @@media = nil
 
-  def self.find(_id) 
+  def self.find(_id)
     if !_id
       return nil
     end
@@ -29,7 +43,7 @@ class Mediums
     conf = BryantStreetStudios.settings
     media_list = SafeCache.get('media')
     if !media_list || media_list.empty?
-      begin 
+      begin
         url = "%s/media" % conf.mau_api_url
         resp = RestClient.get url
         media_list = Oj.load(resp.body)

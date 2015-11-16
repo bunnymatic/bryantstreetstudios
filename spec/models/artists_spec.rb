@@ -63,7 +63,7 @@ describe Artists do
       a.all?{ |artistid, artist| artist.class == Artist}.should be_true, 'not all entries in the list are of the Artist class'
     end
   end
-  
+
   context 'find' do
     it 'returns an Artist' do
       a = Artists.find(11)
@@ -79,13 +79,12 @@ describe Artists do
     it 'returns all thumbnail sizes for an art_piece' do
       ap = Artists.find(11).art_pieces.first
       ['thumb','small','medium','large'].each do |sz|
-        ap.should have_key sz
+        ap.images.should have_key sz
       end
     end
     it 'returns the correct media for the art piece' do
       ap = Artists.find(11).art_pieces.first
-      ap.should have_key 'media'
-      ap['media'].should == 'Painting - Acrylic'
+      ap.medium.should == 'Painting - Acrylic'
     end
 
   end

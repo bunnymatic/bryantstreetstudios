@@ -29,6 +29,7 @@ gem 'pg'
 
 
 group :test, :development do
+  gem 'pry-byebug'
   gem 'fakeweb'
   gem "rspec"
   gem 'webrat'

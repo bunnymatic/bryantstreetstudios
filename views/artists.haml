@@ -14,9 +14,7 @@
       - @artists.reject{|a| a[1].art_pieces.empty?}.sort_by{|a| a[1].lastname.downcase}.each do |aid, a|
         %li.thumb
           %a{:href => "/artists/#{aid}"}
-            .img 
+            .img
               - if a.art_pieces && a.art_pieces.length > 0
-                %img{:src => a.art_pieces[0]['thumb'] }
+                %img{:src => a.art_pieces[0].thumbnail }
             .name #{a.fullname}
-            - # available keys: name,image_height,flickr,email_attrs,blog,url,nomdeplume,lastname,id,studio_id,myspace,image_width,profile_image,phone,firstname,facebook,studionumber,login,twitter,state,email, art_pieces
-        
