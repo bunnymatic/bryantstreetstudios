@@ -1,7 +1,9 @@
 machine:
   environment:
     DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/bryant_test
-dependencies:
-  pre:
-    - bundle install
+database:
+  override:
     - psql -c "create database bryant_test"
+test:
+  override:
+    - bundle exec rake spec
