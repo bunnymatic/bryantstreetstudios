@@ -36,5 +36,4 @@ group :test, :development do
   gem "mime-types"
   gem "jasmine"
   gem "tux"
-  gem "pry-byebug"
 end
