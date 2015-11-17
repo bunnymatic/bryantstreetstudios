@@ -4,4 +4,4 @@ machine:
 dependencies:
   pre:
     - bundle install
-    - bundle exec rake db:create_test
+    - psql -c "create database bryant_test"
