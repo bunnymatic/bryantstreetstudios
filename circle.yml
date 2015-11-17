@@ -3,4 +3,5 @@ machine:
     DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/bryant_test
 dependencies:
   pre:
+    - bundle install
     - bundle exec rake db:create_test
