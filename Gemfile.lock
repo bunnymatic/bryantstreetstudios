@@ -75,6 +75,7 @@ GEM
       data_objects (= 0.10.13)
     domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.0.2)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -205,6 +206,7 @@ DEPENDENCIES
   dm-aggregates (~> 1.2.0)
   dm-paperclip-s3!
   dm-postgres-adapter (~> 1.2.0)
+  dotenv
   eventmachine
   fakeweb
   faye

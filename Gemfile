@@ -26,8 +26,8 @@ gem "dm-paperclip-s3", :git => 'https://github.com/krzak/dm-paperclip-s3.git'
 
 gem 'pg'
 
-
 group :test, :development do
+  gem 'dotenv'
   gem 'pry-byebug'
   gem 'fakeweb'
   gem "rspec"

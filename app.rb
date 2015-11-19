@@ -41,7 +41,8 @@ class BryantStreetStudios < Sinatra::Base
   set :dburl, ENV.fetch('DATABASE_URL', settings.database_url)
   set :auth_user, ENV.fetch('1890_ADMIN_USER', settings.auth_user || gen_random_string)
   set :auth_pass, ENV.fetch('1890_ADMIN_PASS', settings.auth_pass || gen_random_string)
-  set :mau_connector_pass, ENV.fetch('MAU_API_PASS', 'whatever')
+  set :mau_api_key, ENV.fetch('MAU_API_KEY', 'whatever')
+  set :mau_studio_id, ENV.fetch('MAU_STUDIO_ID', '1890-bryant-street-studios')
 
   DataMapper::setup(:default, dburl)
 

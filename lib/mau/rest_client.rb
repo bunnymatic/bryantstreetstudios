@@ -5,11 +5,12 @@ module MAU
   class RestClient
 
     DEFAULT_HEADERS = {
-      "Authorization" => ENV.fetch("MAU_SECRET_WORD", "Secret Word Goes Here")
+      "Authorization" => BryantStreetStudios.mau_api_key
     }.freeze
 
     def self.get(url, headers: {})
-      ::RestClient.get url, DEFAULT_HEADERS.merge(headers)
+      ctx = DEFAULT_HEADERS.merge(headers)
+      ::RestClient.get url, ctx
     end
 
     def self.get_json(url, headers: {})
@@ -17,8 +18,11 @@ module MAU
         json_headers = { "Content-Type" => "application/json" }.merge(headers)
         resp = self.get url, headers: json_headers
         Oj.load(resp.body)
-      rescue Exception => ex
+      rescue  RestClient::Exception => ex
         puts "ERROR: Unable to connect to #{url}"
+        puts "Exception: #{ex.to_s}"
+      rescue  Oj::ParseError => ex
+        puts "ERROR: Unable to parse the response from #{url} - invalid json"
         puts "Exception: #{ex.to_s}"
       end
     end
