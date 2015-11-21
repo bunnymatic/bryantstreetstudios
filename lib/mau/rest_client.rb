@@ -19,11 +19,13 @@ module MAU
         resp = self.get url, headers: json_headers
         Oj.load(resp.body)
       rescue  RestClient::Exception => ex
-        puts "ERROR: Unable to connect to #{url}"
+        puts "ERROR: Unable to connect to [#{url}]"
         puts "Exception: #{ex.to_s}"
+        raise
       rescue  Oj::ParseError => ex
         puts "ERROR: Unable to parse the response from #{url} - invalid json"
         puts "Exception: #{ex.to_s}"
+        raise
       end
     end
 

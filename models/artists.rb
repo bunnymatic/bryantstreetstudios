@@ -1,8 +1,8 @@
 require 'dalli'
-require 'ostruct'
 require 'uri'
+require_relative './mau_model'
 
-class Artist
+class Artist < MauModel
 
   attr_reader :model
 
@@ -27,11 +27,13 @@ class Artist
   end
 
   def self.fetch(id)
-    conf = BryantStreetStudios.settings
     key = "artist_#{id}"
     artist = SafeCache.get(key)
     unless artist
-      artist = MAU::RestClient.get_json("%s/artists/%d.json" % [conf.mau_api_url, id]).fetch "artist"
+      artist = get_json("artists/#{id}.json")
+      if artist.has_key? 'artist'
+        artist = artist.fetch('artist')
+      end
       SafeCache.set(key, artist) if artist
     end
     puts artist
@@ -96,7 +98,7 @@ class Artist
   end
 end
 
-class Artists
+class Artists < MauModel
   ALLOWED_KEYS = ["firstname", "lastname"]
 
   include Enumerable
@@ -127,18 +129,14 @@ class Artists
 
   def self.artists
     s = Studio.new
-    conf = BryantStreetStudios.settings
     artist_list = SafeCache.get('artists')
     if !artist_list || artist_list.empty?
-      all_artists = []
-      begin
-        url = "%s/artists" % conf.mau_api_url
-        resp = RestClient.get url
-        all_artists = Oj.load(resp.body)
-      rescue Exception => ex
-        puts "ERROR: Unable to connect to #{url}"
-        puts "Exception: #{ex.to_s}"
+
+      all_artists = get_json( "/artists.json?studio=#{s.slug}" )
+      if all_artists.has_key? 'artists'
+        all_artists = all_artists['artists']
       end
+
       artist_list = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
       SafeCache.set('artists', artist_list) unless (!artist_list || artist_list.empty?)
     end

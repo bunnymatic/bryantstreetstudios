@@ -1,9 +1,7 @@
 require 'dalli'
-require 'rest_client'
-require 'ostruct'
-require 'uri'
+require_relative './mau_model'
 
-class ArtPiece
+class ArtPiece < MauModel
 
   attr_reader :model
 
