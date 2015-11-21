@@ -76,10 +76,6 @@ class Artist < MauModel
     @model['blog']
   end
 
-  def art_pieces
-    @art_pieces ||= @model['art_pieces'].map { |art| ArtPiece.new(art) }.select{|ap| ap.thumbnail}[0..3]
-  end
-
   def self.make_link(uri, opts = {}, &block)
     if ! (/https?\:\/\// =~ uri)
       uri = 'http://' + uri
@@ -92,8 +88,8 @@ class Artist < MauModel
   end
 
   def art_pieces
-    self['art_pieces'][0..3].map do |item|
-      ArtPiece.fetch(item['id'])
+    @model['art_pieces'][0..3].map do |item|
+      ArtPiece.fetch(self, item['id'])
     end
   end
 end
@@ -129,18 +125,16 @@ class Artists < MauModel
 
   def self.artists
     s = Studio.new
-    artist_list = SafeCache.get('artists')
-    if !artist_list || artist_list.empty?
+    artists = SafeCache.get('artists')
+    if !artists || artists.empty?
 
-      all_artists = get_json( "/artists.json?studio=#{s.slug}" )
-      if all_artists.has_key? 'artists'
-        all_artists = all_artists['artists']
+      artists = get_json( "/artists.json?studio=#{s.slug}" )
+      if artists.has_key? 'artists'
+        artists = artists['artists']
       end
-
-      artist_list = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
-      SafeCache.set('artists', artist_list) unless (!artist_list || artist_list.empty?)
+      SafeCache.set('artists', artists) unless (!artists || artists.empty?)
     end
-    @@artists = Hash[artist_list.map{|a| entry = Artist.new(a); [entry.id, entry]}]
+    @@artists = Hash[artists.map{|a| entry = Artist.new(a); [entry.id, entry]}]
   end
 
 end

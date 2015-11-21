@@ -20,6 +20,7 @@ class Studio < MauModel
   end
 
   def artists
+
     model['artists']
   end
 

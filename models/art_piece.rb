@@ -35,7 +35,7 @@ class ArtPiece < MauModel
     images = ['thumb', 'small', 'medium', 'large'].map { |k|
       [k, image_file(k)] if image_file(k)
     }.reject{|k,v| v.nil?}
-    Hash[images]
+    @images = Hash[images]
   end
 
   def thumbnail
@@ -48,6 +48,30 @@ class ArtPiece < MauModel
 
   def filename
     @model['filename'] if @model['filename'].present?
+  end
+
+  def self.find_by_artist(artist)
+    @art_pieces ||=
+      begin
+        cache_key = "art_pieces_by_#{artist.id}"
+        art_pieces = SafeCache.get(cache_key)
+        return art_pieces if art_pieces && !art_pieces.empty?
+        art_pieces = get_json("/artists/#{artist.id}/art_pieces.json")
+        if art_pieces.has_key? 'art_pieces'
+          art_pieces = art_pieces['art_pieces']
+        end
+        SafeCache.set(cache_key, art_pieces) if art_pieces && art_pieces.present?
+
+        (art_pieces || []).map { |ap|
+          puts ap
+          ArtPiece.new(ap)
+        }
+      end
+  end
+
+  def self.fetch(artist, art_piece_id)
+    art_pieces = find_by_artist(artist)
+    art_pieces.detect{ |ap| ap.id == art_piece_id }
   end
 
   private
