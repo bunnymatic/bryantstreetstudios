@@ -51,22 +51,18 @@ class ArtPiece < MauModel
   end
 
   def self.find_by_artist(artist)
-    @art_pieces ||=
-      begin
-        cache_key = "art_pieces_by_#{artist.id}"
-        art_pieces = SafeCache.get(cache_key)
-        return art_pieces if art_pieces && !art_pieces.empty?
-        art_pieces = get_json("/artists/#{artist.id}/art_pieces.json")
-        if art_pieces.has_key? 'art_pieces'
-          art_pieces = art_pieces['art_pieces']
-        end
-        SafeCache.set(cache_key, art_pieces) if art_pieces && art_pieces.present?
-
-        (art_pieces || []).map { |ap|
-          puts ap
-          ArtPiece.new(ap)
-        }
+    cache_key = "art_pieces_by_#{artist.id}"
+    art_pieces = SafeCache.get(cache_key)
+    if !art_pieces || art_pieces.empty?
+      art_pieces = get_json("/artists/#{artist.id}/art_pieces.json")
+      if art_pieces.has_key? 'art_pieces'
+        art_pieces = art_pieces['art_pieces']
       end
+      SafeCache.set(cache_key, art_pieces) if art_pieces && art_pieces.present?
+    end
+    (art_pieces || []).map { |ap|
+      ArtPiece.new(ap) if ap
+    }.compact
   end
 
   def self.fetch(artist, art_piece_id)
@@ -77,6 +73,10 @@ class ArtPiece < MauModel
   private
 
   def image_file(sz = nil)
+    if @model['image_urls'] && @model['image_urls'].has_key?(sz)
+      return @model['image_urls'][sz]
+    end
+
     f = photo || filename
     return f if f.nil? || /^http/ =~ f
     case sz
