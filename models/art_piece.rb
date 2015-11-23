@@ -27,7 +27,7 @@ class ArtPiece < MauModel
   end
 
   def year
-    @model['year']
+    @model['year'] if @model['year'].to_i > 1900
   end
 
   def images
