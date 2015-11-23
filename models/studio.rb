@@ -3,24 +3,11 @@ require_relative './mau_model'
 
 class Studio < MauModel
 
-  # def id
-  #   studio['id']
-  # end
-
-  # def name
-  #   model['name']
-  # end
-
-  # def street
-  #   model['street']
-  # end
-
   def slug
     model['slug']
   end
 
   def artists
-
     model['artists']
   end
 
@@ -39,7 +26,6 @@ class Studio < MauModel
           studio = studio['studio']
         end
         SafeCache.set('studio', studio)
-        puts "STUDIO", studio
         studio
       end
   end
