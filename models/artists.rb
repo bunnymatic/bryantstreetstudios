@@ -1,9 +1,8 @@
 require 'dalli'
-require 'rest_client'
-require 'ostruct'
 require 'uri'
+require_relative './mau_model'
 
-class Artist
+class Artist < MauModel
 
   attr_reader :model
 
@@ -25,6 +24,20 @@ class Artist
 
   def lastname
     @model['lastname']
+  end
+
+  def self.fetch(id)
+    key = "artist_#{id}"
+    artist = SafeCache.get(key)
+    unless artist
+      artist = get_json("artists/#{id}.json")
+      if artist.has_key? 'artist'
+        artist = artist.fetch('artist')
+      end
+      SafeCache.set(key, artist) if artist
+    end
+    puts artist
+    Artist.new(artist)
   end
 
   def fullname
@@ -63,10 +76,6 @@ class Artist
     @model['blog']
   end
 
-  def art_pieces
-    @art_pieces ||= @model['art_pieces'].map { |art| ArtPiece.new(art) }.select{|ap| ap.thumbnail}[0..3]
-  end
-
   def self.make_link(uri, opts = {}, &block)
     if ! (/https?\:\/\// =~ uri)
       uri = 'http://' + uri
@@ -77,9 +86,15 @@ class Artist
     buf << (block ? block.call : uri.gsub(/https?:\/\//, ''))
     buf << "</a>"
   end
+
+  def art_pieces
+    @model['art_pieces'][0..3].map do |item|
+      ArtPiece.fetch(self, item['id'])
+    end
+  end
 end
 
-class Artists
+class Artists < MauModel
   ALLOWED_KEYS = ["firstname", "lastname"]
 
   include Enumerable
@@ -110,22 +125,15 @@ class Artists
 
   def self.artists
     s = Studio.new
-    conf = BryantStreetStudios.settings
-    artist_list = SafeCache.get('artists')
-    if !artist_list || artist_list.empty?
-      all_artists = []
-      begin
-        url = "%s/artists" % conf.mau_api_url
-        resp = RestClient.get url
-        all_artists = Oj.load(resp.body)
-      rescue Exception => ex
-        puts "ERROR: Unable to connect to #{url}"
-        puts "Exception: #{ex.to_s}"
+    artists = SafeCache.get('artists')
+    if !artists || artists.empty?
+      artists = get_json( "/artists.json?studio=#{s.slug}" )
+      if artists.has_key? 'artists'
+        artists = artists['artists']
       end
-      artist_list = all_artists.map{|artist| artist['artist']}.select{|a| a['studio_id'].to_i == s.id.to_i}
-      SafeCache.set('artists', artist_list) unless (!artist_list || artist_list.empty?)
+      SafeCache.set('artists', artists) unless (!artists || artists.empty?)
     end
-    @@artists = Hash[artist_list.map{|a| entry = Artist.new(a); [entry.id, entry]}]
+    @@artists = Hash[artists.map{|a| entry = Artist.new(a); [entry.id, entry]}]
   end
 
 end

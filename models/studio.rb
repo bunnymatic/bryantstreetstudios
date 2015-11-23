@@ -1,44 +1,34 @@
 require 'dalli'
-require 'rest_client'
+require_relative './mau_model'
 
-class Studio 
-  ALLOWED_KEYS = ["id", "name", "image_height", "image_width", "city", "street", "state", "zip", "cross_street", "lat", "lng", "profile_image", "phone"] 
+class Studio < MauModel
 
-  @@studio = nil
+  def slug
+    model['slug']
+  end
 
-  def method_missing(meth, *args, &block)
-    if ALLOWED_KEYS.include? meth.to_s
-      studio[meth.to_s]
-    else 
-      super
-    end
+  def artists
+    model['artists']
+  end
+
+  def to_param
+    model['slug'] || model['id']
   end
 
   private
-  def studio
-    conf = BryantStreetStudios.settings
-    studi = SafeCache.get('studio')
-    
-    if !studi
-      url = "%s/studios" % conf.mau_api_url
-      begin 
-        resp = RestClient.get url
-        studios = Oj.load(resp.body)
-      rescue Exception => ex
-        puts "ERROR: Unable to connect to #{url}"
-        puts "Exception: #{ex.to_s}"
-      end
-      
-      studi = nil
-      studios.map{|s| s['studio']}.each do |st|
-        if st['name'] =~ /^1890/
-          studi = st
-          break
+  def model
+    @model ||=
+      begin
+        studio = SafeCache.get('studio')
+        return studio if studio
+        studio = get_json( "studios/#{config.mau_studio_id}.json" )
+        if studio.has_key? 'studio'
+          studio = studio['studio']
         end
-      end unless studios.nil?
-      SafeCache.set('studio', studi) if studi
-    end
-    @@studio = studi
+        SafeCache.set('studio', studio)
+        studio
+      end
   end
+
 
 end

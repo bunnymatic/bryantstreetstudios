@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby '2.1.5'
 
 gem 'sinatra'
-gem 'sinatra-contrib' 
+gem 'sinatra-contrib'
 gem 'sinatra-logger'
 gem 'sinatra-static-assets'
 gem 'thin'
@@ -21,14 +21,13 @@ gem "dm-aggregates", "~> 1.2.0"
 gem "dm-postgres-adapter", "~> 1.2.0"
 gem 'oj'
 
-# krobertson's needs a few patches for heroku/s3 tiein
-gem "dm-paperclip", :git => 'https://github.com/krobertson/dm-paperclip.git'
-gem 'aws-s3'
+gem "aws-sdk"
+gem "dm-paperclip-s3", :git => 'https://github.com/krzak/dm-paperclip-s3.git'
 
 gem 'pg'
 
-
 group :test, :development do
+  gem 'dotenv'
   gem 'pry-byebug'
   gem 'fakeweb'
   gem "rspec"
@@ -36,5 +35,5 @@ group :test, :development do
   gem "rack-test"
   gem "mime-types"
   gem "jasmine"
-  gem 'tux'
+  gem "tux"
 end

@@ -1,5 +1,4 @@
 require 'dalli'
-require 'rest_client'
 require 'ostruct'
 
 class Medium
@@ -44,9 +43,8 @@ class Mediums
     media_list = SafeCache.get('media')
     if !media_list || media_list.empty?
       begin
-        url = "%s/media" % conf.mau_api_url
-        resp = RestClient.get url
-        media_list = Oj.load(resp.body)
+        url = "%s/media.json" % conf.mau_api_url
+        media_list = MAU::RestClient.get_json url
       rescue Exception => ex
         puts "ERROR: Unable to connect to #{url}"
         puts "Exception: #{ex.to_s}"

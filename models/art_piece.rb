@@ -1,9 +1,7 @@
 require 'dalli'
-require 'rest_client'
-require 'ostruct'
-require 'uri'
+require_relative './mau_model'
 
-class ArtPiece
+class ArtPiece < MauModel
 
   attr_reader :model
 
@@ -29,7 +27,7 @@ class ArtPiece
   end
 
   def year
-    @model['year']
+    @model['year'] if @model['year'].to_i > 1900
   end
 
   def images
@@ -37,7 +35,7 @@ class ArtPiece
     images = ['thumb', 'small', 'medium', 'large'].map { |k|
       [k, image_file(k)] if image_file(k)
     }.reject{|k,v| v.nil?}
-    Hash[images]
+    @images = Hash[images]
   end
 
   def thumbnail
@@ -52,9 +50,33 @@ class ArtPiece
     @model['filename'] if @model['filename'].present?
   end
 
+  def self.find_by_artist(artist)
+    cache_key = "art_pieces_by_#{artist.id}"
+    art_pieces = SafeCache.get(cache_key)
+    if !art_pieces || art_pieces.empty?
+      art_pieces = get_json("/artists/#{artist.id}/art_pieces.json")
+      if art_pieces.has_key? 'art_pieces'
+        art_pieces = art_pieces['art_pieces']
+      end
+      SafeCache.set(cache_key, art_pieces) if art_pieces && art_pieces.present?
+    end
+    (art_pieces || []).map { |ap|
+      ArtPiece.new(ap) if ap
+    }.compact
+  end
+
+  def self.fetch(artist, art_piece_id)
+    art_pieces = find_by_artist(artist)
+    art_pieces.detect{ |ap| ap.id == art_piece_id }
+  end
+
   private
 
   def image_file(sz = nil)
+    if @model['image_urls'] && @model['image_urls'].has_key?(sz)
+      return @model['image_urls'][sz]
+    end
+
     f = photo || filename
     return f if f.nil? || /^http/ =~ f
     case sz

@@ -9,12 +9,10 @@
   = haml :breadcrumb, :layout => false
   %h1 Artists
   .artists
-    list of artist thumbs
     %ul
       - @artists.reject{|a| a[1].art_pieces.empty?}.sort_by{|a| a[1].lastname.downcase}.each do |aid, a|
         %li.thumb
           %a{:href => "/artists/#{aid}"}
             .img
-              - if a.art_pieces && a.art_pieces.length > 0
-                %img{:src => a.art_pieces[0].thumbnail }
+              %img{:src => a.art_pieces[0].thumbnail }
             .name #{a.fullname}

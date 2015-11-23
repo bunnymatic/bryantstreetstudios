@@ -1,25 +1,22 @@
 GIT
-  remote: https://github.com/krobertson/dm-paperclip.git
-  revision: 445b74c74b6bf63c20acea822075265b8c72ef0e
+  remote: https://github.com/krzak/dm-paperclip-s3.git
+  revision: e62f3be4ad9846416cc5f87f642ac871e1f0cd11
   specs:
-    dm-paperclip (2.5.0)
-      dm-core (>= 1.2.0)
-      dm-migrations (>= 1.2.0)
-      dm-validations (>= 1.2.0)
-      extlib
+    dm-paperclip-s3 (1.0.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.5)
-    aws-s3 (0.6.3)
-      builder
-      mime-types
-      xml-simple
+    aws-sdk (2.1.30)
+      aws-sdk-resources (= 2.1.30)
+    aws-sdk-core (2.1.30)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.1.30)
+      aws-sdk-core (= 2.1.30)
     backports (3.3.5)
     bcrypt-ruby (3.1.2)
     bond (0.5.1)
-    builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
     coderay (1.1.0)
@@ -76,6 +73,9 @@ GEM
       dm-core (~> 1.2.0)
     do_postgres (0.10.13)
       data_objects (= 0.10.13)
+    domain_name (0.5.25)
+      unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.0.2)
     em-http-request (1.1.2)
       addressable (>= 2.3.4)
       cookiejar
@@ -85,7 +85,6 @@ GEM
     em-socksify (0.3.0)
       eventmachine (>= 1.0.0.beta.4)
     eventmachine (1.0.3)
-    extlib (0.9.16)
     fakeweb (1.3.0)
     fastercsv (1.5.5)
     faye (1.0.1)
@@ -99,8 +98,10 @@ GEM
     faye-websocket (0.7.1)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.1)
-    haml (4.0.4)
+    haml (4.0.7)
       tilt
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     http_parser.rb (0.6.0)
     jasmine (2.0.0)
       jasmine-core (~> 2.0.0)
@@ -108,20 +109,22 @@ GEM
       rack (>= 1.2.1)
       rake
     jasmine-core (2.0.0)
+    jmespath (1.1.3)
     json (1.8.1)
     json_pure (1.8.1)
     kgio (2.8.1)
     memcachier (0.0.2)
     method_source (0.8.2)
-    mime-types (2.0)
+    mime-types (2.6.2)
     mini_portile (0.5.2)
     multi_json (1.8.2)
+    netrc (0.10.3)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oj (2.5.1)
     pg (0.17.1)
     phantomjs (1.9.2.1)
-    pry (0.10.3)
+    pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
@@ -134,17 +137,19 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (10.1.1)
-    rdiscount (2.1.7)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    rdiscount (2.1.8)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     ripl (0.7.1)
       bond (~> 0.5.1)
     ripl-multi_line (0.3.1)
       ripl (>= 0.3.6)
-    ripl-rack (0.2.1)
+    ripl-rack (0.2.0)
       rack (>= 1.0)
-      rack-test (~> 0.6.2)
-      ripl (>= 0.7.0)
+      rack-test (>= 0.5)
+      ripl (>= 0.3.5)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -181,24 +186,27 @@ GEM
       ripl-multi_line (>= 0.2.4)
       ripl-rack (>= 0.2.0)
       sinatra (>= 1.2.1)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     uuidtools (2.1.4)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     websocket-driver (0.3.1)
-    xml-simple (1.1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-s3
+  aws-sdk
   dalli
   datamapper (~> 1.2.0)
   dm-aggregates (~> 1.2.0)
-  dm-paperclip!
+  dm-paperclip-s3!
   dm-postgres-adapter (~> 1.2.0)
+  dotenv
   eventmachine
   fakeweb
   faye
