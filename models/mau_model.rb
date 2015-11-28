@@ -1,4 +1,3 @@
-require 'byebug'
 class MauModel
 
   def get_json(path)
