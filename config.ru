@@ -1,5 +1,9 @@
-require 'dotenv'
-Dotenv.load
+begin
+  require 'dotenv'
+  Dotenv.load
+rescue LoadError
+  puts "Skipping dotenv because it's not available"
+end  
 
 require 'rubygems'
 require 'sinatra'
