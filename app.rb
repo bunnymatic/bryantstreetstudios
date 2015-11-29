@@ -88,7 +88,6 @@ class BryantStreetStudios < Sinatra::Base
   get '/' do
     @title = make_title
     @studio = Studio.new
-    @artists = Artists.new
     @current_section = 'home'
     @breadcrumb = BreadCrumbs.new([])
     announcement = ContentResource.first(:page => 'home', :section => 'announcement')
@@ -102,8 +101,10 @@ class BryantStreetStudios < Sinatra::Base
     exclusions = ArtistExclusion.all
     @artists = []
     artists.each do |aid, a|
-      @artists << [aid,a] unless exclusions.any?{|ex| ex.match a.fullname}
+      @artists << a unless exclusions.any?{|ex| ex.match a.fullname}
     end
+    @artists.sort_by!{|a| a.lastname.downcase}
+
     @current_section = 'artists'
     @breadcrumb = BreadCrumbs.new([:home, :artists])
     haml :artists

@@ -14,8 +14,8 @@ class ArtPiece < MauModel
   end
 
   def medium
-    if @model.has_key? 'medium'
-      return @model['medium']['name']
+    if @model.has_key?('medium')
+      return @model['medium'] && @model['medium']['name']
     else
       medium = Mediums.find(@model['medium_id']) if @model['medium_id']
       medium.name if medium
