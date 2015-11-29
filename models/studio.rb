@@ -3,6 +3,10 @@ require_relative './mau_model'
 
 class Studio < MauModel
 
+  def name
+    model['name']
+  end
+
   def slug
     model['slug']
   end

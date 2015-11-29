@@ -14,8 +14,12 @@ class ArtPiece < MauModel
   end
 
   def medium
-    medium = Mediums.find(@model['medium_id']) if @model['medium_id']
-    medium.name if medium
+    if @model.has_key? 'medium'
+      return @model['medium']['name']
+    else
+      medium = Mediums.find(@model['medium_id']) if @model['medium_id']
+      medium.name if medium
+    end
   end
 
   def dimensions

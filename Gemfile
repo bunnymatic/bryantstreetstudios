@@ -29,11 +29,12 @@ gem 'pg'
 group :test, :development do
   gem 'dotenv'
   gem 'pry-byebug'
-  gem 'fakeweb'
   gem "rspec"
-  gem 'webrat'
-  gem "rack-test"
+  gem "capybara"
+  gem "launchy"
   gem "mime-types"
   gem "jasmine"
   gem "tux"
+  gem "vcr"
+  gem "webmock"
 end

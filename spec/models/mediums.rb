@@ -1,6 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
-require File.dirname(__FILE__) + '/../mockmau'
-require 'mime/types'
+require 'spec_helper'
 
 describe Mediums do
   context 'new' do
@@ -24,7 +22,7 @@ describe Mediums do
       m.all?{ |mediumid, medium| medium.class == Medium}.should be_true, 'not all entries in the list are of the Medium class'
     end
   end
-  
+
   context 'find' do
     it 'returns an Medium' do
       m = Mediums.find(11)

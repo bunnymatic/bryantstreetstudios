@@ -124,10 +124,10 @@ class Artists < MauModel
   end
 
   def self.artists
-    s = Studio.new
+    studio = Studio.new
     artists = SafeCache.get('artists')
     if !artists || artists.empty?
-      artists = get_json( "/artists.json?studio=#{s.slug}" )
+      artists = get_json( "/artists.json?studio=#{studio.slug}" )
       if artists.has_key? 'artists'
         artists = artists['artists']
       end

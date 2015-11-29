@@ -1,12 +1,10 @@
-require File.dirname(__FILE__) + '/../spec_helper'
-require File.dirname(__FILE__) + '/../mockmau'
-require 'mime/types'
+require 'spec_helper'
 
-describe Studio do
+describe Studio, :vcr do
   context 'new' do
     it 'returns 1890 bryant' do
       s = Studio.new
-      s.name.should == '1890 Bryant Street Studios'
+      expect(s.name).to include '1890 Bryant'
     end
   end
 end

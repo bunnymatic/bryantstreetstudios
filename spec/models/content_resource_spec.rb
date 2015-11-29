@@ -1,6 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
-require File.dirname(__FILE__) + '/../mockmau'
-require 'mime/types'
+require 'spec_helper'
 
 describe ContentResource do
   it 'does not allow creation with the same page + section' do
@@ -8,17 +6,17 @@ describe ContentResource do
     cr = ContentResource.create(:page => 'page1', :section => 'section', :body => 'Rock on')
     _id = cr.id
     cr = ContentResource.create(:page => 'page1', :section => 'section', :body => 'Rock on')
-    cr.id.should be_nil
-    cr.errors.should_not be_empty
-    ContentResource.get(_id).body.should == 'Rock on'
+    expect(cr.id).to be_nil
+    expect(cr.errors).not_to be_empty
+    expect(ContentResource.get(_id).body).to eq 'Rock on'
   end
   it 'does not allow creation with the same page + blank sections' do
     ContentResource.all.map(&:destroy)
     cr = ContentResource.create(:page => 'page1', :body => 'Rock on')
     _id = cr.id
     cr = ContentResource.create(:page => 'page1', :body => 'Rock off')
-    cr.id.should be_nil
-    cr.errors.should_not be_empty
-    ContentResource.get(_id).body.should == 'Rock on'
+    expect(cr.id).to  be_nil
+    expect(cr.errors).not_to be_empty
+    expect(ContentResource.get(_id).body).to eq 'Rock on'
   end
 end
