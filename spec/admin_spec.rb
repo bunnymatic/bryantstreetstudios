@@ -5,7 +5,7 @@ Dir[File.join(File.dirname(__FILE__),'..',"{lib,models}/**/*.rb")].each do |file
 end
 DataMapper.auto_migrate!
 
-describe BryantStreetStudios, vcr: { record: :new_episodes } do
+describe BryantStreetStudios, :vcr do
 
   def basic_auth(name, password)
     if page.driver.respond_to?(:basic_auth)
