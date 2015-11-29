@@ -1,6 +1,7 @@
 machine:
   environment:
     DATABASE_URL: postgres://ubuntu:@127.0.0.1:5432/bryant_test
+    MAU_API_URL: http://mau.rcode5.com/api/v2
 database:
   override:
     - psql -c "create database bryant_test"
