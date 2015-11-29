@@ -2,16 +2,11 @@ require 'logger'
 
 class MauModel
 
-  def self.logger
-    @logger ||= Logger.new(STDOUT)
-  end
-
   def get_json(path)
     self.class.get_json(path)
   end
 
   def self.get_json(path)
-    logger.info "Fetching data from #{api_url(path)}"
     MAU::RestClient.get_json( api_url( path ) )
   end
 
