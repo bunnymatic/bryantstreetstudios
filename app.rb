@@ -2,7 +2,6 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'sinatra/config_file'
-require 'sinatra/logger'
 require 'sinatra/static_assets'
 require 'haml'
 require 'uri'
@@ -26,11 +25,15 @@ class BryantStreetStudios < Sinatra::Base
 
   set :environments, %w{development test production staging}
   set :environment, ENV['RACK_ENV'] || :development
-  set :logging, true
   set :root, File.dirname(__FILE__)
+  set :logging, true
+
   register Sinatra::ConfigFile
   register Sinatra::StaticAssets
-  register Sinatra::Logger
+
+  configure :production, :development do
+    enable :logging
+  end
 
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"

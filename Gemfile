@@ -3,7 +3,6 @@ ruby '2.1.5'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'sinatra-logger'
 gem 'sinatra-static-assets'
 gem 'thin'
 gem 'haml'

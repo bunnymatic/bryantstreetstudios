@@ -10,9 +10,9 @@
   %h1 Artists
   .artists
     %ul
-      - @artists.reject{|artist| artist.art_pieces.nil? || artist.art_pieces.empty?}.each do |artist|
+      - @artists.reject{|artist| artist.art_pieces.nil? || artist.art_pieces.empty?}.each do |a|
         %li.thumb
-          %a{:href => "/artists/#{artist.id}"}
+          %a{:href => "/artists/#{a.id}"}
             .img
-              %img{:src => artist.art_pieces.first.thumbnail }
-            .name #{artist.fullname}
+              %img{:src => a.art_pieces.first.thumbnail }
+            .name #{a.fullname}

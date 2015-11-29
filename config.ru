@@ -3,11 +3,10 @@ begin
   Dotenv.load
 rescue LoadError
   puts "Skipping dotenv because it's not available"
-end  
+end
 
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/logger'
 require 'dm-paperclip'
 
 disable :run

@@ -90,7 +90,7 @@ class Artist < MauModel
   def art_pieces
     @model['art_pieces'][0..3].map do |item|
       ArtPiece.fetch(self, item['id'])
-    end
+    end.compact
   end
 end
 
