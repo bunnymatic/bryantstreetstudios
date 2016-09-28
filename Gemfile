@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 ruby '2.1.5'
+# careful with >2.3 issues with pg http://stackoverflow.com/questions/27862098/problems-with-postgres-and-unicorn-server/27995428#27995428
 
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -26,7 +27,6 @@ gem "dm-paperclip-s3", :git => 'https://github.com/krzak/dm-paperclip-s3.git'
 gem 'pg'
 
 group :test, :development do
-  gem 'dotenv'
   gem 'pry-byebug'
   gem "rspec"
   gem "capybara"

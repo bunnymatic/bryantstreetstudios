@@ -38,12 +38,19 @@ class BryantStreetStudios < Sinatra::Base
   APP_ROOT = root
   TIME_FORMAT = "%b %e %Y %-I:%M%p"
 
+  DEFAULT_MESSAGE = "1890 Bryant Street Studios is a vibrant  center for fine art and craft,"+
+                    " located in the historic Best Foods building on the corner of Bryant and"+
+                    " Mariposa Streets in the Mission District of San Francisco. This landmark"+
+                    " building is home to creative businesses including vintners, designers, a"+
+                    " bakery, HO scale car-racing enthusiasts, architects, painters, jewelers"+
+                    ", printmakers, photographers, and ceramicists."
+
   config_file File.join( [root, 'config', 'config.yml'] )
 
   # fetch from env or config
   set :dburl, ENV.fetch('DATABASE_URL', settings.database_url)
-  set :auth_user, ENV.fetch('1890_ADMIN_USER', settings.auth_user || gen_random_string)
-  set :auth_pass, ENV.fetch('1890_ADMIN_PASS', settings.auth_pass || gen_random_string)
+  set :auth_user, ENV.fetch('ADMIN_USER_1890', settings.auth_user || gen_random_string)
+  set :auth_pass, ENV.fetch('ADMIN_PASS_1890', settings.auth_pass || gen_random_string)
   set :mau_api_key, ENV.fetch('MAU_API_KEY', 'whatever')
   set :mau_studio_id, ENV.fetch('MAU_STUDIO_ID', '1890-bryant-street-studios')
   set :mau_api_url, ENV.fetch("MAU_API_URL", settings.mau_api_url)
@@ -80,12 +87,12 @@ class BryantStreetStudios < Sinatra::Base
     end
 
     def admin_haml(template, options={})
-      haml(template.to_sym, options.merge(:layout => 'admin/layout'.to_sym))
+      haml(template.to_sym, options.merge(layout: 'admin/layout'.to_sym))
     end
 
   end
 
-  set :haml, :format => :html5
+  set :haml, format: :html5
 
   # front page
   get '/' do
@@ -93,8 +100,9 @@ class BryantStreetStudios < Sinatra::Base
     @studio = Studio.new
     @current_section = 'home'
     @breadcrumb = BreadCrumbs.new([])
-    announcement = ContentResource.first(:page => 'home', :section => 'announcement')
-    @announcement = announcement.body if announcement
+    @announcement = (resource = ContentResource.first(page: 'home', section: 'announcement')) && resource.body
+
+    @welcome_message = ((resource = ContentResource.first(page: 'home', section: 'main')) && resource.body) || DEFAULT_MESSAGE
     haml :index
   end
 
@@ -126,7 +134,7 @@ class BryantStreetStudios < Sinatra::Base
     get "/#{page}" do
       @current_section = page.to_s
       @breadcrumb = BreadCrumbs.new([:home, page])
-      content = ContentResource.first(:page => page)
+      content = ContentResource.first(page: page)
       @content_body = (content ? content.body : 'Nothing to see here.')
       haml page
     end
@@ -151,7 +159,7 @@ class BryantStreetStudios < Sinatra::Base
   ### new
   post '/admin/picture' do
     protected!
-    img = PictureResource.new(:picture => params['file'])
+    img = PictureResource.new(picture: params['file'])
     halt "There were issues with your upload..." unless img.save
     redirect '/admin/pictures'
   end

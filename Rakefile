@@ -1,10 +1,10 @@
-require File.join(File.dirname(__FILE__),'app')
 require 'sass'
 require 'sass/plugin'
 
 task :default => :run
 desc 'run the server'
 task :run => 'sass:build' do |t|
+  require File.join(File.dirname(__FILE__),'app')
   BryantStreetStudios.run!
 end
 
@@ -38,9 +38,21 @@ namespace :sass do
 end
 
 namespace :db do
-  desc "Create database with DataMapper auto_upgrade"
+  desc "Create dev database"
+  task :create do
+    cmd = [ "psql" ]
+    cmd << "--user #{ENV.fetch('PG_USER', 'postgres')}"
+    cmd << "--password #{ENV['PG_PASS']}" if ENV['PG_PASS']
+    cmd << "-c 'create database bryant_dev'"
+    puts `#{cmd.join " "}`
+  end
+  desc "Create test database"
   task :create_test do
-    puts `psql -c "create database bryant_test"`
+    cmd = [ "psql" ]
+    cmd << "--user #{ENV.fetch('PG_USER', 'postgres')}"
+    cmd << "--password #{ENV['PG_PASS']}" if ENV['PG_PASS']
+    cmd << "-c 'create database bryant_dev'"
+    puts `#{cmd.join " "}`
   end
   task :auto_migrate do
     require 'dm-migrations'

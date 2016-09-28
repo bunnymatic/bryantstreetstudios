@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/7/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin14.3.0 x86_64) ruby/2.1.5p273
+      Authorization:
+      - override for safety
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 28 Sep 2016 06:47:07 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"6928f6e31bae2678d34cb10045575b06"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 647218a2-3492-448e-b965-82cf1fb04af0
+      X-Runtime:
+      - '0.104438'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":57,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":1,"year":2009,"dimensions":"36 x 52","filename":"artistdata/7/imgs/1256960956Copyoffable.jpg","title":"Fable","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/057/thumb/1256960956Copyoffable.jpg","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/057/small/1256960956Copyoffable.jpg","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/057/medium/1256960956Copyoffable.jpg","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/057/large/1256960956Copyoffable.jpg","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/057/original/1256960956Copyoffable.jpg"}},{"id":56,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":null,"year":2009,"dimensions":"30 x 40","filename":"artistdata/7/imgs/1256960540DSC_00100010.JPG","title":"Embrace","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/056/thumb/1256960540DSC_00100010.JPG","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/056/small/1256960540DSC_00100010.JPG","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/056/medium/1256960540DSC_00100010.JPG","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/056/large/1256960540DSC_00100010.JPG","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/056/original/1256960540DSC_00100010.JPG"}},{"id":55,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":null,"year":2009,"dimensions":"24 x 34","filename":"artistdata/7/imgs/1256960250DSC_00120012.JPG","title":"Leo
+        Fusco","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/055/thumb/1256960250DSC_00120012.JPG","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/055/small/1256960250DSC_00120012.JPG","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/055/medium/1256960250DSC_00120012.JPG","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/055/large/1256960250DSC_00120012.JPG","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/055/original/1256960250DSC_00120012.JPG"}},{"id":54,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":null,"year":2009,"dimensions":"36 x 48","filename":"artistdata/7/imgs/1256960109DSC_00140014.JPG","title":"Heidi
+        Waterman","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/054/thumb/1256960109DSC_00140014.JPG","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/054/small/1256960109DSC_00140014.JPG","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/054/medium/1256960109DSC_00140014.JPG","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/054/large/1256960109DSC_00140014.JPG","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/054/original/1256960109DSC_00140014.JPG"}},{"id":53,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":null,"year":2009,"dimensions":"40 x 40","filename":"artistdata/7/imgs/1256960060soup.jpg","title":"Soup","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/053/thumb/1256960060soup.jpg","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/053/small/1256960060soup.jpg","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/053/medium/1256960060soup.jpg","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/053/large/1256960060soup.jpg","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/053/original/1256960060soup.jpg"}},{"id":52,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":null,"year":2009,"dimensions":"24 x 32","filename":"artistdata/7/imgs/1256959899TheAthelete.JPG","title":"Athlete","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/052/thumb/1256959899TheAthelete.JPG","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/052/small/1256959899TheAthelete.JPG","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/052/medium/1256959899TheAthelete.JPG","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/052/large/1256959899TheAthelete.JPG","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/052/original/1256959899TheAthelete.JPG"}},{"id":51,"artist":7,"medium":{"id":11,"name":"Painting
+        - Oil","created_at":"2009-10-20T15:48:37.000Z","updated_at":"2009-10-20T15:48:37.000Z","slug":null},"tags":null,"artist_name":"Bill
+        prefix_Morin","favorites_count":null,"year":2009,"dimensions":"36 x 36","filename":"artistdata/7/imgs/1256959848Anna_2009.JPG","title":"Anna","artist_id":7,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/051/thumb/1256959848Anna_2009.JPG","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/051/small/1256959848Anna_2009.JPG","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/051/medium/1256959848Anna_2009.JPG","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/051/large/1256959848Anna_2009.JPG","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/051/original/1256959848Anna_2009.JPG"}}]}'
+    http_version: 
+  recorded_at: Wed, 28 Sep 2016 06:47:07 GMT
+recorded_with: VCR 3.0.3
