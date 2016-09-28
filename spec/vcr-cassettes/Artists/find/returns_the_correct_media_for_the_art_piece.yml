@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2/studios/1890-bryant-street-studios.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0 (darwin14.3.0 x86_64) ruby/2.1.5p273
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Date:
+      - Wed, 28 Sep 2016 06:31:35 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - text/html; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 109ecdf2-5d41-4391-8c24-17d2d4285449
+      X-Runtime:
+      - '0.030088'
+    body:
+      encoding: UTF-8
+      string: Unauthorized Request.  Access Denied.
+    http_version: 
+  recorded_at: Wed, 28 Sep 2016 06:31:35 GMT
+recorded_with: VCR 3.0.3

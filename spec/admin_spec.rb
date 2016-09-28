@@ -30,14 +30,14 @@ describe BryantStreetStudios, :vcr do
 
   def setup_fixtures
     ContentResource.all.map(&:destroy)
-    ContentResource.create({:page => 'events', :section => 's', :body => "## Here's what we've got planned\n\n* this\n*that\n\n"})
+    ContentResource.create({page: 'events', section: 's', body: "## Here's what we've got planned\n\n* this\n*that\n\n"})
 
     ArtistExclusion.all.map(&:destroy)
-    ArtistExclusion.create({:name => 'this dude'})
-    ArtistExclusion.create({:name => 'that dude'})
-    ArtistExclusion.create({:name => 'Mr Rogers'})
-    ArtistExclusion.create({:name => 'That dud'})
-    ArtistExclusion.create({:name => 'That dude', :case_insensitive => false})
+    ArtistExclusion.create({name: 'this dude'})
+    ArtistExclusion.create({name: 'that dude'})
+    ArtistExclusion.create({name: 'Mr Rogers'})
+    ArtistExclusion.create({name: 'That dud'})
+    ArtistExclusion.create({name: 'That dude', case_insensitive: false})
   end
 
   context 'Admin pages: ' do
@@ -133,7 +133,7 @@ describe BryantStreetStudios, :vcr do
         body = [gen_random_string(10), gen_random_string(20)].join(" ")
         page = gen_random_string
         old_count = ContentResource.all.count
-        post '/admin/content_block', :content_block => {:page => page, :body => body }
+        post '/admin/content_block', content_block: {page: page, body: body }
         expect(ContentResource.all.count).to eq (old_count + 1)
         expect(ContentResource.all.last.body).to eq body
         expect(ContentResource.all.last.page).to eq page
@@ -142,7 +142,7 @@ describe BryantStreetStudios, :vcr do
         cr = ContentResource.all.last
         body = [gen_random_string(10), gen_random_string(20)].join(" ")
         old_count = ContentResource.all.count
-        post '/admin/content_block', :content_block => {:id => cr.id, :body => body }
+        post '/admin/content_block', content_block: {id: cr.id, body: body }
         expect(ContentResource.all.count).to eq old_count
         expect(ContentResource.get(cr.id.to_i).body).to eq body
         expect(ContentResource.get(cr.id.to_i).page).to eq cr.page
@@ -150,7 +150,7 @@ describe BryantStreetStudios, :vcr do
       it 'edit redirects to content_blocks index' do
         cr = ContentResource.all.last
         body = [gen_random_string(10), gen_random_string(20)].join(" ")
-        post '/admin/content_block', :content_block => {:id => cr.id, :body => body }
+        post '/admin/content_block', content_block: {id: cr.id, body: body }
         expect(last_response.status).to eq 302
       end
     end
@@ -184,8 +184,8 @@ describe BryantStreetStudios, :vcr do
     end
     it 'shows a list of content blocks with edit and delete links' do
       mock_pics = [
-        double(:picture => double(:url => 'url1'), :id => 10),
-        double(:picture => double(:url => 'url2'), :id => 12)
+        double(picture: double(url: 'url1'), id: 10),
+        double(picture: double(url: 'url2'), id: 12)
       ]
       allow(PictureResource).to receive(:all).and_return( mock_pics )
 
@@ -237,7 +237,7 @@ describe BryantStreetStudios, :vcr do
     end
     it 'creates a sets the values correctly' do
       post '/admin/exclusion', "exclusion[name]" => 'mister mister', "exclusion[case_insensitive]" => 'false'
-      aex = ArtistExclusion.all(:name => 'mister mister')
+      aex = ArtistExclusion.all(name: 'mister mister')
       expect(aex).to be_present
       expect(aex.count).to eql 1
       expect(aex[0].case_insensitive).to eql false

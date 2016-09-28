@@ -1,21 +1,20 @@
 .sidebar
   %img{:src => '/images/home-leftimage.jpg'}
-.content      
+.content
   .welcome
     %h1 Welcome
     %p
-      1890 Bryant Street Studios is a vibrant  center for fine art and craft, located in the historic Best Foods building on the corner of Bryant and Mariposa Streets in the Mission District of San Francisco. This landmark building is home to creative businesses including vintners, designers, a bakery, HO scale car-racing enthusiasts, architects, painters, jewelers, printmakers, photographers, and ceramicists.
+      = markdown_content(@welcome_message)
     - if @announcement
       .announcement.markdown
         = markdown_content(@announcement)
     .about_us
       %h3 About us
       %p
-        Biographies and examples of artists work can be 
+        Biographies and examples of artists work can be
         %a{:href => '/artists' } viewed here
         = "&raquo;"
       %p
         For more information contact us at
         %br
         %a{:href => "mailto:info@1890bryant.com"} info@1890bryant.com &raquo;
-
