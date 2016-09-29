@@ -8,4 +8,13 @@ database:
     - psql -c "create database bryant_test"
 test:
   override:
-    - bundle exec rake spec
+    - bundle && bundle exec rake spec
+deployment:
+  acceptance:
+    branch: development
+    commands:
+      - ./bin/deploy.sh bryantstreetstudios-dev
+  production:
+    branch: master
+    commands:
+      - ./bin/deploy.sh bryantstreetstudios
