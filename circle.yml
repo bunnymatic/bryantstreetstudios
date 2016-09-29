@@ -5,6 +5,7 @@ machine:
     MAU_STUDIO_ID: 1890-bryant-st-studios
 database:
   override:
+    - gem install bundler
     - psql -c "create database bryant_test"
     - bundle version
 deployment:
