@@ -12,7 +12,7 @@ database:
     - bundle version
 test:
   override:
-    bundle exec rake spec
+    - bundle exec rake spec
 deployment:
   acceptance:
     branch: development
