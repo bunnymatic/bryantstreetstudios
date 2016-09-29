@@ -22,7 +22,7 @@ gem "dm-postgres-adapter", "~> 1.2.0"
 gem 'oj'
 
 gem "aws-sdk"
-gem "dm-paperclip-s3", :git => 'https://github.com/krzak/dm-paperclip-s3.git'
+gem "dm-paperclip-s3", :git => 'https://github.com/krzyzanowskim/dm-paperclip-s3.git'
 
 gem 'pg'
 

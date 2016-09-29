@@ -6,9 +6,6 @@ machine:
 database:
   override:
     - psql -c "create database bryant_test"
-test:
-  override:
-    - bundle && bundle exec rake spec
 deployment:
   acceptance:
     branch: development
