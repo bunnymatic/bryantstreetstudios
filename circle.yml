@@ -6,6 +6,7 @@ machine:
 database:
   override:
     - psql -c "create database bryant_test"
+    - bundle version
 deployment:
   acceptance:
     branch: development
