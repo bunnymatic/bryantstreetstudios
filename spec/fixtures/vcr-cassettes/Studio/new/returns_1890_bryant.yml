@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2/studios/1890-bryant-street-studios.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:33 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a5dbe59715eae9218761668454807969"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 3f171b7f-ce8d-44e7-8503-733b2cf1b73d
+      X-Runtime:
+      - '0.018309'
+    body:
+      encoding: UTF-8
+      string: '{"studio":{"id":16,"name":"1890 Bryant Street Studios","street_address":"Demarco
+        Causeway","city":"Alizaview","map_url":"http://maps.google.com/maps?q=Demarco%20Causeway,%20Alizaview,%20South%20Carolina,%2083896","url":"/studios/1890-bryant-street-studios","artists":[{"id":1,"slug":"artist","full_name":"Mayer-Grant","firstname":"Martin","lastname":"Sally"},{"id":4,"slug":"administrator","full_name":"Murray,
+        Sauer and McLaughlin","firstname":"Natalia","lastname":"Breana"}],"slug":"1890-bryant-street-studios"}}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:33 GMT
+recorded_with: VCR 3.0.3

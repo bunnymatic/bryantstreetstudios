@@ -49,7 +49,7 @@ describe Artists, :vcr do
     end
 
     it 'returns all artists in 1890 bryant' do
-      expect(@artists.length).to eq 9
+      expect(@artists.length).to eq 2
     end
     it 'returns iterable list of all artists' do
       expect(@artists).to respond_to :each
@@ -65,16 +65,16 @@ describe Artists, :vcr do
   end
 
   context 'find' do
-    let(:artist) { Artists.find(7) }
+    let(:artist) { Artists.find(1) }
 
     it 'returns an Artist' do
       expect(artist).to be_a_kind_of Artist
     end
     it 'returns the correct artist' do
-      expect(artist.id).to eq 7
+      expect(artist.id).to eq 1
     end
     it 'returns the artists\' art_pieces' do
-      expect(artist.art_pieces.count).to eq 4
+      expect(artist.art_pieces.count).to eq 2
     end
     it 'returns all thumbnail sizes for an art_piece' do
       ap = artist.art_pieces.first
@@ -84,7 +84,7 @@ describe Artists, :vcr do
     end
     it 'returns the correct media for the art piece' do
       ap = artist.art_pieces.first
-      expect(ap.medium).to eq 'Painting - Oil'
+      expect(ap.medium).to eq 'Medium 1'
     end
   end
 end

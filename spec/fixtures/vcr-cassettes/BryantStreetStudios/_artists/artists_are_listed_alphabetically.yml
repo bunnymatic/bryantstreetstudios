@@ -2,392 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3000/api/v2/studios/1890-bryant-street-studios.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.0 (darwin14.3.0 x86_64) ruby/2.1.5p273
-      Authorization:
-      - override for safety
-      Content-Type:
-      - application/json
-      Host:
-      - localhost:3000
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 28 Sep 2016 06:47:05 GMT
-      Connection:
-      - close
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"dbc44e086cbd61949b2eee376683128b"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - 4adf5950-d6ae-4a31-af2f-82be8821ae6d
-      X-Runtime:
-      - '0.038256'
-    body:
-      encoding: UTF-8
-      string: '{"studio":{"id":4,"name":"1890 Bryant Street Studios","street_address":"1890
-        Bryant St","city":"San Francisco","map_url":"http://maps.google.com/maps?q=1890%20Bryant%20St,%20San%20Francisco,%20CA,%2094117","url":"/studios/1890-bryant-street-studios","artists":[{"id":7,"slug":"paulmorin422","full_name":"Bill
-        prefix_Morin","firstname":"Bill","lastname":"prefix_Morin"},{"id":10,"slug":"rhiannon-alpers","full_name":"Rhiannon
-        prefix_Alpers","firstname":"Rhiannon","lastname":"prefix_Alpers"},{"id":11,"slug":"sevilla","full_name":"Bill
-        prefix_Granger","firstname":"Bill","lastname":"prefix_Granger"},{"id":14,"slug":"estudiomartita","full_name":"Martha
-        prefix_Rodriguez","firstname":"Martha","lastname":"prefix_Rodriguez"},{"id":33,"slug":"ccddee","full_name":"bill
-        ccddee","firstname":"bill","lastname":"ccddee"},{"id":58,"slug":"newnewnew","full_name":"new
-        artists","firstname":"new","lastname":"artists"},{"id":85,"slug":"kyono-dev","full_name":"bill
-        .","firstname":"bill","lastname":"."},{"id":91,"slug":"contactme","full_name":"contactme","firstname":"bill","lastname":""},{"id":99,"slug":"newaccount1","full_name":"newaccount1","firstname":"bill","lastname":""}],"slug":"1890-bryant-street-studios"}}'
-    http_version: 
-  recorded_at: Wed, 28 Sep 2016 06:47:05 GMT
-- request:
-    method: get
-    uri: http://localhost:3000/api/v2//artists.json?studio=1890-bryant-street-studios
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - "*/*"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - rest-client/2.0.0 (darwin14.3.0 x86_64) ruby/2.1.5p273
-      Authorization:
-      - override for safety
-      Content-Type:
-      - application/json
-      Host:
-      - localhost:3000
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Wed, 28 Sep 2016 06:47:05 GMT
-      Connection:
-      - close
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"c97f8fab2e9000b6237eb843f0880b09"
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      X-Request-Id:
-      - a56bacfc-ccac-49fc-8ea2-7e9edf92b850
-      X-Runtime:
-      - '0.100308'
-    body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJhcnRpc3RzIjpbeyJmdWxsX25hbWUiOiJCaWxsIHByZWZpeF9Nb3JpbiIs
-        ImRvaW5nX29wZW5fc3R1ZGlvcyI6ZmFsc2UsInByb2ZpbGVfaW1hZ2VzIjp7
-        InRodW1iIjoiaHR0cDovL21pc3Npb24tYXJ0aXN0cy1kZXZlbG9wbWVudC5z
-        My5hbWF6b25hd3MuY29tL2FydGlzdHMvcGhvdG9zLzAwMC8wMDAvMDA3L3Ro
-        dW1iL3Byb2ZpbGUuanBnPzE0NDg1MDkwMjYiLCJzbWFsbCI6Imh0dHA6Ly9t
-        aXNzaW9uLWFydGlzdHMtZGV2ZWxvcG1lbnQuczMuYW1hem9uYXdzLmNvbS9h
-        cnRpc3RzL3Bob3Rvcy8wMDAvMDAwLzAwNy9zbWFsbC9wcm9maWxlLmpwZz8x
-        NDQ4NTA5MDI2IiwibWVkaXVtIjoiaHR0cDovL21pc3Npb24tYXJ0aXN0cy1k
-        ZXZlbG9wbWVudC5zMy5hbWF6b25hd3MuY29tL2FydGlzdHMvcGhvdG9zLzAw
-        MC8wMDAvMDA3L21lZGl1bS9wcm9maWxlLmpwZz8xNDQ4NTA5MDI2IiwibGFy
-        Z2UiOiJodHRwOi8vbWlzc2lvbi1hcnRpc3RzLWRldmVsb3BtZW50LnMzLmFt
-        YXpvbmF3cy5jb20vYXJ0aXN0cy9waG90b3MvMDAwLzAwMC8wMDcvbGFyZ2Uv
-        cHJvZmlsZS5qcGc/MTQ0ODUwOTAyNiIsIm9yaWdpbmFsIjoiaHR0cDovL21p
-        c3Npb24tYXJ0aXN0cy1kZXZlbG9wbWVudC5zMy5hbWF6b25hd3MuY29tL2Fy
-        dGlzdHMvcGhvdG9zLzAwMC8wMDAvMDA3L29yaWdpbmFsL3Byb2ZpbGUuanBn
-        PzE0NDg1MDkwMjYifSwiaWQiOjcsInVybCI6bnVsbCwic3R1ZGlvX2lkIjo0
-        LCJzdHJlZXRfYWRkcmVzcyI6IjE4OTAgQnJ5YW50IFN0IiwiY2l0eSI6IlNh
-        biBGcmFuY2lzY28iLCJtYXBfdXJsIjoiaHR0cDovL21hcHMuZ29vZ2xlLmNv
-        bS9tYXBzP3E9MTg5MCUyMEJyeWFudCUyMFN0LCUyMFNhbiUyMEZyYW5jaXNj
-        bywlMjBDQSwlMjA5NDExNyIsImZpcnN0bmFtZSI6IkJpbGwiLCJsYXN0bmFt
-        ZSI6InByZWZpeF9Nb3JpbiIsIm5vbWRlcGx1bWUiOm51bGwsInNsdWciOiJw
-        YXVsbW9yaW40MjIiLCJhcnRfcGllY2VzIjpbeyJpZCI6NTd9LHsiaWQiOjU2
-        fSx7ImlkIjo1NX0seyJpZCI6NTR9LHsiaWQiOjUzfSx7ImlkIjo1Mn0seyJp
-        ZCI6NTF9XSwiYXJ0aXN0X2luZm8iOnsiYXJ0aXN0X2luZm8iOnsiaWQiOjcs
-        ImFydGlzdF9pZCI6NywiY3JlYXRlZF9hdCI6IjIwMDktMTAtMjlUMDE6MTQ6
-        MzQuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE1LTA3LTE5VDA1OjIwOjA3LjAw
-        MFoiLCJiaW8iOiJQYXVsIE1vcmlu4oCZcyB3b3JrcyBhcmUgaW5jbHVkZWQg
-        aW4gcHJpdmF0ZSBjb2xsZWN0aW9ucyBvbiBmaXZlIGNvbnRpbmVudHMgYW5k
-        IGlzIGEgY29tbWlzc2lvbmVkIHBvcnRyYWl0IHBhaW50ZXIuXHJcblxyXG5Q
-        YXVsIGdyZXcgdXAgbmVhciBCb3N0b24gYW5kIHdhcyBlZHVjYXRlZCBhdCBQ
-        cm92aWRlbmNlIENvbGxlZ2UgYW5kIE1hc3MgQ29sbGVnZSBvZiBBcnQuICBB
-        ZnRlciBzcGVuZGluZyBzb21lIHRpbWUgaW4gdGhlIGNvcnBvcmF0ZSB3b3Js
-        ZCwgaGUgaGFzIGZ1bGx5IGVtYnJhY2VkIGhpcyBjYXJlZXIgcGF0aCBpbiB0
-        aGUgdmlzdWFsIGFydHMuICBIaXMgd29ya3MgaGF2ZSBiZWVuIHNob3duIGlu
-        IE5ldyBZb3JrLCBCb3N0b24gYW5kIFNhbiBGcmFuY2lzY28uXHJcblxyXG5Q
-        YXVsIHVzZXMgYSBwYWludGluZyB0ZWNobmlxdWUgZGVyaXZlZCBmcm9tIHRo
-        ZSAxN3RoIGNlbnR1cnkgbWFzdGVycy4gIFRob3VnaCByb290ZWQgaW4gYSBz
-        b2xpZCB0cmFkaXRpb25hbCB0ZWNobmlxdWUsIGhpcyB3b3JrcyBhcmUgZGVj
-        aWRlZGx5IG1vZGVybiB3aXRoIGltYWdlcyB0aGF0IGNvbmZyb250IHRoZSB2
-        aWV3ZXIgYW5kIGEgc2Vuc2Ugb2Ygc2NhbGUgdGhhdCBpcyB2ZXJ5IGluZGl2
-        aWR1YWwuICBUaG91Z2ggaGF2aW5nIGVuZ2FnZWQgaW4gdGhlIGZvcm1hbCBz
-        dHVkeSBvZiBhcnQsIFBhdWwgZmVlbHMgdGhhdCBoaXMgdGVjaG5pcXVlIGlz
-        IGEgY3VsbWluYXRpb24gb2YgbWFueSB5ZWFycyBvZiBzZWxmLXN0dWR5IGFu
-        ZCBvYnNlcnZhdGlvbi4gIFxyXG5cclxuSW4gYWRkaXRpb24gdG8gYmVpbmcg
-        YSBmaW5lIGFydGlzdCwgUGF1bCBpcyBhbiBhY2NvbXBsaXNoZWQgc2luZ2Vy
-        IGFuZCBoYXMgc3VuZyB3aXRoIHRoZSBUYW5nbGV3b29kIEZlc3RpdmFsIENo
-        b3J1cywgVGhlIFNhbiBGcmFuY2lzY28gU3ltcGhvbnkgQ2hvcnVzIGFuZCB0
-        aGUgSnVpbGxpYXJkIENob3JhbCBVbmlvbi4gIFxyXG5cclxuQW4gYWNjb21w
-        bGlzaGVkIHBvcnRyYWl0IHBhaW50ZXIsIFBhdWwgaXMgYXZhaWxhYmxlIGZv
-        ciBjb21taXNzaW9ucy5cclxuIiwibmV3cyI6bnVsbCwic3RyZWV0IjoiIiwi
-        Y2l0eSI6IlNhbiBGcmFuY2lzY28iLCJhZGRyX3N0YXRlIjoiQ0EiLCJmYWNl
-        Ym9vayI6IiIsInR3aXR0ZXIiOiIiLCJibG9nIjoiIiwibXlzcGFjZSI6IiIs
-        ImZsaWNrciI6IiIsInppcCI6OTQxMTAsIm1heF9waWVjZXMiOjIwLCJzdHVk
-        aW9udW1iZXIiOm51bGwsImxhdCI6MzcuNzQ4NiwibG5nIjotMTIyLjQxOCwi
-        b3Blbl9zdHVkaW9zX3BhcnRpY2lwYXRpb24iOiIiLCJwaW50ZXJlc3QiOm51
-        bGwsImluc3RhZ3JhbSI6bnVsbH19LCJsaW5rIjoiL2FydGlzdHMvcGF1bG1v
-        cmluNDIyIn0seyJmdWxsX25hbWUiOiJSaGlhbm5vbiBwcmVmaXhfQWxwZXJz
-        IiwiZG9pbmdfb3Blbl9zdHVkaW9zIjpmYWxzZSwicHJvZmlsZV9pbWFnZXMi
-        OnsidGh1bWIiOm51bGwsInNtYWxsIjpudWxsLCJtZWRpdW0iOm51bGwsImxh
-        cmdlIjpudWxsLCJvcmlnaW5hbCI6bnVsbH0sImlkIjoxMCwidXJsIjpudWxs
-        LCJzdHVkaW9faWQiOjQsInN0cmVldF9hZGRyZXNzIjoiMTg5MCBCcnlhbnQg
-        U3QiLCJjaXR5IjoiU2FuIEZyYW5jaXNjbyIsIm1hcF91cmwiOiJodHRwOi8v
-        bWFwcy5nb29nbGUuY29tL21hcHM/cT0xODkwJTIwQnJ5YW50JTIwU3QsJTIw
-        U2FuJTIwRnJhbmNpc2NvLCUyMENBLCUyMDk0MTE3IiwiZmlyc3RuYW1lIjoi
-        UmhpYW5ub24iLCJsYXN0bmFtZSI6InByZWZpeF9BbHBlcnMiLCJub21kZXBs
-        dW1lIjpudWxsLCJzbHVnIjoicmhpYW5ub24tYWxwZXJzIiwiYXJ0X3BpZWNl
-        cyI6W3siaWQiOjQ5fV0sImFydGlzdF9pbmZvIjp7ImFydGlzdF9pbmZvIjp7
-        ImlkIjoxMCwiYXJ0aXN0X2lkIjoxMCwiY3JlYXRlZF9hdCI6IjIwMDktMTAt
-        MzBUMjE6MDg6NDAuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE1LTA3LTE5VDA1
-        OjIwOjA3LjAwMFoiLCJiaW8iOiJSaGlhbm5vbiBBbHBlcnMgaXMgYSBwYXBl
-        cm1ha2VyLCBsZXR0ZXJwcmVzcyBwcmludGVyIGFuZCBib29rIGFydGlzdC4g
-        XHJcblxyXG5SaGlhbm5vbiBoYXMgYW4gTUZBIGluIEJvb2sgYW5kIFBhcGVy
-        IEFydHMgZnJvbSBDb2x1bWJpYSBDb2xsZWdlIENoaWNhZ28gYW5kIGEgQkEg
-        aW4gQm9vayBBcnRzIGZyb20gVUMgU2FudGEgQmFyYmFyYSwgQ29sbGVnZSBv
-        ZiBDcmVhdGl2ZSBTdHVkaWVzLiBcclxuU2hlIGhhcyBhbmQgd2lsbCB0ZWFj
-        aCB3b3Jrc2hvcHMgYW5kIGNvbGxlZ2UgY291cnNlcyBhdCBTYW4gRnJhbmNp
-        c2NvIENlbnRlciBmb3IgdGhlIEJvb2ssIEthbGEgUHJpbnRtYWtpbmcgSW5z
-        dGl0dXRlLCBBY2FkZW15IG9mIEFydCBVbml2ZXJzaXR5IG9mIFNhbiBGcmFu
-        Y2lzY28sIEZpbG9saSBHYXJkZW5zIEVzdGF0ZSwgQ2FicmlsbG8gQ29sbGVn
-        ZSBpbiBTYW50YSBDcnV6LCBDZW50ZXIgZm9yIEJvb2sgYW5kIFBhcGVyIGlu
-        IENoaWNhZ28sIENvbHVtYmlhIENvbGxlZ2UgQ2hpY2FnbywgUGFwZXIgU291
-        cmNlIHN0b3JlcyBpbiBDaGljYWdvIGFuZCBTYW4gRnJhbmNpc2NvLCBhbmQg
-        U2FudGEgUmVwYXJhdGEgU2Nob29sIG9mIEFydCBpbiBGbG9yZW5jZSwgSXRh
-        bHkuIFxyXG5cclxuU2hlIGN1cnJlbnRseSB3b3JrcyBhdCB0aGUgSGVhZCBv
-        ZiBTdHVkaW8gT3BlcmF0aW9ucyBmb3IgdGhlIEJpbmRlcnkgYW5kIExldHRl
-        cnByZXNzIGZvciBTYW4gRnJhbmNpc2NvIENlbnRlciBmb3IgdGhlIEJvb2su
-        IFNoZSBoYXMgYXBwcmVudGljZWQvaW50ZXJuZWQgYXQgVHVya2V5IFByZXNz
-        IGluIFNhbnRhIEJhcmJhcmEsIEJheSBQYXJrIFByZXNzIGluIFNhbiBEaWVn
-        bywgTGFya3NwYXJyb3cgUHJlc3MgaW4gRXZhbnN0b24sIGFuZCB3b3JrZWQg
-        YXMgYSBwcm9kdWN0aW9uIGJvb2tiaW5kZXIgZm9yIHRoZSBQYXBlciBTb3Vy
-        Y2UgQmluZGVyeSBpbiBDaGljYWdvLiAiLCJuZXdzIjpudWxsLCJzdHJlZXQi
-        OiJzdHVkaW8gIzMxMSIsImNpdHkiOiJTYW4gRnJhbmNpc2NvIiwiYWRkcl9z
-        dGF0ZSI6IkNBIiwiZmFjZWJvb2siOiIiLCJ0d2l0dGVyIjoiIiwiYmxvZyI6
-        IiIsIm15c3BhY2UiOiIiLCJmbGlja3IiOiIiLCJ6aXAiOjk0MTEwLCJtYXhf
-        cGllY2VzIjoyMCwic3R1ZGlvbnVtYmVyIjpudWxsLCJsYXQiOjM3Ljc1NjYs
-        ImxuZyI6LTEyMi40MDUsIm9wZW5fc3R1ZGlvc19wYXJ0aWNpcGF0aW9uIjoi
-        MjAxMDA0fDIwMTEwNCIsInBpbnRlcmVzdCI6bnVsbCwiaW5zdGFncmFtIjpu
-        dWxsfX0sImxpbmsiOiIvYXJ0aXN0cy9yaGlhbm5vbi1hbHBlcnMifSx7ImZ1
-        bGxfbmFtZSI6IkJpbGwgcHJlZml4X0dyYW5nZXIiLCJkb2luZ19vcGVuX3N0
-        dWRpb3MiOmZhbHNlLCJwcm9maWxlX2ltYWdlcyI6eyJ0aHVtYiI6Imh0dHA6
-        Ly9taXNzaW9uLWFydGlzdHMtZGV2ZWxvcG1lbnQuczMuYW1hem9uYXdzLmNv
-        bS9hcnRpc3RzL3Bob3Rvcy8wMDAvMDAwLzAxMS90aHVtYi9wcm9maWxlLmpw
-        Zz8xNDQ4NTA5MDMxIiwic21hbGwiOiJodHRwOi8vbWlzc2lvbi1hcnRpc3Rz
-        LWRldmVsb3BtZW50LnMzLmFtYXpvbmF3cy5jb20vYXJ0aXN0cy9waG90b3Mv
-        MDAwLzAwMC8wMTEvc21hbGwvcHJvZmlsZS5qcGc/MTQ0ODUwOTAzMSIsIm1l
-        ZGl1bSI6Imh0dHA6Ly9taXNzaW9uLWFydGlzdHMtZGV2ZWxvcG1lbnQuczMu
-        YW1hem9uYXdzLmNvbS9hcnRpc3RzL3Bob3Rvcy8wMDAvMDAwLzAxMS9tZWRp
-        dW0vcHJvZmlsZS5qcGc/MTQ0ODUwOTAzMSIsImxhcmdlIjoiaHR0cDovL21p
-        c3Npb24tYXJ0aXN0cy1kZXZlbG9wbWVudC5zMy5hbWF6b25hd3MuY29tL2Fy
-        dGlzdHMvcGhvdG9zLzAwMC8wMDAvMDExL2xhcmdlL3Byb2ZpbGUuanBnPzE0
-        NDg1MDkwMzEiLCJvcmlnaW5hbCI6Imh0dHA6Ly9taXNzaW9uLWFydGlzdHMt
-        ZGV2ZWxvcG1lbnQuczMuYW1hem9uYXdzLmNvbS9hcnRpc3RzL3Bob3Rvcy8w
-        MDAvMDAwLzAxMS9vcmlnaW5hbC9wcm9maWxlLmpwZz8xNDQ4NTA5MDMxIn0s
-        ImlkIjoxMSwidXJsIjpudWxsLCJzdHVkaW9faWQiOjQsInN0cmVldF9hZGRy
-        ZXNzIjoiMTg5MCBCcnlhbnQgU3QiLCJjaXR5IjoiU2FuIEZyYW5jaXNjbyIs
-        Im1hcF91cmwiOiJodHRwOi8vbWFwcy5nb29nbGUuY29tL21hcHM/cT0xODkw
-        JTIwQnJ5YW50JTIwU3QsJTIwU2FuJTIwRnJhbmNpc2NvLCUyMENBLCUyMDk0
-        MTE3IiwiZmlyc3RuYW1lIjoiQmlsbCIsImxhc3RuYW1lIjoicHJlZml4X0dy
-        YW5nZXIiLCJub21kZXBsdW1lIjpudWxsLCJzbHVnIjoic2V2aWxsYSIsImFy
-        dF9waWVjZXMiOlt7ImlkIjo2MH0seyJpZCI6Njd9LHsiaWQiOjY2fSx7Imlk
-        Ijo2NX0seyJpZCI6NjR9LHsiaWQiOjYzfSx7ImlkIjo2Mn0seyJpZCI6NjF9
-        LHsiaWQiOjU5fSx7ImlkIjo1OH1dLCJhcnRpc3RfaW5mbyI6eyJhcnRpc3Rf
-        aW5mbyI6eyJpZCI6MTEsImFydGlzdF9pZCI6MTEsImNyZWF0ZWRfYXQiOiIy
-        MDA5LTExLTAyVDAzOjMyOjA2LjAwMFoiLCJ1cGRhdGVkX2F0IjoiMjAxNS0w
-        Ny0xOVQwNToyMDowNy4wMDBaIiwiYmlvIjoiQm9ybiBhbmQgdHJhaW5lZCBp
-        biBBc2hldmlsbGUsIE5vcnRoIENhcm9saW5hLCBTZXZpbGxhIGhhcyBiZWVu
-        IHBhaW50aW5nIHRoZSBuYXR1cmFsIHdvcmxkIGZvciBtb3N0IG9mIGhlciBs
-        aWZlLiAgV2l0aCBhIGdyYW5kbW90aGVyIHdobyBwYWludGVkIGxhbmRzY2Fw
-        ZXMsIGEgcGhvdG9ncmFwaGVyIGZvciBhIEZhdGhlciBhbmQgdGhlIGRhdWdo
-        dGVyIG9mIFNhbGxpZSBNaWRkbGV0b24gYXMgaGVyIGJlc3QgZnJpZW5kLCBh
-        cnQgd2FzIG9tbmlwcmVzZW50IGFuZCBlbmNvdXJhZ2VkIGluIGhlciBmb3Jt
-        YXRpdmUgeWVhcnMuXHJcblxyXG5JbiB0aGUgc3VtbWVyIG9mIDIwMDMsIGFm
-        dGVyIDE1IHllYXJzIGFzIGEgQ29zdHVtZSBEZXNpZ25lciBpbiB0aGUgZmls
-        bSBpbmR1c3RyeSwgU2V2aWxsYSB3YXMgaW5zcGlyZWQgdG8gcmV0dXJuIHRv
-        IHBhaW50aW5nIGFmdGVyIGFuIGludGVuc2UgY3JlYXRpdmUgYXdha2VuaW5n
-        IG9uIFBhbGF0aW5lIEhpbGwgaW4gUm9tZS4gVGhlIHdvcmsgc2hlIG1ha2Vz
-        IHRvZGF5IGlzbuKAmXQgZmFyIGZyb20gdGhlIG9yaWdpbmFsIGluc3BpcmF0
-        aW9uIHRoZXJlLCBqdXN0IGJlaW5nIGNvbnN0YW50bHkgcmVmaW5lZCBhbmQg
-        Zm9jdXNlZC5cclxuXHJcblNldmlsbGEgY3VycmVudGx5IGxpdmVzIGluIFNh
-        biBGcmFuY2lzY28sIGFuZCB3b3JrcyBpbiB0aGUgdmlicmFudCBhcnRpc3Rp
-        YyBjb21tdW5pdHkgYXQgdGhlIDE4OTAgQnJ5YW50IFN0LiBTdHVkaW9zLlxy
-        XG4iLCJuZXdzIjpudWxsLCJzdHJlZXQiOiIiLCJjaXR5IjoiU2FuIEZyYW5j
-        aXNjbyIsImFkZHJfc3RhdGUiOiJDQSIsImZhY2Vib29rIjoiaHR0cDovL3d3
-        dy5mYWNlYm9vay5jb20vc2V2aWxsYS5ncmFuZ2VyIiwidHdpdHRlciI6Imh0
-        dHA6Ly90d2l0dGVyLmNvbS9TZXZpbGxhR3JhbmdlciIsImJsb2ciOiJodHRw
-        Oi8vd3d3LnZpbGxhc2V2aWxsYS5jb20vdmlsbGFzZXZpbGxhLmNvbS9CbG9n
-        L0Jsb2cuaHRtbCIsIm15c3BhY2UiOiIiLCJmbGlja3IiOiIiLCJ6aXAiOjk0
-        MTEwLCJtYXhfcGllY2VzIjoyMCwic3R1ZGlvbnVtYmVyIjpudWxsLCJsYXQi
-        OjM3Ljc0ODYsImxuZyI6LTEyMi40MTgsIm9wZW5fc3R1ZGlvc19wYXJ0aWNp
-        cGF0aW9uIjoiIiwicGludGVyZXN0IjpudWxsLCJpbnN0YWdyYW0iOm51bGx9
-        fSwibGluayI6Ii9hcnRpc3RzL3NldmlsbGEifSx7ImZ1bGxfbmFtZSI6Ik1h
-        cnRoYSBwcmVmaXhfUm9kcmlndWV6IiwiZG9pbmdfb3Blbl9zdHVkaW9zIjpm
-        YWxzZSwicHJvZmlsZV9pbWFnZXMiOnsidGh1bWIiOiJodHRwOi8vbWlzc2lv
-        bi1hcnRpc3RzLWRldmVsb3BtZW50LnMzLmFtYXpvbmF3cy5jb20vYXJ0aXN0
-        cy9waG90b3MvMDAwLzAwMC8wMTQvdGh1bWIvcHJvZmlsZS5qcGc/MTQ0ODUw
-        OTAzOCIsInNtYWxsIjoiaHR0cDovL21pc3Npb24tYXJ0aXN0cy1kZXZlbG9w
-        bWVudC5zMy5hbWF6b25hd3MuY29tL2FydGlzdHMvcGhvdG9zLzAwMC8wMDAv
-        MDE0L3NtYWxsL3Byb2ZpbGUuanBnPzE0NDg1MDkwMzgiLCJtZWRpdW0iOiJo
-        dHRwOi8vbWlzc2lvbi1hcnRpc3RzLWRldmVsb3BtZW50LnMzLmFtYXpvbmF3
-        cy5jb20vYXJ0aXN0cy9waG90b3MvMDAwLzAwMC8wMTQvbWVkaXVtL3Byb2Zp
-        bGUuanBnPzE0NDg1MDkwMzgiLCJsYXJnZSI6Imh0dHA6Ly9taXNzaW9uLWFy
-        dGlzdHMtZGV2ZWxvcG1lbnQuczMuYW1hem9uYXdzLmNvbS9hcnRpc3RzL3Bo
-        b3Rvcy8wMDAvMDAwLzAxNC9sYXJnZS9wcm9maWxlLmpwZz8xNDQ4NTA5MDM4
-        Iiwib3JpZ2luYWwiOiJodHRwOi8vbWlzc2lvbi1hcnRpc3RzLWRldmVsb3Bt
-        ZW50LnMzLmFtYXpvbmF3cy5jb20vYXJ0aXN0cy9waG90b3MvMDAwLzAwMC8w
-        MTQvb3JpZ2luYWwvcHJvZmlsZS5qcGc/MTQ0ODUwOTAzOCJ9LCJpZCI6MTQs
-        InVybCI6IiIsInN0dWRpb19pZCI6NCwic3RyZWV0X2FkZHJlc3MiOiIxODkw
-        IEJyeWFudCBTdCIsImNpdHkiOiJTYW4gRnJhbmNpc2NvIiwibWFwX3VybCI6
-        Imh0dHA6Ly9tYXBzLmdvb2dsZS5jb20vbWFwcz9xPTE4OTAlMjBCcnlhbnQl
-        MjBTdCwlMjBTYW4lMjBGcmFuY2lzY28sJTIwQ0EsJTIwOTQxMTciLCJmaXJz
-        dG5hbWUiOiJNYXJ0aGEiLCJsYXN0bmFtZSI6InByZWZpeF9Sb2RyaWd1ZXoi
-        LCJub21kZXBsdW1lIjpudWxsLCJzbHVnIjoiZXN0dWRpb21hcnRpdGEiLCJh
-        cnRfcGllY2VzIjpbeyJpZCI6NzB9LHsiaWQiOjcyfV0sImFydGlzdF9pbmZv
-        Ijp7ImFydGlzdF9pbmZvIjp7ImlkIjoxNCwiYXJ0aXN0X2lkIjoxNCwiY3Jl
-        YXRlZF9hdCI6IjIwMDktMTEtMTJUMTc6MjM6MzkuMDAwWiIsInVwZGF0ZWRf
-        YXQiOiIyMDE1LTA3LTE5VDA1OjIwOjUwLjAwMFoiLCJiaW8iOiIiLCJuZXdz
-        IjpudWxsLCJzdHJlZXQiOiIiLCJjaXR5IjoiU2FuIEZyYW5jaXNjbyIsImFk
-        ZHJfc3RhdGUiOiJDQSIsImZhY2Vib29rIjoiIiwidHdpdHRlciI6IiIsImJs
-        b2ciOiIiLCJteXNwYWNlIjoiIiwiZmxpY2tyIjoiIiwiemlwIjo5NDExMCwi
-        bWF4X3BpZWNlcyI6MjAsInN0dWRpb251bWJlciI6bnVsbCwibGF0IjozNy43
-        NDg2LCJsbmciOi0xMjIuNDE4LCJvcGVuX3N0dWRpb3NfcGFydGljaXBhdGlv
-        biI6IiIsInBpbnRlcmVzdCI6bnVsbCwiaW5zdGFncmFtIjpudWxsfX0sImxp
-        bmsiOiIvYXJ0aXN0cy9lc3R1ZGlvbWFydGl0YSJ9LHsiZnVsbF9uYW1lIjoi
-        YmlsbCBjY2RkZWUiLCJkb2luZ19vcGVuX3N0dWRpb3MiOmZhbHNlLCJwcm9m
-        aWxlX2ltYWdlcyI6eyJ0aHVtYiI6bnVsbCwic21hbGwiOm51bGwsIm1lZGl1
-        bSI6bnVsbCwibGFyZ2UiOm51bGwsIm9yaWdpbmFsIjpudWxsfSwiaWQiOjMz
-        LCJ1cmwiOiIiLCJzdHVkaW9faWQiOjQsInN0cmVldF9hZGRyZXNzIjoiMTg5
-        MCBCcnlhbnQgU3QiLCJjaXR5IjoiU2FuIEZyYW5jaXNjbyIsIm1hcF91cmwi
-        OiJodHRwOi8vbWFwcy5nb29nbGUuY29tL21hcHM/cT0xODkwJTIwQnJ5YW50
-        JTIwU3QsJTIwU2FuJTIwRnJhbmNpc2NvLCUyMENBLCUyMDk0MTE3IiwiZmly
-        c3RuYW1lIjoiYmlsbCIsImxhc3RuYW1lIjoiY2NkZGVlIiwibm9tZGVwbHVt
-        ZSI6bnVsbCwic2x1ZyI6ImNjZGRlZSIsImFydF9waWVjZXMiOlt7ImlkIjox
-        MTR9LHsiaWQiOjIzM30seyJpZCI6MjI4fV0sImFydGlzdF9pbmZvIjp7ImFy
-        dGlzdF9pbmZvIjp7ImlkIjozMywiYXJ0aXN0X2lkIjozMywiY3JlYXRlZF9h
-        dCI6IjIwMDktMTEtMjlUMjE6MjQ6MjMuMDAwWiIsInVwZGF0ZWRfYXQiOiIy
-        MDE1LTA3LTE5VDA1OjIwOjUwLjAwMFoiLCJiaW8iOiIiLCJuZXdzIjpudWxs
-        LCJzdHJlZXQiOiIiLCJjaXR5IjoiU2FuIEZyYW5jaXNjbyIsImFkZHJfc3Rh
-        dGUiOiJDQSIsImZhY2Vib29rIjoiIiwidHdpdHRlciI6IiIsImJsb2ciOiIi
-        LCJteXNwYWNlIjoiIiwiZmxpY2tyIjoiIiwiemlwIjo5NDExMCwibWF4X3Bp
-        ZWNlcyI6MjAsInN0dWRpb251bWJlciI6bnVsbCwibGF0IjozNy43NDg2LCJs
-        bmciOi0xMjIuNDE4LCJvcGVuX3N0dWRpb3NfcGFydGljaXBhdGlvbiI6IjIw
-        MTAwNHwyMDExMDQiLCJwaW50ZXJlc3QiOm51bGwsImluc3RhZ3JhbSI6bnVs
-        bH19LCJsaW5rIjoiL2FydGlzdHMvY2NkZGVlIn0seyJmdWxsX25hbWUiOiJu
-        ZXcgYXJ0aXN0cyIsImRvaW5nX29wZW5fc3R1ZGlvcyI6ZmFsc2UsInByb2Zp
-        bGVfaW1hZ2VzIjp7InRodW1iIjpudWxsLCJzbWFsbCI6bnVsbCwibWVkaXVt
-        IjpudWxsLCJsYXJnZSI6bnVsbCwib3JpZ2luYWwiOm51bGx9LCJpZCI6NTgs
-        InVybCI6IiIsInN0dWRpb19pZCI6NCwic3RyZWV0X2FkZHJlc3MiOiIxODkw
-        IEJyeWFudCBTdCIsImNpdHkiOiJTYW4gRnJhbmNpc2NvIiwibWFwX3VybCI6
-        Imh0dHA6Ly9tYXBzLmdvb2dsZS5jb20vbWFwcz9xPTE4OTAlMjBCcnlhbnQl
-        MjBTdCwlMjBTYW4lMjBGcmFuY2lzY28sJTIwQ0EsJTIwOTQxMTciLCJmaXJz
-        dG5hbWUiOiJuZXciLCJsYXN0bmFtZSI6ImFydGlzdHMiLCJub21kZXBsdW1l
-        IjpudWxsLCJzbHVnIjoibmV3bmV3bmV3IiwiYXJ0X3BpZWNlcyI6W10sImFy
-        dGlzdF9pbmZvIjp7ImFydGlzdF9pbmZvIjp7ImlkIjo1OCwiYXJ0aXN0X2lk
-        Ijo1OCwiY3JlYXRlZF9hdCI6IjIwMTAtMDMtMzFUMDc6NTc6NTcuMDAwWiIs
-        InVwZGF0ZWRfYXQiOiIyMDE1LTA3LTE5VDA1OjIwOjUwLjAwMFoiLCJiaW8i
-        OiIiLCJuZXdzIjpudWxsLCJzdHJlZXQiOiIiLCJjaXR5IjoiU2FuIEZyYW5j
-        aXNjbyIsImFkZHJfc3RhdGUiOiJDQSIsImZhY2Vib29rIjoiIiwidHdpdHRl
-        ciI6IiIsImJsb2ciOiIiLCJteXNwYWNlIjoiIiwiZmxpY2tyIjoiIiwiemlw
-        Ijo5NDExMCwibWF4X3BpZWNlcyI6MjAsInN0dWRpb251bWJlciI6bnVsbCwi
-        bGF0IjozNy43NDg2LCJsbmciOi0xMjIuNDE4LCJvcGVuX3N0dWRpb3NfcGFy
-        dGljaXBhdGlvbiI6IjIwMTAwNCIsInBpbnRlcmVzdCI6bnVsbCwiaW5zdGFn
-        cmFtIjpudWxsfX0sImxpbmsiOiIvYXJ0aXN0cy9uZXduZXduZXcifSx7ImZ1
-        bGxfbmFtZSI6ImJpbGwgLiIsImRvaW5nX29wZW5fc3R1ZGlvcyI6ZmFsc2Us
-        InByb2ZpbGVfaW1hZ2VzIjp7InRodW1iIjpudWxsLCJzbWFsbCI6bnVsbCwi
-        bWVkaXVtIjpudWxsLCJsYXJnZSI6bnVsbCwib3JpZ2luYWwiOm51bGx9LCJp
-        ZCI6ODUsInVybCI6IiIsInN0dWRpb19pZCI6NCwic3RyZWV0X2FkZHJlc3Mi
-        OiIxODkwIEJyeWFudCBTdCIsImNpdHkiOiJTYW4gRnJhbmNpc2NvIiwibWFw
-        X3VybCI6Imh0dHA6Ly9tYXBzLmdvb2dsZS5jb20vbWFwcz9xPTE4OTAlMjBC
-        cnlhbnQlMjBTdCwlMjBTYW4lMjBGcmFuY2lzY28sJTIwQ0EsJTIwOTQxMTci
-        LCJmaXJzdG5hbWUiOiJiaWxsIiwibGFzdG5hbWUiOiIuIiwibm9tZGVwbHVt
-        ZSI6bnVsbCwic2x1ZyI6Imt5b25vLWRldiIsImFydF9waWVjZXMiOlt7Imlk
-        IjoyMDd9XSwiYXJ0aXN0X2luZm8iOnsiYXJ0aXN0X2luZm8iOnsiaWQiOjcw
-        LCJhcnRpc3RfaWQiOjg1LCJjcmVhdGVkX2F0IjoiMjAxMS0wMi0wN1QxODo0
-        MzowNC4wMDBaIiwidXBkYXRlZF9hdCI6IjIwMTUtMDctMTlUMDU6MjA6NTAu
-        MDAwWiIsImJpbyI6IiIsIm5ld3MiOm51bGwsInN0cmVldCI6IiIsImNpdHki
-        OiJTYW4gRnJhbmNpc2NvIiwiYWRkcl9zdGF0ZSI6IkNBIiwiZmFjZWJvb2si
-        OiIiLCJ0d2l0dGVyIjoiIiwiYmxvZyI6IiIsIm15c3BhY2UiOiIiLCJmbGlj
-        a3IiOiIiLCJ6aXAiOm51bGwsIm1heF9waWVjZXMiOjIwLCJzdHVkaW9udW1i
-        ZXIiOiIiLCJsYXQiOjM3Ljc0ODYsImxuZyI6LTEyMi40MTgsIm9wZW5fc3R1
-        ZGlvc19wYXJ0aWNpcGF0aW9uIjoiMjAxMTA0IiwicGludGVyZXN0IjpudWxs
-        LCJpbnN0YWdyYW0iOm51bGx9fSwibGluayI6Ii9hcnRpc3RzL2t5b25vLWRl
-        diJ9LHsiZnVsbF9uYW1lIjoiY29udGFjdG1lIiwiZG9pbmdfb3Blbl9zdHVk
-        aW9zIjpmYWxzZSwicHJvZmlsZV9pbWFnZXMiOnsidGh1bWIiOm51bGwsInNt
-        YWxsIjpudWxsLCJtZWRpdW0iOm51bGwsImxhcmdlIjpudWxsLCJvcmlnaW5h
-        bCI6bnVsbH0sImlkIjo5MSwidXJsIjoiIiwic3R1ZGlvX2lkIjo0LCJzdHJl
-        ZXRfYWRkcmVzcyI6IjE4OTAgQnJ5YW50IFN0IiwiY2l0eSI6IlNhbiBGcmFu
-        Y2lzY28iLCJtYXBfdXJsIjoiaHR0cDovL21hcHMuZ29vZ2xlLmNvbS9tYXBz
-        P3E9MTg5MCUyMEJyeWFudCUyMFN0LCUyMFNhbiUyMEZyYW5jaXNjbywlMjBD
-        QSwlMjA5NDExNyIsImZpcnN0bmFtZSI6ImJpbGwiLCJsYXN0bmFtZSI6IiIs
-        Im5vbWRlcGx1bWUiOm51bGwsInNsdWciOiJjb250YWN0bWUiLCJhcnRfcGll
-        Y2VzIjpbXSwiYXJ0aXN0X2luZm8iOnsiYXJ0aXN0X2luZm8iOnsiaWQiOjc0
-        LCJhcnRpc3RfaWQiOjkxLCJjcmVhdGVkX2F0IjoiMjAxMi0wMi0wOFQyMToy
-        MDo1OS4wMDBaIiwidXBkYXRlZF9hdCI6IjIwMTUtMDctMTlUMDU6MjA6NTAu
-        MDAwWiIsImJpbyI6IiIsIm5ld3MiOm51bGwsInN0cmVldCI6IiIsImNpdHki
-        OiJTYW4gRnJhbmNpc2NvIiwiYWRkcl9zdGF0ZSI6IkNBIiwiZmFjZWJvb2si
-        OiIiLCJ0d2l0dGVyIjoiIiwiYmxvZyI6IiIsIm15c3BhY2UiOiIiLCJmbGlj
-        a3IiOiIiLCJ6aXAiOm51bGwsIm1heF9waWVjZXMiOjIwLCJzdHVkaW9udW1i
-        ZXIiOiIzMTEiLCJsYXQiOjM3Ljc0ODYsImxuZyI6LTEyMi40MTgsIm9wZW5f
-        c3R1ZGlvc19wYXJ0aWNpcGF0aW9uIjoiMjAxMjA0IiwicGludGVyZXN0Ijpu
-        dWxsLCJpbnN0YWdyYW0iOm51bGx9fSwibGluayI6Ii9hcnRpc3RzL2NvbnRh
-        Y3RtZSJ9LHsiZnVsbF9uYW1lIjoibmV3YWNjb3VudDEiLCJkb2luZ19vcGVu
-        X3N0dWRpb3MiOmZhbHNlLCJwcm9maWxlX2ltYWdlcyI6eyJ0aHVtYiI6bnVs
-        bCwic21hbGwiOm51bGwsIm1lZGl1bSI6bnVsbCwibGFyZ2UiOm51bGwsIm9y
-        aWdpbmFsIjpudWxsfSwiaWQiOjk5LCJ1cmwiOiIiLCJzdHVkaW9faWQiOjQs
-        InN0cmVldF9hZGRyZXNzIjoiMTg5MCBCcnlhbnQgU3QiLCJjaXR5IjoiU2Fu
-        IEZyYW5jaXNjbyIsIm1hcF91cmwiOiJodHRwOi8vbWFwcy5nb29nbGUuY29t
-        L21hcHM/cT0xODkwJTIwQnJ5YW50JTIwU3QsJTIwU2FuJTIwRnJhbmNpc2Nv
-        LCUyMENBLCUyMDk0MTE3IiwiZmlyc3RuYW1lIjoiYmlsbCIsImxhc3RuYW1l
-        IjoiIiwibm9tZGVwbHVtZSI6bnVsbCwic2x1ZyI6Im5ld2FjY291bnQxIiwi
-        YXJ0X3BpZWNlcyI6W10sImFydGlzdF9pbmZvIjp7ImFydGlzdF9pbmZvIjp7
-        ImlkIjo4MiwiYXJ0aXN0X2lkIjo5OSwiY3JlYXRlZF9hdCI6IjIwMTItMDIt
-        MTNUMDI6Mjc6MzIuMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDE1LTA3LTE5VDA1
-        OjIwOjUwLjAwMFoiLCJiaW8iOiIiLCJuZXdzIjpudWxsLCJzdHJlZXQiOiIi
-        LCJjaXR5IjoiU2FuIEZyYW5jaXNjbyIsImFkZHJfc3RhdGUiOiJDQSIsImZh
-        Y2Vib29rIjoiIiwidHdpdHRlciI6IiIsImJsb2ciOiIiLCJteXNwYWNlIjoi
-        IiwiZmxpY2tyIjoiIiwiemlwIjpudWxsLCJtYXhfcGllY2VzIjoyMCwic3R1
-        ZGlvbnVtYmVyIjoiIiwibGF0IjozNy43NDg2LCJsbmciOi0xMjIuNDE4LCJv
-        cGVuX3N0dWRpb3NfcGFydGljaXBhdGlvbiI6IjIwMTIwNCIsInBpbnRlcmVz
-        dCI6bnVsbCwiaW5zdGFncmFtIjpudWxsfX0sImxpbmsiOiIvYXJ0aXN0cy9u
-        ZXdhY2NvdW50MSJ9XX0=
-    http_version: 
-  recorded_at: Wed, 28 Sep 2016 06:47:05 GMT
-- request:
-    method: get
     uri: http://localhost:3000/api/v2//artists/85/art_pieces.json
     body:
       encoding: US-ASCII
@@ -735,4 +349,762 @@ http_interactions:
         cigarillo, flores y Frida","artist_id":14,"image_urls":{"thumb":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/072/thumb/1258057358.46904uncigarillofloresyFrida2a.jpg","small":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/072/small/1258057358.46904uncigarillofloresyFrida2a.jpg","medium":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/072/medium/1258057358.46904uncigarillofloresyFrida2a.jpg","large":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/072/large/1258057358.46904uncigarillofloresyFrida2a.jpg","original":"http://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/072/original/1258057358.46904uncigarillofloresyFrida2a.jpg"}}]}'
     http_version: 
   recorded_at: Wed, 28 Sep 2016 06:47:05 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2/studios/1890-bryant-street-studios.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a5dbe59715eae9218761668454807969"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 4af45343-7879-4281-8be9-fa73d31ff995
+      X-Runtime:
+      - '0.021524'
+    body:
+      encoding: UTF-8
+      string: '{"studio":{"id":16,"name":"1890 Bryant Street Studios","street_address":"Demarco
+        Causeway","city":"Alizaview","map_url":"http://maps.google.com/maps?q=Demarco%20Causeway,%20Alizaview,%20South%20Carolina,%2083896","url":"/studios/1890-bryant-street-studios","artists":[{"id":1,"slug":"artist","full_name":"Mayer-Grant","firstname":"Martin","lastname":"Sally"},{"id":4,"slug":"administrator","full_name":"Murray,
+        Sauer and McLaughlin","firstname":"Natalia","lastname":"Breana"}],"slug":"1890-bryant-street-studios"}}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists.json?studio=1890-bryant-street-studios
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"1700f61d12a2f78432a74365ce1d635a"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - fcdcfef7-986f-4245-acb0-525e01a2d10f
+      X-Runtime:
+      - '0.035027'
+    body:
+      encoding: UTF-8
+      string: '{"artists":[{"full_name":"Mayer-Grant","doing_open_studios":true,"profile_images":{"thumb":null,"small":null,"medium":null,"large":null,"original":null},"id":1,"url":null,"studio_id":16,"street_address":"Demarco
+        Causeway","city":"Alizaview","map_url":"http://maps.google.com/maps?q=Demarco%20Causeway,%20Alizaview,%20South%20Carolina,%2083896","firstname":"Martin","lastname":"Sally","nomdeplume":"Mayer-Grant","slug":"artist","art_pieces":[{"id":1},{"id":2}],"artist_info":{"artist_info":{"id":1,"artist_id":1,"created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:17.000Z","bio":"Distinctio
+        rem officia consectetur provident. Excepturi in est quisquam ratione. Vitae
+        provident voluptatum. Aliquid nisi mollitia deleniti optio tempora. Sit illo
+        dolores itaque ipsum.","street":"1890 bryant st","city":"san francisco","addr_state":"ca","zip":null,"max_pieces":10,"studionumber":null,"lat":37.75,"lng":-122.41,"open_studios_participation":"201604|201611|201704"}},"link":"/artists/artist"},{"full_name":"Murray,
+        Sauer and McLaughlin","doing_open_studios":true,"profile_images":{"thumb":null,"small":null,"medium":null,"large":null,"original":null},"id":4,"url":null,"studio_id":16,"street_address":"Demarco
+        Causeway","city":"Alizaview","map_url":"http://maps.google.com/maps?q=Demarco%20Causeway,%20Alizaview,%20South%20Carolina,%2083896","firstname":"Natalia","lastname":"Breana","nomdeplume":"Murray,
+        Sauer and McLaughlin","slug":"administrator","art_pieces":[{"id":3},{"id":4}],"artist_info":{"artist_info":{"id":4,"artist_id":4,"created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:17.000Z","bio":"Quaerat
+        veniam ipsam et ut. Delectus sit ullam quam. Inventore ut nobis praesentium
+        qui sint officiis omnis. Maxime officiis eius omnis et dignissimos iusto pariatur.","street":"1890
+        bryant st","city":"san francisco","addr_state":"ca","zip":null,"max_pieces":10,"studionumber":null,"lat":37.75,"lng":-122.41,"open_studios_participation":"201604|201611|201704"}},"link":"/artists/administrator"}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/4/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3ce13cf41a9f65937efef5ea37a2e2fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c6ac024c-3ceb-4315-ad8f-969eb66c54de
+      X-Runtime:
+      - '0.045206'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":3,"artist":4,"medium":{"id":22,"name":"Medium
+        3","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-3"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Conroy, Wyman and Franecki","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/original/new-art-piece.jpg"}},{"id":4,"artist":4,"medium":{"id":23,"name":"Medium
+        4","created_at":"2017-09-10T21:59:17.000Z","updated_at":"2017-09-10T21:59:17.000Z","slug":"medium-4"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Kunde LLC","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/4/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3ce13cf41a9f65937efef5ea37a2e2fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - ffd68940-8216-425c-a18f-770a6e8bda8d
+      X-Runtime:
+      - '0.045338'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":3,"artist":4,"medium":{"id":22,"name":"Medium
+        3","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-3"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Conroy, Wyman and Franecki","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/original/new-art-piece.jpg"}},{"id":4,"artist":4,"medium":{"id":23,"name":"Medium
+        4","created_at":"2017-09-10T21:59:17.000Z","updated_at":"2017-09-10T21:59:17.000Z","slug":"medium-4"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Kunde LLC","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/4/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3ce13cf41a9f65937efef5ea37a2e2fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 124dce35-5e6e-40d4-acf2-08d89cfee8c9
+      X-Runtime:
+      - '0.044938'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":3,"artist":4,"medium":{"id":22,"name":"Medium
+        3","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-3"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Conroy, Wyman and Franecki","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/original/new-art-piece.jpg"}},{"id":4,"artist":4,"medium":{"id":23,"name":"Medium
+        4","created_at":"2017-09-10T21:59:17.000Z","updated_at":"2017-09-10T21:59:17.000Z","slug":"medium-4"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Kunde LLC","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/4/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3ce13cf41a9f65937efef5ea37a2e2fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8b7417c9-0c6b-42b5-ae26-ba71a5c68cdd
+      X-Runtime:
+      - '0.044251'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":3,"artist":4,"medium":{"id":22,"name":"Medium
+        3","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-3"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Conroy, Wyman and Franecki","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/original/new-art-piece.jpg"}},{"id":4,"artist":4,"medium":{"id":23,"name":"Medium
+        4","created_at":"2017-09-10T21:59:17.000Z","updated_at":"2017-09-10T21:59:17.000Z","slug":"medium-4"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Kunde LLC","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/1/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9a11026e84c300199746acaa0e6117af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 88127dd4-3db2-4666-886d-76c0edc620dd
+      X-Runtime:
+      - '0.043835'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":1,"artist":1,"medium":{"id":20,"name":"Medium
+        1","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-1"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":1,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Beatty-Homenick","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/original/new-art-piece.jpg"}},{"id":2,"artist":1,"medium":{"id":21,"name":"Medium
+        2","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-2"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":null,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Murphy Group","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/1/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9a11026e84c300199746acaa0e6117af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d4b0020e-8183-462c-8f30-f3f841aa00cb
+      X-Runtime:
+      - '0.051427'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":1,"artist":1,"medium":{"id":20,"name":"Medium
+        1","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-1"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":1,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Beatty-Homenick","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/original/new-art-piece.jpg"}},{"id":2,"artist":1,"medium":{"id":21,"name":"Medium
+        2","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-2"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":null,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Murphy Group","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/1/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9a11026e84c300199746acaa0e6117af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8c1a41c9-11fb-4ef5-84a9-b0ad4e0873a4
+      X-Runtime:
+      - '0.042375'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":1,"artist":1,"medium":{"id":20,"name":"Medium
+        1","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-1"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":1,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Beatty-Homenick","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/original/new-art-piece.jpg"}},{"id":2,"artist":1,"medium":{"id":21,"name":"Medium
+        2","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-2"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":null,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Murphy Group","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/1/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9a11026e84c300199746acaa0e6117af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 9a44a16e-cf7f-4b06-b865-3a7db5af8b94
+      X-Runtime:
+      - '0.043565'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":1,"artist":1,"medium":{"id":20,"name":"Medium
+        1","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-1"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":1,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Beatty-Homenick","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/original/new-art-piece.jpg"}},{"id":2,"artist":1,"medium":{"id":21,"name":"Medium
+        2","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-2"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":null,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Murphy Group","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/4/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3ce13cf41a9f65937efef5ea37a2e2fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 62ad51c8-67b7-4ba0-8c9e-b54da2674f46
+      X-Runtime:
+      - '0.044878'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":3,"artist":4,"medium":{"id":22,"name":"Medium
+        3","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-3"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Conroy, Wyman and Franecki","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/original/new-art-piece.jpg"}},{"id":4,"artist":4,"medium":{"id":23,"name":"Medium
+        4","created_at":"2017-09-10T21:59:17.000Z","updated_at":"2017-09-10T21:59:17.000Z","slug":"medium-4"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Kunde LLC","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/4/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"3ce13cf41a9f65937efef5ea37a2e2fe"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 5a898b2b-176c-4fe1-aee5-c2e80a48143b
+      X-Runtime:
+      - '0.043283'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":3,"artist":4,"medium":{"id":22,"name":"Medium
+        3","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-3"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Conroy, Wyman and Franecki","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/003/original/new-art-piece.jpg"}},{"id":4,"artist":4,"medium":{"id":23,"name":"Medium
+        4","created_at":"2017-09-10T21:59:17.000Z","updated_at":"2017-09-10T21:59:17.000Z","slug":"medium-4"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":16,"name":"eatery","created_at":"2017-10-28T19:07:58.000Z","updated_at":"2017-10-28T19:07:58.000Z","slug":"eatery"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Murray,
+        Sauer and McLaughlin","favorites_count":null,"year":2016,"dimensions":"10
+        x 10","filename":null,"title":"Kunde LLC","artist_id":4,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/004/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/1/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9a11026e84c300199746acaa0e6117af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1331fe18-e3bd-423a-baa7-c2deddcc1067
+      X-Runtime:
+      - '0.045343'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":1,"artist":1,"medium":{"id":20,"name":"Medium
+        1","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-1"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":1,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Beatty-Homenick","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/original/new-art-piece.jpg"}},{"id":2,"artist":1,"medium":{"id":21,"name":"Medium
+        2","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-2"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":null,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Murphy Group","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
+- request:
+    method: get
+    uri: http://localhost:3000/api/v2//artists/1/art_pieces.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin16.7.0 x86_64) ruby/2.4.1p111
+      Authorization:
+      - whatever
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:3000
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 02 Dec 2017 18:51:31 GMT
+      Connection:
+      - close
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9a11026e84c300199746acaa0e6117af"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 54542662-4c11-4194-b0b8-e8c3279e3f51
+      X-Runtime:
+      - '0.046082'
+    body:
+      encoding: UTF-8
+      string: '{"art_pieces":[{"id":1,"artist":1,"medium":{"id":20,"name":"Medium
+        1","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-1"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":1,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Beatty-Homenick","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/001/original/new-art-piece.jpg"}},{"id":2,"artist":1,"medium":{"id":21,"name":"Medium
+        2","created_at":"2017-09-10T21:59:16.000Z","updated_at":"2017-09-10T21:59:16.000Z","slug":"medium-2"},"tags":[{"id":15,"name":"eat","created_at":"2017-10-28T19:07:29.000Z","updated_at":"2017-10-28T19:07:29.000Z","slug":"eat"},{"id":12,"name":"neque","created_at":"2017-10-28T19:03:01.000Z","updated_at":"2017-10-28T19:03:01.000Z","slug":"neque"},{"id":6,"name":"qui","created_at":"2017-10-28T19:02:41.000Z","updated_at":"2017-10-28T19:02:41.000Z","slug":"qui"},{"id":4,"name":"stuff","created_at":"2017-10-28T19:01:14.000Z","updated_at":"2017-10-28T19:01:14.000Z","slug":"stuff"},{"id":5,"name":"stuff2","created_at":"2017-10-28T19:01:48.000Z","updated_at":"2017-10-28T19:01:48.000Z","slug":"stuff2"}],"artist_name":"Mayer-Grant","favorites_count":null,"year":2014,"dimensions":"10
+        x 10","filename":null,"title":"Murphy Group","artist_id":1,"image_urls":{"thumb":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/thumb/new-art-piece.jpg","small":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/small/new-art-piece.jpg","medium":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/medium/new-art-piece.jpg","large":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/large/new-art-piece.jpg","original":"https://mission-artists-development.s3.amazonaws.com/art_pieces/photos/000/000/002/original/new-art-piece.jpg"}}]}'
+    http_version: 
+  recorded_at: Sat, 02 Dec 2017 18:51:31 GMT
 recorded_with: VCR 3.0.3

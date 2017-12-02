@@ -79,9 +79,9 @@ describe BryantStreetStudios, :vcr do
 
   describe '#artists/:id' do
     it 'shows the artist\'s name in the title' do
-      visit '/artists/10'
+      visit '/artists/1'
       expect(page).to have_selector '.title' do |t|
-        expect(t).to contain 'catherine mackey'
+        expect(t).to contain 'Martin Sally'
       end
     end
     # it 'draws the artist\'s links as links' do
