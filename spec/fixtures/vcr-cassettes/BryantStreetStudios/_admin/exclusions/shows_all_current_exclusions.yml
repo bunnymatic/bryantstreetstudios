@@ -41,9 +41,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7177bdf1-d278-44f6-96d7-f76588c7e2f4
+      - 6b1c47a9-5498-4343-b714-7f5f1318f9ef
       X-Runtime:
-      - '0.018425'
+      - '0.017654'
     body:
       encoding: UTF-8
       string: '{"studio":{"id":16,"name":"1890 Bryant Street Studios","street_address":"Demarco
@@ -92,9 +92,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 24415cb9-1fa2-4421-8d1f-84afd6a976a9
+      - 6ee8e73e-f37c-44d5-bb49-e63f443203c0
       X-Runtime:
-      - '0.033016'
+      - '0.038374'
     body:
       encoding: UTF-8
       string: '{"artists":[{"full_name":"Mayer-Grant","doing_open_studios":true,"profile_images":{"thumb":null,"small":null,"medium":null,"large":null,"original":null},"id":1,"url":null,"studio_id":16,"street_address":"Demarco

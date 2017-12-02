@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 02 Dec 2017 18:51:29 GMT
+      - Sat, 02 Dec 2017 18:51:32 GMT
       Connection:
       - close
       X-Frame-Options:
@@ -41,16 +41,16 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 7177bdf1-d278-44f6-96d7-f76588c7e2f4
+      - 0a7897f1-7f2a-473a-9185-2fb56424405c
       X-Runtime:
-      - '0.018425'
+      - '0.021865'
     body:
       encoding: UTF-8
       string: '{"studio":{"id":16,"name":"1890 Bryant Street Studios","street_address":"Demarco
         Causeway","city":"Alizaview","map_url":"http://maps.google.com/maps?q=Demarco%20Causeway,%20Alizaview,%20South%20Carolina,%2083896","url":"/studios/1890-bryant-street-studios","artists":[{"id":1,"slug":"artist","full_name":"Mayer-Grant","firstname":"Martin","lastname":"Sally"},{"id":4,"slug":"administrator","full_name":"Murray,
         Sauer and McLaughlin","firstname":"Natalia","lastname":"Breana"}],"slug":"1890-bryant-street-studios"}}'
     http_version: 
-  recorded_at: Sat, 02 Dec 2017 18:51:29 GMT
+  recorded_at: Sat, 02 Dec 2017 18:51:32 GMT
 - request:
     method: get
     uri: http://localhost:3000/api/v2//artists.json?studio=1890-bryant-street-studios
@@ -76,7 +76,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 02 Dec 2017 18:51:29 GMT
+      - Sat, 02 Dec 2017 18:51:32 GMT
       Connection:
       - close
       X-Frame-Options:
@@ -92,9 +92,9 @@ http_interactions:
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 24415cb9-1fa2-4421-8d1f-84afd6a976a9
+      - 33821eda-fc0d-46f9-bfd0-369b40c7d8cd
       X-Runtime:
-      - '0.033016'
+      - '0.036783'
     body:
       encoding: UTF-8
       string: '{"artists":[{"full_name":"Mayer-Grant","doing_open_studios":true,"profile_images":{"thumb":null,"small":null,"medium":null,"large":null,"original":null},"id":1,"url":null,"studio_id":16,"street_address":"Demarco
@@ -109,5 +109,5 @@ http_interactions:
         qui sint officiis omnis. Maxime officiis eius omnis et dignissimos iusto pariatur.","street":"1890
         bryant st","city":"san francisco","addr_state":"ca","zip":null,"max_pieces":10,"studionumber":null,"lat":37.75,"lng":-122.41,"open_studios_participation":"201604|201611|201704"}},"link":"/artists/administrator"}]}'
     http_version: 
-  recorded_at: Sat, 02 Dec 2017 18:51:29 GMT
+  recorded_at: Sat, 02 Dec 2017 18:51:32 GMT
 recorded_with: VCR 3.0.3
