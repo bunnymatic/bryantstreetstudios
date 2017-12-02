@@ -16,7 +16,9 @@ GEM
     aws-sdk-resources (2.1.30)
       aws-sdk-core (= 2.1.30)
     backports (3.10.3)
-    bcrypt-ruby (3.1.2)
+    bcrypt (3.1.11)
+    bcrypt-ruby (3.1.5)
+      bcrypt (>= 3.1.3)
     bond (0.5.1)
     byebug (9.1.0)
     capybara (2.5.0)
@@ -233,10 +235,10 @@ DEPENDENCIES
   aws-sdk
   capybara
   dalli
-  datamapper (~> 1.2.0)
-  dm-aggregates (~> 1.2.0)
+  datamapper
+  dm-aggregates
   dm-paperclip-s3!
-  dm-postgres-adapter (~> 1.2.0)
+  dm-postgres-adapter
   eventmachine
   faye
   haml

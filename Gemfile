@@ -5,9 +5,9 @@ ruby '2.4.1'
 # careful with >2.3 issues with pg http://stackoverflow.com/questions/27862098/problems-with-postgres-and-unicorn-server/27995428#27995428
 
 gem 'dalli'
-gem 'datamapper', '~> 1.2.0'
-gem 'dm-aggregates', '~> 1.2.0'
-gem 'dm-postgres-adapter', '~> 1.2.0'
+gem 'datamapper'
+gem 'dm-aggregates'
+gem 'dm-postgres-adapter'
 gem 'eventmachine'
 gem 'faye'
 gem 'haml'
