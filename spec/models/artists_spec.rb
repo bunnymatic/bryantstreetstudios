@@ -9,9 +9,8 @@ describe Artist, :vcr do
         url = Artist.make_link(vals[0])
         url = Capybara::Node::Simple.new(url)
         expect(url).to have_selector('a') do |tag|
-          t = tag[0]
-          expect(t.attributes['href'].value).to eq vals[1]
-          expect(t.text).to eq vals[2]
+          expect(tag['href']).to eq vals[1]
+          expect(tag.text).to eq vals[2]
         end
       end
     end
@@ -21,9 +20,8 @@ describe Artist, :vcr do
       end
       url = Capybara::Node::Simple.new(url)
       expect(url).to have_selector('a') do |tag|
-        t = tag[0]
-        expect(t.attributes['href'].value).to eq 'http://mylink.com'
-        expect(t.text).to eq 'check out my link'
+        expect(tag['href']).to eq 'http://mylink.com'
+        expect(tag.text).to eq 'check out my link'
       end
     end
     it "puts the options in the link as attributes" do
@@ -32,11 +30,10 @@ describe Artist, :vcr do
       end
       url = Capybara::Node::Simple.new(url)
       expect(url).to have_selector('a') do |tag|
-        t = tag[0]
-        expect(t.attributes['href'].value).to eq 'http://mylink.com'
-        expect(t.attributes['class'].value).to eq 'theclass'
-        expect(t.attributes['myattr'].value).to eq 'myval'
-        expect(t.text).to eq == 'eat it'
+        expect(tag['href']).to eq 'http://mylink.com'
+        expect(tag['class']).to eq 'theclass'
+        expect(tag['myattr']).to eq 'myval'
+        expect(tag.text).to eq 'eat it'
       end
     end
   end

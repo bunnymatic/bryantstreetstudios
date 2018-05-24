@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'http://rubygems.org'
-ruby '2.4.1'
+ruby '2.5.1'
 # careful with >2.3 issues with pg http://stackoverflow.com/questions/27862098/problems-with-postgres-and-unicorn-server/27995428#27995428
 
 gem 'dalli'
@@ -23,7 +23,7 @@ gem 'sinatra-contrib'
 gem 'sinatra-static-assets'
 gem 'thin'
 
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 2.4.x'
 gem 'dm-paperclip-s3', git: 'https://github.com/krzyzanowskim/dm-paperclip-s3.git'
 
 gem 'pg'

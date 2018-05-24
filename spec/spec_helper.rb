@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'rack/test'
 require 'rspec'
-require "capybara"
+require "capybara/dsl"
 require "byebug"
 require "pry"
 require "vcr"
