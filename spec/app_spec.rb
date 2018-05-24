@@ -65,14 +65,10 @@ describe BryantStreetStudios, :vcr do
     end
     it 'artists are listed alphabetically' do
       visit '/artists'
-      expect(page).to have_selector('.content li.thumb .name') do |names|
-        expect(names[0]).to contain 'Rhiannon'
-        expect(names.last).to contain 'caitlin winner'
-      end
-      expect(page).to have_selector('.sidebar li.artist .name') do |names|
-        expect(names[0]).to contain 'Rhiannon'
-        expect(names.last).to contain 'caitlin winner'
-      end
+      expect(page).to have_selector('.content li.thumb .name')
+      names = all('.content li.thumb .name')
+      expect(names[0].text).to match 'Natalia Breana'
+      expect(names.last.text).to match 'Martin Sally'
     end
 
   end
@@ -80,9 +76,8 @@ describe BryantStreetStudios, :vcr do
   describe '#artists/:id' do
     it 'shows the artist\'s name in the title' do
       visit '/artists/1'
-      expect(page).to have_selector '.title' do |t|
-        expect(t).to contain 'Martin Sally'
-      end
+      title = all('.title').first
+      expect(title.text).to match 'Beatty-Homenick'
     end
     # it 'draws the artist\'s links as links' do
     #   visit '/artists/7'
@@ -102,9 +97,8 @@ describe BryantStreetStudios, :vcr do
     end
     it 'should render the content block for events' do
       visit '/events'
-      expect(page).to have_selector 'h2' do |chunk|
-        expect(chunk).to contain 'Here\'s what we\'ve got planned'
-      end
+      title = all('h2')
+      expect(title.first.text).to match 'Here\'s what we\'ve got planned'
     end
   end
 
