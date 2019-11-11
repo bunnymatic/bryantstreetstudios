@@ -28,13 +28,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            # This branch if available
-            - v1-dep-{{ .Branch }}-
-            # Default branch if not
-            - v1-dep-development-
-            # Any branch if there are none on the default branch - this should be unnecessary if you have your default branch set properly
-            - v1-dep-
-      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
+            - bss1890-dependencies-v1-{{ checksum "Gemfile.lock" }}
+            - bss1890-dependencies-v1-
       - run:
           shell: /bin/bash
           name: Machine Setup
@@ -51,13 +46,18 @@ jobs:
           name: Ruby Tests (rspec)
           command: bundle exec rake spec
       - save_cache:
-          key: v1-dep-{{ .Branch }}-{{ epoch }}
+          key: bss1890-dependencies-v1-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
             - ~/.bundle
       - store_test_results:
-          path: /tmp/circleci-test-results
+          path: ./tmp/circleci-test-results
       - store_artifacts:
-          path: /tmp/circleci-artifacts
+          path: ./tmp/circleci-artifacts
       - store_artifacts:
-          path: /tmp/circleci-test-results
+          path: ./tmp/circleci-test-results
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
