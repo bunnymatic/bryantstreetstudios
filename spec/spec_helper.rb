@@ -4,7 +4,7 @@ require 'rack/test'
 require 'rspec'
 require "capybara/dsl"
 require "byebug"
-require "pry"
+#require "pry"
 require "vcr"
 require File.join(File.dirname(__FILE__), '..','app')
 
